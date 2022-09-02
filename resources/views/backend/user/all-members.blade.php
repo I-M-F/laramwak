@@ -23,21 +23,26 @@
                     <th>Reg No. </th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Role</th>                    
+                    <th>Phone</th>
+                    <th>Service Number</th>
+                    <th>Photo</th>
                     <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
            
-                  @foreach($all as $key=>$row)
+                  @foreach($all_members as $key=>$row)
                     <tr>
                         <td>{{ $key+1 }}</td>
-                        <td>{{ $row->name }}</td>
+                        <td>{{ $row->first_name.' '.$row->maiden_name }}</td>
                         <td>{{ $row->email }}</td>
-                        <td>{{ $row->role }}</td>                       
- </td>
+                        <td>{{ $row->phone }}</td>
+                        <td>{{ $row->service_number }}</td>
+                        <td><img src="{{ asset('/storage/member_id_docs/'.$row->id_card) }}" alt="" title="{{$row->id_card}}" width= '50' height='50' class="img img-responsive"> </td>
+                        
                         <td>
-                            <a href="{{ URL::to('/edit-user/'.$row->id) }}" class="btn btn-sm btn-info">Edit</a>
+                            <a href="{{ URL::to('/view-member/'.$row->id) }}" class="btn btn-sm btn-info">View</a>
+                            <a href="{{ URL::to('/edit-user/'.$row->id) }}" class="btn btn-sm btn-info">Send SMS</a>
                             <a href="{{ URL::to('/delete-user/'.$row->id) }}" class="btn btn-sm btn-danger">Delete</a>
                         </td>
 
@@ -51,7 +56,9 @@
                   <th>Reg No. </th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Role</th>                  
+                    <th>Phone</th>
+                    <th>Service Number</th>
+                    <th>Photo</th>
                     <th>Action</th>
                   </tr>
                   </tfoot>

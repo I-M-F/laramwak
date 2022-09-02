@@ -32,7 +32,7 @@
               <div class="info-box-content">
                 <span class="info-box-text">Approved Members</span>
                 <span class="info-box-number">
-                {{$approved_members}}
+                12
                   <small>%</small>
                 </span>
               </div>
@@ -64,7 +64,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Approved Payments</span>
-                <span class="info-box-number">{{$approved_payments}}</span>
+                <span class="info-box-number">12}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -77,7 +77,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Pending Payments</span>
-                <span class="info-box-number">{{$pending_payments}}</span>
+                <span class="info-box-number">12</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -180,7 +180,7 @@
                   <div class="col-sm-3 col-6">
                     <div class="description-block border-right">
                       <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 17%</span>
-                      <h5 class="description-header">Kshs {{ number_format($total_rev, 2, '.', ',') }} </h5>
+                      <h5 class="description-header">Kshs 12,000,000 </h5>
                       <span class="description-text">TOTAL MEMBERSHIP  REVENUE</span>
                     </div>
                     <!-- /.description-block -->
@@ -189,7 +189,7 @@
                   <div class="col-sm-3 col-6">
                     <div class="description-block border-right">
                       <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i> 0%</span>
-                      <h5 class="description-header">$Kshs {{ number_format($total_rev, 2, '.', ',') }}</h5>
+                      <h5 class="description-header">$Kshs 233,000</h5>
                       <span class="description-text">TOTAL CARD COST</span>
                     </div>
                     <!-- /.description-block -->

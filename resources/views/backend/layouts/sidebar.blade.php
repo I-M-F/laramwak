@@ -95,7 +95,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{URL::to('/all-user')}}" class="nav-link">
+                <a href="{{URL::to('/all-members')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Members</p>
                 </a>
@@ -124,19 +124,19 @@
             
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{URL::to('/all-user')}}" class="nav-link">
+                <a href="{{URL::to('/payment')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Payments</p>
                 </a>
               </li>
-              
+              <!-- @if(auth()->user()->role=='Admin')
               <li class="nav-item">
-                <a href="{{URL::to('/add-user-index')}}" class="nav-link">
+                <a href="{{URL::to('/edit-payments')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Make Payments Users</p>
+                  <p>Edit Payments</p>
                 </a>
               </li>
-                       
+              @endif         -->
             </ul>
           </li>
         

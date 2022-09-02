@@ -48,7 +48,7 @@
     <strong>Copyright &copy; 2022 <a href="https://www.mwak.co.ke">Military Wives Association of Kenya (MWAK)</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
+      <b>Version</b> 1.0.0
     </div>
   </footer>
 </div>
@@ -110,6 +110,23 @@
     });
   });
 </script>
+
+<!-- <script src="{{ asset('js/app.js') }}"></script>
+
+<script>
+
+document.getElementById('getAccessToken').addEventListener('click', (event) => {
+  event.preventDefault()
+
+  axios.post('/get-token', {})
+  .then((response) => {
+    console.log(response.data);
+  })
+  .catch((error) => {
+    console.log(error);
+  })
+})
+</script> -->
 
 </body>
 </html>

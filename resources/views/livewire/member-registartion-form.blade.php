@@ -1,7 +1,7 @@
 <div>
     <form wire:submit.prevent="member_register">
 
-    @if ($currentStep == 1) 
+        @if ($currentStep == 1)
         <div class="step-one">
             <div class="card">
                 <div class="card-header bg-secondary text-white">
@@ -32,28 +32,57 @@
                         </div>
                     </div>
                     <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="">Email Address</label>
-                                    <input type="email" class="form-control" placeholder="Enter Email Address" wire:model="email">
-                                    <span class="text-danger">@error('email') {{ $message }}@enderror</span>
-                                </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Email Address</label>
+                                <input type="email" class="form-control" placeholder="Enter Email Address" wire:model="email">
+                                <span class="text-danger">@error('email') {{ $message }}@enderror</span>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="">Phone Number</label>
-                                    <input type="text" class="form-control" placeholder="Enter Phone Number" wire:model="phone">
-                                    <span class="text-danger">@error('phone') {{ $message }}@enderror</span>
-                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Phone Number</label>
+                                <input type="text" class="form-control" placeholder="Enter Phone Number" wire:model="phone">
+                                <span class="text-danger">@error('phone') {{ $message }}@enderror</span>
                             </div>
+                        </div>
                     </div>
-                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">County Location</label>
+                                <select class="form-control" wire:model="selectedClass">
+                                    <option value="" selected>Select County Location</option>
+                                    @foreach ($county as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger">@error('selectedClass') {{ $message }}@enderror</span>
+                            </div>
+                        </div>
+
+                        @if (!is_null($sections))
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Sub-County Location</label>
+                                <select class="form-control" wire:model="selectedSection">
+                                    <option value="" selected>Select SubCounty Location</option>
+                                    @foreach ($sections as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger">@error('selectedSection') {{ $message }}@enderror</span>
+                            </div>
+                        </div>
+                        @endif
+                    </div>
+
                 </div>
             </div>
         </div>
-    @endif
+        @endif
 
-    @if ($currentStep == 2) 
+        @if ($currentStep == 2)
         <div class="step-two">
             <div class="card">
                 <div class="card-header bg-secondary text-white">
@@ -95,24 +124,26 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Base Location</label>
-                                <select class="form-control" wire:model="member_location">
-                                    <option value="" selected>Select Base Location</option>
-                                    <option value="Kabete Barracks">Kabete Barracks</option>
-                                    <option value="Laikipia Air Base">Laikipia Air Base</option>
-                                    <option value="Moi Air Base">Moi Air Base</option>
-                                    <option value="Mtongwe base">Mombasa(Mtongwe) Base</option>
-                                </select>
-                                <span class="text-danger">@error('member_location') {{ $message }}@enderror</span>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
                                 <label for="">Service Class</label>
                                 <select class="form-control" wire:model="class">
-                                    <option value="" selected>Select Service Class</option>
-                                    <option value="Officer">Officer</option>
-                                    <option value="Service Man">Service Man</option>
+                                <option value="" selected>Select Service Class | Rank</option>                                    
+                                    <option value="Commander-in-Chief">Commander-in-Chief</option>
+                                    <option value="General">General </option>
+                                    <option value="Lieutenant general">Lieutenant general</option>
+                                    <option value="Major general">Major general </option>
+                                    <option value="Brigadier">Brigadier </option>
+                                    <option value="Colonel">Colonel </option>
+                                    <option value="Lieutenant colonel">Lieutenant colonel</option>
+                                    <option value="Major">Major</option>
+                                    <option value="Captain">Captain</option>
+                                    <option value="Lieutenant">Lieutenant</option>
+                                    <option value="Second lieutenant">Second lieutenant</option>                                    
+                                    <option value="Warrant Officer Class 1">Warrant Officer Class 1</option>
+                                    <option value="Warrant Officer Class 2">Warrant Officer Class 2</option>
+                                    <option value="Senior Sergeant">Senior Sergeant </option>
+                                    <option value="Sergeant">Sergeant</option>
+                                    <option value="Corporal">Corporal</option>
+                                    <option value="Lance Corporal">Lance Corporal</option>
                                 </select>
                                 <span class="text-danger">@error('class') {{ $message }}@enderror</span>
                             </div>
@@ -121,9 +152,9 @@
                 </div>
             </div>
         </div>
-    @endif
+        @endif
 
-    @if ($currentStep == 3) 
+        @if ($currentStep == 3)
         <div class="step-three">
             <div class="card">
                 <div class="card-header bg-secondary text-white">
@@ -153,27 +184,27 @@
                 </div>
             </div>
         </div>
-    @endif
+        @endif
 
 
         <div class="action-button d-flex justify-content-between bg-white pt-2 pb-2">
 
-            @if ($currentStep == 1) 
-                <div></div>
-            @endif
-            
-            @if ($currentStep == 2 || $currentStep == 3) 
-                <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseStep()">Back</button>
+            @if ($currentStep == 1)
+            <div></div>
             @endif
 
-            @if ($currentStep == 1 || $currentStep == 2) 
-                <button type="button" class="btn btn-md btn-success" wire:click="increaseStep()">Next</button>
+            @if ($currentStep == 2 || $currentStep == 3)
+            <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseStep()">Back</button>
             @endif
-            
-            @if ($currentStep == 3) 
-                <button type="submit" class="btn btn-md btn-primary" >Submit</button>
+
+            @if ($currentStep == 1 || $currentStep == 2)
+            <button type="button" class="btn btn-md btn-success" wire:click="increaseStep()">Next</button>
             @endif
-                        
+
+            @if ($currentStep == 3)
+            <button type="submit" class="btn btn-md btn-primary">Submit</button>
+            @endif
+
         </div>
 
 

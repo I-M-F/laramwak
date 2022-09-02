@@ -30,4 +30,9 @@ class MemberRegistartion extends Model
         
     ];
 
+    // public function sections()
+    // {
+    //     return $this->hasMany(County::class);
+    // }
+
 }
