@@ -1,5 +1,4 @@
-
-@extends('backend.layouts.app')
+@extends('layouts.app')
 @section('content')
 <!DOCTYPE html>
 <html lang="en">

@@ -1,4 +1,4 @@
-@extends('backend.layouts.app')
+@extends('layouts.app')
 @section('content')
 <nav class="main-header navbar navbar-expand navbar-dark">
     <!-- Left navbar links -->
