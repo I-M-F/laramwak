@@ -1,4 +1,4 @@
-@extends('layouts.app')
+<!-- @extends('layouts.app') -->
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
