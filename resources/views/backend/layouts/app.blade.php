@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('content')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -132,4 +132,3 @@ document.getElementById('getAccessToken').addEventListener('click', (event) => {
 
 </body>
 </html>
-@endsection
