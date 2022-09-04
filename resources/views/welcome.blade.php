@@ -44,6 +44,9 @@
             <div class="links">
                 <a href="/">Home</a>
             </div>
+            <div class="links">
+                <a href="/import-data">Import</a>
+            </div>
         </div>
     </div>
         </div>

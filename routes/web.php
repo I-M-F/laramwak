@@ -45,6 +45,9 @@ Route::get('/edit-user/{id}', [App\Http\Controllers\backend\UserController::clas
 Route::get('/all-members', [App\Http\Controllers\backend\UserController::class, 'AllMembers'])->name('allmembers');
 Route::get('/sendSMS', [App\Http\Controllers\payment\MPESAController::class, 'sendSMS'])->name('sendSMS');
 Route::get('/sendEmail', [App\Http\Controllers\payment\MPESAController::class, 'sendEmail'])->name('sendEmail');
+
+//Route::get('/import-data', [App\Http\Controllers\backend\UserController::class, 'importUsers'])->name('import-data');
+// Route::post('/upload', [App\Http\Controllers\backend\UserController::class, 'uploadUsers'])->name('upload');
 //Data Table
 // Route::get('/datatables', function () {
 //     return view('backend.datatables');

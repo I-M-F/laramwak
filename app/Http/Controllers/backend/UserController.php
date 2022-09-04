@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports;
 
 
 use AfricasTalking\SDK\AfricasTalking;
+use App\Imports\CountyImport;
 
 class UserController extends Controller
 {
@@ -170,5 +173,24 @@ class UserController extends Controller
         } else {
             echo "Something wnet wrong";
         }
+    }
+
+        /**
+     * Import Users 
+     * @param Null
+     * @return View File
+     */
+     public function importUsers()
+     {
+        echo "Something wnet wrong";
+    }
+
+    public function uploadUsers(Request $request)
+    {
+        //Excel::import(new CountyImport, $request->file);
+
+        //dd('Data Imported Successfully');
+        
+        //return redirect()->route('users.index')->with('success', );
     }
 }
