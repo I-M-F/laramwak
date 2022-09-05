@@ -1,4 +1,5 @@
-<!-- @extends('layouts.app') -->
+@extends('layouts.app') 
+
 <nav class="main-header navbar navbar-expand navbar-dark">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -134,4 +135,3 @@
       </li>
     </ul>
   </nav>
-  
