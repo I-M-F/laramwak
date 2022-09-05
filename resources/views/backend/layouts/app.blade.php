@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('backend.layouts.app')
+
 
 <!DOCTYPE html>
 <html lang="en">
