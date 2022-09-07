@@ -125,7 +125,7 @@ class MPESAController extends Controller
     );
     $headers = array(
         'Content-Type: application/x-www-form-urlencoded',
-        'ApiKey: v62LpPnMQkO' // Replace with your api key
+        'ApiKey: IxD3nsaSdDy' // Replace with your api key
      );
     $info = http_build_query($data);
     

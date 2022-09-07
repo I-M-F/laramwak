@@ -122,7 +122,7 @@
 
                                             <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
 
-                                            <p class="text-muted">{{$countyDB->name.' '.$subCountyDB->name}} </p>
+                                            <p class="text-muted">{{$countyDB->name}} </p>
 
                                             <hr>
 
