@@ -27,11 +27,11 @@
   </div>
 
   <!-- Navbar -->
-    @include('backend.Layouts.navbar')
+    @include('backend.layouts.navbar')
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-    @include('backend.Layouts.sidebar')
+    @include('backend.layouts.sidebar')
 
   <!-- Dashboard -->
     @yield('content')
