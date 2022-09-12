@@ -122,7 +122,7 @@ class MPESAController extends Controller
                 'PartyA'=> 254708374149,
                 'PartyB'=> 174379,
                 'PhoneNumber'=> $phone,
-                'CallBackURL'=> "https://mydomain.com/path",
+                'CallBackURL'=> "http://app.mwak.ke/payment",
                 'AccountReference'=> "MWAK",
                 'TransactionDesc'=> "Payment of MWAK" 
             );
