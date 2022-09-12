@@ -128,7 +128,8 @@ class MPESAController extends Controller
             );
             $info = http_build_query($data);
             curl_setopt($ch, CURLOPT_HTTPHEADER, [
-                'Authorization: Bearer KY9flPHOOYU8EkqaGnXCJ1sw7S2z',                
+                'Authorization: Bearer KY9flPHOOYU8EkqaGnXCJ1sw7S2z',
+                'Content-Type: application/json'
             ]);
             curl_setopt($ch, CURLOPT_POST, 1);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $info);
