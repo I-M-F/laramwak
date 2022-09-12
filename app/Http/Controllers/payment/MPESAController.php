@@ -110,6 +110,8 @@ class MPESAController extends Controller
     }
 
     public function mpesaSTKPush($phone){
+
+            $simu =preg_replace("/^0/", "254", $phone);
         
             $ch = curl_init('https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest');
             $lipa_time = Carbon::rawParse('now')->format('YmdHms');
@@ -119,9 +121,9 @@ class MPESAController extends Controller
                 'Timestamp'=> $lipa_time,
                 'TransactionType'=> "CustomerPayBillOnline",
                 'Amount'=> 1,
-                'PartyA'=> 254708374149,
+                'PartyA'=> $simu,
                 'PartyB'=> 174379,
-                'PhoneNumber'=> $phone,
+                'PhoneNumber'=> $simu,
                 'CallBackURL'=> "http://app.mwak.ke/payment",
                 'AccountReference'=> "MWAK",
                 'TransactionDesc'=> "Payment of MWAK" 
@@ -136,7 +138,7 @@ class MPESAController extends Controller
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             $response     = curl_exec($ch);
             curl_close($ch);
-            echo $response ;
+            echo $response .'----'.$info ;
 
     }
 
