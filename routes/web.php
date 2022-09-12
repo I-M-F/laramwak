@@ -36,7 +36,7 @@ Route::get('/delete-user/{id}', [App\Http\Controllers\backend\UserController::cl
 // Payments Managment
 Route::get('/payment', [App\Http\Controllers\payment\MPESAController::class, 'payment'])->name('payment');
 Route::get('/getAccessToken', [App\Http\Controllers\payment\MPESAController::class, 'getAccessToken'])->name('getAccessToken');
-Route::get('/customerMpesaSTKPush/{phone}', [App\Http\Controllers\payment\MPESAController::class, 'customerMpesaSTKPush'])->name('customerMpesaSTKPush');
+Route::get('/mpesaSTKPush/{phone}', [App\Http\Controllers\payment\MPESAController::class, 'mpesaSTKPush'])->name('mpesaSTKPush');
 Route::get('/edit-tx/{phone}', [App\Http\Controllers\payment\MPESAController::class, 'editTx'])->name('editTx');
 Route::post('/update-tx/{phone}', [App\Http\Controllers\payment\MPESAController::class, 'updateTx'])->name('updateTx');
 // Member Management

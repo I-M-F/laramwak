@@ -120,7 +120,7 @@
 
                                             <hr>
 
-                                            <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+                                            <strong><i class="fas fa-map-marker-alt mr-1"></i> County of Residence</strong>
 
                                             <p class="text-muted">{{$countyDB->name}} </p>
 

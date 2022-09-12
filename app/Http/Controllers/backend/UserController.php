@@ -89,7 +89,7 @@ class UserController extends Controller
             ->where('phone', '=', $view_member->phone)
             ->first();
         return view('backend.user.view-member', compact('view_member', 'paymentDB','countyDB','subCountyDB'));
-    }
+    }//http://www.mwakportal.mwak.co.ke/
 
     public function updateMember(Request $request, $id)
     {
@@ -127,8 +127,12 @@ class UserController extends Controller
                 ->where('phone', '=', $view_member->phone)
                 ->first();
 
+            $countyDB = DB::table('counties')
+            ->where('id', '=', $view_member->county)
+            ->first();
 
-            return view('backend.user.view-member', compact('view_member', 'paymentDB'));
+
+            return view('backend.user.view-member', compact('view_member', 'paymentDB','countyDB'));
         } else {
             echo "Something wnet wrong";
         }

@@ -46,7 +46,7 @@
                         <td>
                         @if(auth()->user()->role=='Admin')   
                         @if($row->status=='Pending')
-                            <a href="{{ URL::to('/customerMpesaSTKPush/'.$row->phone) }}" class="btn btn-sm btn-info">Lipa Na MPesa</a>
+                            <a href="{{ URL::to('/mpesaSTKPush/'.$row->phone) }}" class="btn btn-sm btn-info">Lipa Na MPesa</a>
                             <a href="{{ URL::to('/edit-tx/'.$row->phone) }}" class="btn btn-sm btn-info">Edit</a>
                         <!-- <a href="{{ URL::to('/sendEmail') }}" class="btn btn-sm btn-info">Pay With VISA/MasterCard Email</a>
                              -->
@@ -55,7 +55,7 @@
                         @endif  
                         @if(auth()->user()->role=='Member') 
                         @if($row->status=='Pending')
-                            <a href="{{ URL::to('/customerMpesaSTKPush/'.$row->phone) }}" class="btn btn-sm btn-info">Lipa Na MPesa</a>
+                            <a href="{{ URL::to('/mpesaSTKPush/'.$row->phone) }}" class="btn btn-sm btn-info">Lipa Na MPesa</a>
                             
                         @endif 
                         @endif 

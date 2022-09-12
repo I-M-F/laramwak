@@ -68,7 +68,7 @@ class MPESAController extends Controller
     
     public function sndSMS($OTP){
                 
-        $username = 'MWAK'; // use 'sandbox' for development in the test environment
+        $username = 'MWAK'; // use 'sandbox' for development in the test environment        
         $apiKey   = 'e5ea09562f3ad404503a38c8e3f3ef3cdaf3efa89193b27268b954a3f6bf7694'; // use your sandbox app API key for development in the test environment
         $AT       = new AfricasTalking($username, $apiKey);
 
@@ -107,6 +107,37 @@ class MPESAController extends Controller
         $timestamp =$lipa_time;
         $lipa_na_mpesa_password = base64_encode($BusinessShortCode.$passkey.$timestamp);
         return $lipa_na_mpesa_password;
+    }
+
+    public function mpesaSTKPush($phone){
+        
+            $ch = curl_init('https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest');
+            $lipa_time = Carbon::rawParse('now')->format('YmdHms');
+            $data = array(
+                'BusinessShortCode'=> 174379,
+                'Password'=> "MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMjIwOTEyMDkxNTI5",
+                'Timestamp'=> $lipa_time,
+                'TransactionType'=> "CustomerPayBillOnline",
+                'Amount'=> 1,
+                'PartyA'=> 254708374149,
+                'PartyB'=> 174379,
+                'PhoneNumber'=> $phone,
+                'CallBackURL'=> "https://mydomain.com/path",
+                'AccountReference'=> "MWAK",
+                'TransactionDesc'=> "Payment of MWAK" 
+            );
+            $info = http_build_query($data);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Authorization: Bearer KY9flPHOOYU8EkqaGnXCJ1sw7S2z',
+                'Content-Type: application/json'
+            ]);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $info);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            $response     = curl_exec($ch);
+            curl_close($ch);
+            echo $response ;
+
     }
 
     public function customerMpesaSTKPush($phone)//$phone
