@@ -116,7 +116,7 @@ class MPESAController extends Controller
 
         # define the variales
         # provide the following details, this part is found on your test credentials on the developer account
-        $BusinessShortCode = '174379';
+        $BusinessShortCode = '7893469';
         $Passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';  
         
         $paymentDB = DB::table('payments')
@@ -127,7 +127,7 @@ class MPESAController extends Controller
         
         $PartyA = preg_replace("/^0/", "254", $phone); // This is your phone number, 
         $AccountReference = 'MWAK';
-        $TransactionDesc = 'MWAK Payment';
+        $TransactionDesc = $paymentDB->payment_description;
         $Amount = $paymentDB->amount;
         
         # Get the timestamp, format YYYYmmddhms -> 20181004151020
