@@ -46,6 +46,11 @@ Route::get('/all-members', [App\Http\Controllers\backend\UserController::class, 
 Route::get('/sendSMS', [App\Http\Controllers\payment\MPESAController::class, 'sendSMS'])->name('sendSMS');
 Route::get('/sendEmail', [App\Http\Controllers\payment\MPESAController::class, 'sendEmail'])->name('sendEmail');
 
+Route::get('/add-docs', [App\Http\Controllers\FileController::class, 'addDocs'])->name('addDocs');
+Route::post('/upload-docs', [App\Http\Controllers\FileController::class, 'uploadDocs'])->name('uploadDocs');
+Route::get('/all-docs', [App\Http\Controllers\FileController::class, 'allDocs'])->name('allDocs');
+Route::get('/view-docs/{id}', [App\Http\Controllers\FileController::class, 'viewDocs'])->name('viewDocs');
+
 //Route::get('/import-data', [App\Http\Controllers\backend\UserController::class, 'importUsers'])->name('import-data');
 // Route::post('/upload', [App\Http\Controllers\backend\UserController::class, 'uploadUsers'])->name('upload');
 //Data Table

@@ -29,7 +29,8 @@ class MemberRegistartionForm extends Component
     public $id_number;   
 
     public $service_number;
-    public $spouse_name;    
+    public $spouse_name;  
+        
     public $spouse_maiden_name;
     public $class;
     public $id_card;
@@ -42,6 +43,7 @@ class MemberRegistartionForm extends Component
     public $selectedClass = null;
     public $selectedSection = null;
     public $sections = null;
+    public $spouseStatus= null; 
 
     public function mount(){
         $this->currentStep =1;
@@ -88,6 +90,7 @@ class MemberRegistartionForm extends Component
                 'second_name'=>'required|string',
                 'maiden_name'=>'required|string',
                 'email'=>'required|email|unique:member_registartions',
+                'id_number'=>'required|string|unique:member_registartions',
                 'phone'=>'required|digits:10|unique:member_registartions',
                 'selectedClass'=>'required|string',
                 'selectedSection'=>'required|string',
@@ -95,9 +98,9 @@ class MemberRegistartionForm extends Component
         } elseif($this->currentStep == 2){
             $this->validate([
                 'spouse_name'=>'required|string',
-                'spouse_maiden_name'=>'required|string',
-                'id_number'=>'required|string|unique:member_registartions',
-                'service_number'=>'required|string|unique:member_registartions',                
+                'spouse_maiden_name'=>'required|string',                
+                'service_number'=>'required|string|unique:member_registartions',
+                'spouseStatus'=>'required|string',//spousestatus              
                 'class'=>'required|string',
             ]);
 
@@ -151,7 +154,7 @@ class MemberRegistartionForm extends Component
            $this->validate([
                 'id_card'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:1024',
                 'passport_photo'=>'required|mimes:pdf,jpg,jpeg,png|max:1024',
-                'marriage_cert'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:1024',
+                'marriage_cert'=>'mimes:doc,docx,pdf,jpg,jpeg,png|max:1024',
                 
             ]);
         }
@@ -187,6 +190,7 @@ class MemberRegistartionForm extends Component
                 "service_number"=>$this->service_number,
                 "spouse_name"=>$this->spouse_name,        
                 "spouse_maiden_name"=>$this->spouse_maiden_name,
+                "spouse_status"=>$this->spouseStatus,
                 "class"=>$this->class,
                 "id_card"=>$idcard,
                 "passport_photo"=>$passport,
@@ -221,7 +225,7 @@ class MemberRegistartionForm extends Component
             );
             Payment::insert($pay_var); 
             
-            $message = "Dear ' . $this->first_name . ' Welcome to MWAK. Registation Pending, Please sign up and make member payment. Your password is ' . $OTP";
+            $message = 'Dear ' . $this->first_name . ' Welcome to MWAK. Registation pending wait approval, Please sign up with your email and make member payment. Your password is ' . $OTP;
 
             $this->sendSMS($OTP,$this->first_name,$this->phone,$message);
             //$this->sendEmail(); 

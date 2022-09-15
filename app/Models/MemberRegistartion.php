@@ -24,6 +24,7 @@ class MemberRegistartion extends Model
         'spouse_name',        
         'spouse_maiden_name',
         'class',
+        'spouse_status',
         'id_card',
         'passport_photo',
         'marriage_cert',

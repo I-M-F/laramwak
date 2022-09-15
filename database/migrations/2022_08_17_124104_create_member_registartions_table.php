@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('spouse_name')->nullable();
             $table->string('spouse_second_name')->nullable();
             $table->string('spouse_maiden_name')->nullable();
+            $table->string('spouse_status')->nullable();
             $table->string('class')->nullable();
             $table->string('id_card');
             $table->string('status')->default('Pending');

@@ -108,6 +108,31 @@
               </li>                       
             </ul>
           </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-book"></i>
+              <p>
+                Document Management
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span> -->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{URL::to('/all-docs')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Document</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{URL::to('/add-docs')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Document</p>
+                </a>
+              </li>                       
+            </ul>
+          </li>
      
 
           @endif

@@ -30,6 +30,13 @@
                                 <span class="text-danger">@error('maiden_name') {{ $message }}@enderror</span>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">ID Number</label>
+                                <input type="text" class="form-control" placeholder="Enter Your ID No." wire:model="id_number">
+                                <span class="text-danger">@error('id_number') {{ $message }}@enderror</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
@@ -108,11 +115,18 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">ID Number</label>
-                                <input type="text" class="form-control" placeholder="Enter Spouse ID No." wire:model="id_number">
-                                <span class="text-danger">@error('id_number') {{ $message }}@enderror</span>
+                                <label for="spouseStatus">Spouse Status</label>
+                                <select class="form-control" wire:model="spouseStatus">
+                                    <option value="" selected>Select Spouse Status</option>
+                                    <option value="In Service">In Service</option>
+                                    <option value="Veretan">Veretan </option>
+                                    <option value="Widow">Widow</option>
+
+                                </select>
+                                <span class="text-danger">@error('spouseStatus') {{ $message }}@enderror</span> 
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Service No.</label>
@@ -126,8 +140,7 @@
                             <div class="form-group">
                                 <label for="">Service Class</label>
                                 <select class="form-control" wire:model="class">
-                                <option value="" selected>Select Service Class | Rank</option>                                    
-                                    <option value="Commander-in-Chief">Commander-in-Chief</option>
+                                    <option value="" selected>Select Service Class | Rank</option>
                                     <option value="General">General </option>
                                     <option value="Lieutenant general">Lieutenant general</option>
                                     <option value="Major general">Major general </option>
@@ -137,7 +150,7 @@
                                     <option value="Major">Major</option>
                                     <option value="Captain">Captain</option>
                                     <option value="Lieutenant">Lieutenant</option>
-                                    <option value="Second lieutenant">Second lieutenant</option>                                    
+                                    <option value="Second lieutenant">Second lieutenant</option>
                                     <option value="Warrant Officer Class 1">Warrant Officer Class 1</option>
                                     <option value="Warrant Officer Class 2">Warrant Officer Class 2</option>
                                     <option value="Senior Sergeant">Senior Sergeant </option>
@@ -190,6 +203,9 @@
         <div class="action-button d-flex justify-content-between bg-white pt-2 pb-2">
 
             @if ($currentStep == 1)
+            <p class="mb-0">
+                <a href="{{ route('login') }}" class="text-center">I am already a Member</a>
+
             <div></div>
             @endif
 
