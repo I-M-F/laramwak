@@ -74,15 +74,14 @@
         <img class="img-fluid me-3" src="{{asset('backend/dist/img/logo.jpg')}}" alt="" />
       </h1>
     </a>
-<<<<<<< HEAD
-=======
+
     <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <div class="navbar-nav mx-auto bg-light rounded pe-4 py-3 py-lg-0">
       
->>>>>>> c5523e03314809e4354709576eb49c92bf43308f
+
 
 
 
