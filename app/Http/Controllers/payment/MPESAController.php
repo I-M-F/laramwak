@@ -116,7 +116,7 @@ class MPESAController extends Controller
 
         # define the variales
         # provide the following details, this part is found on your test credentials on the developer account
-        $BusinessShortCode = '220220';
+        $BusinessShortCode = '174379';
         $Passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';  
         
         $paymentDB = DB::table('payments')
@@ -185,9 +185,12 @@ class MPESAController extends Controller
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
         $curl_response = curl_exec($curl);
-        print_r($curl_response);
+        // print_r($curl_response);
 
-        echo $curl_response;
+        // echo $curl_response;
+
+        return view('backend.user.payments', compact('curl_response'));
+
     }
 
     public function mpesaSTKPush($phone){

@@ -120,6 +120,13 @@
 
                                             <hr>
 
+                                            
+                                            <strong><i class="fas fa-map-marker-alt mr-1"></i> ID Number </strong>
+
+                                            <p class="text-muted">{{$view_member->id_number}}</p>
+
+                                            <hr>
+
                                             <strong><i class="fas fa-map-marker-alt mr-1"></i> County of Residence</strong>
 
                                             <p class="text-muted">{{$countyDB->name}} </p>
@@ -161,9 +168,9 @@
 
                                             <hr>
 
-                                            <strong><i class="fas fa-map-marker-alt mr-1"></i> Spouse ID No </strong>
+                                            <strong><i class="fas fa-map-marker-alt mr-1"></i> Spouse Status </strong>
 
-                                            <p class="text-muted">{{$view_member->id_number}}</p>
+                                            <p class="text-muted">{{$view_member->spouse_status}}</p>
 
                                             <hr>
 

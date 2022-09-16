@@ -50,7 +50,8 @@ class HomeController extends Controller
         return view('backend.layouts.dashboard', compact('total_rev','pending_payments','approved_payments','new_member','approved_members'));
         } else {
         
-         return view('backend.layouts.member-dashboard');
+         //return view('backend.user.all-docs'); 
+         return redirect()->route('backend.user.all-docs');
 
         }
     }

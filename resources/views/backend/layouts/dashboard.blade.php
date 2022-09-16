@@ -47,7 +47,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">New Members</span>
-                <span class="info-box-number">2</span>
+                <span class="info-box-number">{{$new_member}}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -135,7 +135,7 @@
                     </p>
 
                     <div class="progress-group">
-                      Add Products to Cart
+                    Health
                       <span class="float-right"><b>160</b>/200</span>
                       <div class="progress progress-sm">
                         <div class="progress-bar bg-primary" style="width: 80%"></div>
@@ -144,7 +144,7 @@
                     <!-- /.progress-group -->
 
                     <div class="progress-group">
-                      Complete Purchase
+                    Mentorship
                       <span class="float-right"><b>310</b>/400</span>
                       <div class="progress progress-sm">
                         <div class="progress-bar bg-danger" style="width: 75%"></div>
@@ -153,7 +153,7 @@
 
                     <!-- /.progress-group -->
                     <div class="progress-group">
-                      <span class="progress-text">Visit Premium Page</span>
+                      <span class="progress-text">Education</span>
                       <span class="float-right"><b>480</b>/800</span>
                       <div class="progress progress-sm">
                         <div class="progress-bar bg-success" style="width: 60%"></div>
@@ -162,7 +162,7 @@
 
                     <!-- /.progress-group -->
                     <div class="progress-group">
-                      Send Inquiries
+                    Housing
                       <span class="float-right"><b>250</b>/500</span>
                       <div class="progress progress-sm">
                         <div class="progress-bar bg-warning" style="width: 50%"></div>
@@ -189,7 +189,7 @@
                   <div class="col-sm-3 col-6">
                     <div class="description-block border-right">
                       <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i> 0%</span>
-                      <h5 class="description-header">$Kshs {{ number_format($total_rev, 2, '.', ',') }}</h5>
+                      <h5 class="description-header">Kshs {{ number_format($total_rev, 2, '.', ',') }}</h5>
                       <span class="description-text">TOTAL CARD COST</span>
                     </div>
                     <!-- /.description-block -->
