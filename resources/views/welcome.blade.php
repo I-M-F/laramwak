@@ -79,7 +79,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <div class="navbar-nav mx-auto bg-light rounded pe-4 py-3 py-lg-0">
-        <h4>Walking Far Together</h4>
+      
 
       </div>
       @if (Route::has('login'))
