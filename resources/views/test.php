@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <title>MWAK | Home Page</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <meta content="" name="keywords" />
-  <meta content="" name="description" />
-
+ 
   <!-- Favicon -->
   <link href="{{asset('img/favicon.ico')}}" rel="icon" />
 
@@ -74,46 +65,41 @@
         <img class="img-fluid me-3" src="{{asset('backend/dist/img/logo.jpg')}}" alt="" />
       </h1>
     </a>
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav mx-auto bg-light rounded pe-4 py-3 py-lg-0">
+        <h4>Walking Far Together</h4>
 
+      </div>
+      @if (Route::has('login'))
+      <div>
+        @auth
+        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+        @else
+        <a href="{{ route('login') }}"class="nav-item nav-link">Login</a>
 
+        @if (Route::has('register'))
+        <a href="{{ route('member-register') }}" class="">Register</a>
+        @endif
+        @endauth
+      </div>
+      @endif
 
+    </div>
+    </div>
+
+    </div>
+    </div>
 
   </nav>
   <!-- Navbar End -->
+<div class="section">
+  
+  <img class="img-class" src="{{asset('backend/dist/img/mwakvalues.jpeg')}}" alt="Image"/>
 
-  <!-- Carousel Start -->
-  <section>
-    <div class="row">
-      <div class="column content" style="background-color:#fff;">
-        <h3>A BIG OPPORTUNITY FOR</h3>
-        <h1>MILITARY WIVES</h1>
-        
-        @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="btn">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="btn">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('member-register') }}" class="btn account"><img class="img-btn" src="https://z-p3-scontent.fnuu1-1.fna.fbcdn.net/v/t39.8562-6/291368684_3743893072401791_4065535483776826835_n.png?_nc_cat=101&ccb=1-7&_nc_sid=6825c5&_nc_ohc=88ws8smSZvAAX8BG3LF&_nc_ht=z-p3-scontent.fnuu1-1.fna&oh=00_AT9u4oVOh6dcS1cd5H1KUpdHvzKMf4AoXa8LYF8Ry9UQsQ&oe=63255FF3" alt=""></i>Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-      
-      </div>
-      <div class="column" style="background-color:#fdebeb;">
-        <img class="img-class" src="{{asset('backend/dist/img/mwakvalues.jpeg')}}" alt="Image" />
-      </div>
-
-    </div>
-
-
-  </section>
-
-
-  <!-- Carousel End -->
+</div>
 
 
 

@@ -132,50 +132,79 @@
     }
 }
 
-* {
-    box-sizing: border-box;
-  }
-  
-  /* Create two equal columns that floats next to each other */
-  .column {
-    float: left;
-    width: 50%;
-    padding: 10px;
-    height: 300px; /* Should be removed. Only for demonstration */
-  }
-  
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-  @media screen and (max-width: 600px) {
-    .column {
-      width: 100%;
+
+/*** Header ***/
+.carousel-caption {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    text-align: start;
+    z-index: 1;
+}
+
+
+
+@media (max-width: 768px) {
+    #header-carousel .carousel-item {
+        position: relative;
+        min-height: 450px;
     }
+    
+    .img-class{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+.btn {
+    background: #4a46a6;
+    background-image: -webkit-linear-gradient(top, #4a46a6, #2980b9);
+    background-image: -moz-linear-gradient(top, #4a46a6, #2980b9);
+    background-image: -ms-linear-gradient(top, #4a46a6, #2980b9);
+    background-image: -o-linear-gradient(top, #4a46a6, #2980b9);
+    background-image: linear-gradient(to bottom, #4a46a6, #2980b9);
+    -webkit-border-radius: 25;
+    -moz-border-radius: 25;
+    border-radius: 25px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
   }
-  .img-class{
-    max-height: 500px;
+  
+  .btn:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none;
+    color: #ffffff;
+  }
+
+
+.img-class{
     width: 100%;
-  }
-  .img-btn{
-    max-height: 20px;
-  }
-  .content{
-    text-align: center;
-    padding-top: 15%;
-  }
-.btn{
-    background-color: #015FC9;
-    color: #FFFFFF;
 }
-.account{
-    background-color: #FFFFFF;
-    color: blue;
+
+
+@media (max-width: 768px) {
+
+    .kdf {
+     position: relative;
+     width: 50px;
+    }
 }
-.footer{
-    max-height: 50px;
+
+
+.nav-link{
+   
+    float: left;
 }
+

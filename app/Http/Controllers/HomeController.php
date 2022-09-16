@@ -50,9 +50,10 @@ class HomeController extends Controller
         
         return view('backend.layouts.dashboard', compact('total_rev','allDocs','pending_payments','approved_payments','new_member','approved_members'));
         } else {
-        
-         //return view('backend.user.all-docs'); 
-         return redirect()->route('backend.user.all-docs');
+        $all = DB::table('mwakfiles')->get();
+         return view('backend.user.all-docs',compact('all')); 
+         //return redirect()->route('backend.user.all-docs');
+         //return redirect('all-docs');
 
         }
     }
