@@ -191,10 +191,12 @@
                                             </p>
 
                                             <hr>
-
+<!-- 
                                             <strong><i class="far fa-file-alt mr-1"></i> Uploaded documents </strong>
 
-                                            <p class="text-muted">Lorem ipsum dolor sit amet, xxxxxxxxxxxxxx</p>
+                                            <p class="text-muted">Lorem ipsum dolor sit amet, xxxxxxxxxxxxxx</p> -->
+
+                                            
                                         </div>
                                         <!-- /.card-body -->
                                     </div>

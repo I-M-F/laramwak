@@ -41,13 +41,14 @@ class HomeController extends Controller
         $pending_payments = DB::table('payments')                            
                             ->where('status','=','Pending')
                             ->count();
+        $allDocs = DB::table('mwakfiles')->get();
         
         $total_rev = DB::table('payments')->where('payment_description','=','MWAK Membership Fees')->sum('amount');
 
         $total_card_rev = DB::table('payments')->where('payment_description','=','Membership Card Fees')->sum('amount');
         
         
-        return view('backend.layouts.dashboard', compact('total_rev','pending_payments','approved_payments','new_member','approved_members'));
+        return view('backend.layouts.dashboard', compact('total_rev','allDocs','pending_payments','approved_payments','new_member','approved_members'));
         } else {
         
          //return view('backend.user.all-docs'); 

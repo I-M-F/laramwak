@@ -57,9 +57,9 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">County Location</label>
+                                <label for="">County Of Residence</label>
                                 <select class="form-control" wire:model="selectedClass">
-                                    <option value="" selected>Select County Location</option>
+                                    <option value="" selected>Select County Of Residence</option>
                                     @foreach ($county as $item)
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
@@ -71,9 +71,9 @@
                         @if (!is_null($sections))
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Sub-County Location</label>
+                                <label for="">Sub-County Of Residence</label>
                                 <select class="form-control" wire:model="selectedSection">
-                                    <option value="" selected>Select SubCounty Location</option>
+                                    <option value="" selected>Select SubCounty Of Residence</option>
                                     @foreach ($sections as $item)
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach

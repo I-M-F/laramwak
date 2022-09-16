@@ -33,7 +33,7 @@
                 <span class="info-box-text">Approved Members</span>
                 <span class="info-box-number">
                 {{$approved_members}}
-                  <small>%</small>
+                  
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -119,11 +119,11 @@
                 <div class="row">
                   <div class="col-md-8">
                     <p class="text-center">
-                      <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+                      <strong>Pillar Progress: 1 Jan, 2021 - 30 Jul, 2021</strong>
                     </p>
-
+                <!-- Sales Chart Canvas -->
                     <div class="chart">
-                      <!-- Sales Chart Canvas -->
+                      
                       <canvas id="salesChart" height="180" style="height: 180px;"></canvas>
                     </div>
                     <!-- /.chart-responsive -->
