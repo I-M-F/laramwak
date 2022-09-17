@@ -162,7 +162,7 @@ class MemberRegistartionForm extends Component
         
 
         $idcard = 'IDCard_'.time().$this->id_card->getClientOriginalName();
-        $upload_id = $this->id_card->storeAs('member_id_docs', $idcard, 'public');
+        $upload_id = $this->id_card->storeAs('member_id_docs', $idcard);
 
         // $picName = time() . '_' . $this->id_card->getClientOriginalName();
         // $imagePath = '/storage/member_id_docs/';
