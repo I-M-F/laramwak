@@ -154,7 +154,7 @@ class MemberRegistartionForm extends Component
            $this->validate([
                 'id_card'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:1024',
                 'passport_photo'=>'required|mimes:pdf,jpg,jpeg,png|max:1024',
-                'marriage_cert'=>'mimes:doc,docx,pdf,jpg,jpeg,png|max:1024',
+                'marriage_cert'=>'nullable|mimes:doc,docx,pdf,jpg,jpeg,png|max:1024',
                 
             ]);
         }
