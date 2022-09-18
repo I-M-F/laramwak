@@ -153,7 +153,7 @@ class MemberRegistartionForm extends Component
         if($this->currentStep == 3){
            $this->validate([
                 'id_card'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:1024',
-                'passport_photo'=>'required|mimes:pdf,jpg,jpeg,png|max:1024',
+                'passport_photo'=>'required|mimes:jpg,jpeg,png|max:1024',
                 'marriage_cert'=>'nullable|mimes:doc,docx,pdf,jpg,jpeg,png|max:1024',
                 
             ]);
