@@ -132,7 +132,7 @@ class MemberRegistartionForm extends Component
 
     public function SendSMS($OTP, $first_name,$phone,$message){
                 
-        $username = 'mwak'; // use 'sandbox' for development in the test environment
+        $username = 'MWAK'; // use 'sandbox' for development in the test environment
         $apiKey   = 'e5ea09562f3ad404503a38c8e3f3ef3cdaf3efa89193b27268b954a3f6bf7694'; // use your sandbox app API key for development in the test environment
         $AT       = new AfricasTalking($username, $apiKey);
 
@@ -164,11 +164,7 @@ class MemberRegistartionForm extends Component
         $idcard = 'IDCard_'.time().$this->id_card->getClientOriginalName();
         $upload_id = $this->id_card->storeAs('member_id_docs', $idcard);
 
-        // $picName = time() . '_' . $this->id_card->getClientOriginalName();
-        // $imagePath = '/storage/member_id_docs/';
-        // $image->move(public_path($imagePath), $picName);
-        // $arr['org_image'] = 'storage/companies/image/' . $picName;
-        
+             
 
         $passport = 'PASSPORTPHOTO_'.time().$this->passport_photo->getClientOriginalName();
         $upload_passport = $this->passport_photo->storeAs('member_passport_docs', $passport);
@@ -226,7 +222,7 @@ class MemberRegistartionForm extends Component
             $pay_var = array(
                 "payment_description"=>"MWAK Membership Fees",    
                 "phone"=>$this->phone,     
-                "amount"=>"3000",        
+                "amount"=>"5000",        
                 "tx_number"=>"Pending",
                 "status"=>"Pending",  
                 "date"=>$newDateFormate
