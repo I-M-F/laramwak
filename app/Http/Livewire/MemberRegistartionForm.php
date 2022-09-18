@@ -169,15 +169,15 @@ class MemberRegistartionForm extends Component
         $passport = 'PASSPORTPHOTO_'.time().$this->passport_photo->getClientOriginalName();
         $upload_passport = $this->passport_photo->storeAs('member_passport_docs', $passport);
 
-        if($this->marriage_cert == null){
+        //if($this->marriage_cert == null){
            // dd('null');
-            $cert = 'No Cert';
-        }else{
+          //  $cert = 'No Cert';
+        //}else{
             
             $cert = 'CERT_'.time().$this->marriage_cert->getClientOriginalName();
             $upload_cert = $this->marriage_cert->storeAs('member_cert_docs', $cert);
         
-        }
+        //}
 
 
         if($upload_id){
