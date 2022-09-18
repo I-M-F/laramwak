@@ -152,12 +152,12 @@ class MemberRegistartionForm extends Component
         $this->resetErrorBag();
         if($this->currentStep == 3){
 
-        //    $this->validate([
-        //         'id_card'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:1024',
-        //         'passport_photo'=>'required|mimes:jpg,jpeg,png|max:1024',
-        //         'marriage_cert'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:1024',
+           $this->validate([
+                'id_card'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:1024',
+                'passport_photo'=>'required|mimes:jpg,jpeg,png|max:1024',
+                'marriage_cert'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:1024',
                 
-        //     ]);
+            ]);
         }
         $idcard = 'IDCard_'.time().$this->id_card->getClientOriginalName();
         $upload_id = $this->id_card->storeAs('member_id_docs', $idcard);

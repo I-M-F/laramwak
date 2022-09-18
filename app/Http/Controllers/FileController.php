@@ -21,7 +21,7 @@ class FileController extends Controller
          
         if($request->fileDocs){            
             $mwakDocs = 'MWAKDocs_'.time().$request->fileDocs->getClientOriginalName();
-            $upload_docs = $request->fileDocs->storeAs('mwak_docs', $mwakDocs);
+            $upload_docs = $request->fileDocs->storeAs('mwak_docsx', $mwakDocs);
         }   
 
         if($mwakDocs){

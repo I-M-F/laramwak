@@ -28,8 +28,8 @@ class AppServiceProvider extends ServiceProvider
         //
         Schema::defaultStringLength(191);
 
-        if ($this->app->environment('production')) {
-            URL::forceScheme('http');
-        }
+        // if ($this->app->environment('production')) {
+        //     URL::forceScheme('http');
+        // }
     }
 }
