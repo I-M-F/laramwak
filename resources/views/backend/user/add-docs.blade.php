@@ -12,8 +12,11 @@
          
             <!-- card start -->
             <div class="card">
+            @if($errors->any())
+                <h4>{{$errors->first()}}</h4>
+                @endif
                 <div class="card-header">
-                    <h5 class="card-title">Add Documentxx</h5>
+                    <h5 class="card-title">Add Document</h5>
                 </div>
                 <!-- Start Card Body -->
                 <div class="card-body"> 
