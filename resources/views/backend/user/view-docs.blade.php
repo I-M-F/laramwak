@@ -13,7 +13,7 @@
                 <!-- card start -->
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">View Document</h5>
+                        <h5 class="card-title">View Document {{asset('/storage'.$str) }}"</h5>
                     </div>
                     <!-- Start Card Body -->
                     <div class="card-body">
@@ -25,7 +25,7 @@
                         <script>
                             PSPDFKit.load({
                                     container: "#pspdfkit",
-                                    document: "{{asset('/storage/mwak_docs/'.$view->docs_data) }}", // Add the path to your document here.
+                                    document: "{{asset('/storage'.$str) }}", // Add the path to your document here.
                                 })
                                 .then(function(instance) {
                                     console.log("PSPDFKit loaded", instance);
