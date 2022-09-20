@@ -25,7 +25,7 @@ class FileController extends Controller
         if($file){
 
             $newFile = $request->file('fileDocs');
-            $file_path = $newFile->store('public/mwak_xxdocs');
+            $file_path = $newFile->store('public/mwak_docs');
 
             //dd(asset('/storage/'.$file_path));
             // File::create([

@@ -13,7 +13,7 @@
                 <!-- card start -->
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">View Document {{asset('/storage/'.$view->docs_data) }}"</h5>
+                        <h5 class="card-title">View Document {{asset('/storage/'.$view->docs_data) }}</h5>
                     </div>
                     <!-- Start Card Body -->
                     <div class="card-body">

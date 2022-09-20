@@ -159,24 +159,30 @@ class MemberRegistartionForm extends Component
                 
             ]);
         }
-        $idcard = 'IDCard_'.time().$this->id_card->getClientOriginalName();
-        $upload_id = $this->id_card->storeAs('member_id_docs', $idcard);
+        //$idcard = 'IDCard_'.time().$this->id_card->getClientOriginalName();
+        //$upload_id = $this->id_card->storeAs('member_id_docs', $idcard);
+        $idcard = $this->id_card->store('public/member_id_docs');
 
-        $passport = 'PASSPORTPHOTO_'.time().$this->passport_photo->getClientOriginalName();
-        $upload_passport = $this->passport_photo->storeAs('member_passport_docs', $passport);
+        //$passport = 'PASSPORTPHOTO_'.time().$this->passport_photo->getClientOriginalName();
+        //$upload_passport = $this->passport_photo->storeAs('member_passport_docs', $passport);
+        $passport = $this->passport_photo->store('public/member_passport_docs');
+    
 
+            
+        
+        
         if($this->marriage_cert == null){
            // dd('null');
             $cert = 'No Cert';
         }else{
             
-            $cert = 'CERT_'.time().$this->marriage_cert->getClientOriginalName();
-            $upload_cert = $this->marriage_cert->storeAs('member_cert_docs', $cert);
-        
+            //$cert = 'CERT_'.time().$this->marriage_cert->getClientOriginalName();
+            //$upload_cert = $this->marriage_cert->storeAs('member_cert_docs', $cert);
+            $cert = $this->marriage_cert->store('public/member_id_docs');
         }
 
 
-        if($upload_id){
+        if($idcard != null){
             $values = array(
                 "first_name"=>$this->first_name,
                 "second_name"=>$this->second_name,
