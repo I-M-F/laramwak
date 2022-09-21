@@ -155,7 +155,7 @@ class MemberRegistartionForm extends Component
            $this->validate([
                 'id_card'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:1024',
                 'passport_photo'=>'required|mimes:jpg,jpeg,png|max:1024',
-                'marriage_cert'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:1024',
+                //'marriage_cert'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:1024',
                 
             ]);
         }
@@ -171,15 +171,15 @@ class MemberRegistartionForm extends Component
             
         
         
-        if($this->marriage_cert == null){
-           // dd('null');
-            $cert = 'No Cert';
-        }else{
+        // if($this->marriage_cert == null){
+        //    // dd('null');
+        //     $cert = 'No Cert';
+        // }else{
             
-            //$cert = 'CERT_'.time().$this->marriage_cert->getClientOriginalName();
-            //$upload_cert = $this->marriage_cert->storeAs('member_cert_docs', $cert);
-            $cert = $this->marriage_cert->store('public/member_id_docs');
-        }
+        //     //$cert = 'CERT_'.time().$this->marriage_cert->getClientOriginalName();
+        //     //$upload_cert = $this->marriage_cert->storeAs('member_cert_docs', $cert);
+        //     $cert = $this->marriage_cert->store('public/member_id_docs');
+        // }
 
 
         if($idcard != null){
@@ -199,7 +199,7 @@ class MemberRegistartionForm extends Component
                 "class"=>$this->class,
                 "id_card"=>$idcard,
                 "passport_photo"=>$passport,
-                "marriage_cert"=>$cert,
+                //"marriage_cert"=>$cert,
             );
 
             //dd($values);
@@ -231,7 +231,7 @@ class MemberRegistartionForm extends Component
             );
             Payment::insert($pay_var); 
             
-            $message = 'Dear ' . $this->first_name . ' Welcome to MWAK. Registation pending wait approval, Please sign up with your email and make member payment. Your password is ' . $OTP;
+            $message = 'Dear ' . $this->first_name . ' Welcome to MWAK. Your registation is received pending approval. Please sign in with your email and make member payment. Your one time password is ' . $OTP;
 
             $this->sendSMS($OTP,$this->first_name,$this->phone,$message);
             //$this->sendEmail(); 

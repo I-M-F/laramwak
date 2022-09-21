@@ -27,7 +27,7 @@ class MemberRegistartion extends Model
         'spouse_status',
         'id_card',
         'passport_photo',
-        'marriage_cert',
+        //'marriage_cert',
         
     ];
 
