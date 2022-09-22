@@ -166,8 +166,8 @@ class MemberRegistartionForm extends Component
                 "spouse_maiden_name"=>$this->spouse_maiden_name,
                 "spouse_status"=>$this->spouseStatus,
                 "class"=>$this->class,
-                "id_card"=>$idcard,
-                "passport_photo"=>$passport,
+                "id_card"=>$this->idcard,
+                "passport_photo"=>$this->passport,
                 //"marriage_cert"=>$cert,
             );
 
