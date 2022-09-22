@@ -30,7 +30,7 @@
                     <div class="card card-primary card-outline">
                         <div class="card-body box-profile">
                             <div class="text-center">
-                                <img class="profile-user-img img-fluid img-circle" src="{{ asset('/storage/member_id_docs/'.$view_member->id_card) }}" alt="Member profile picture" title="{{$view_member->id_card}}" width='50' height='50' class="img img-responsive">
+                                <img class="profile-user-img img-fluid img-circle" src="{{ asset('/storage/'.$view_member->id_card) }}" alt="Member profile picture" title="{{$view_member->id_card}}" width='50' height='50' class="img img-responsive">
 
                             </div>
 
