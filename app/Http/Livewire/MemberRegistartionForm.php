@@ -174,7 +174,7 @@ class MemberRegistartionForm extends Component
             );
             $currentURL = URL::current();
             
-            dd($values.' '.$currentURL);
+            dd($currentURL);
 
            $this->validate([
                 'id_card'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:2048',
