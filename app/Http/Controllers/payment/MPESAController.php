@@ -190,7 +190,7 @@ class MPESAController extends Controller
         // echo $curl_response;
 
 
-        return view('backend.user.payments', compact('curl_response','paymentDB'));
+        return $this->payment($curl_response);
 
     }
 
