@@ -14,6 +14,7 @@ use App\Models\Constituency;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\URL;
 use Mail;
 
 
@@ -171,8 +172,9 @@ class MemberRegistartionForm extends Component
                 "passport_photo"=>$this->passport_photo,
                 
             );
-
-            dd($values);
+            $currentURL = URL::current();
+            
+            dd($values.' '.$currentURL);
 
            $this->validate([
                 'id_card'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:2048',
