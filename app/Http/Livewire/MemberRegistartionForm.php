@@ -33,8 +33,8 @@ class MemberRegistartionForm extends Component
         
     public $spouse_maiden_name;
     public $class;
-    public $id_card;
-    public $passport_photo;
+    public $id_cardx;
+    public $passport_photox;
     //public $marriage_cert;
 
     public $totalSteps = 3;
