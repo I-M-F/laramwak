@@ -230,6 +230,16 @@ class MemberRegistartionForm extends Component
                 "date"=>$newDateFormate
             );
             Payment::insert($pay_var); 
+
+            $pay2_var = array(
+                "payment_description"=>"MWAK Annual Subscription Fees",    
+                "phone"=>$this->phone,     
+                "amount"=>"3000",        
+                "tx_number"=>"Pending",
+                "status"=>"Pending",  
+                "date"=>$newDateFormate
+            );
+            Payment::insert($pay2_var);
             
             $message = 'Dear ' . $this->first_name . ' Welcome to MWAK. Your registation is received pending approval. Please sign in with your email and make member payment. Your one time password is ' . $OTP;
 

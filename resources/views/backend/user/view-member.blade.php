@@ -99,7 +99,7 @@
                                 <li class="nav-item"><a class="nav-link active" href="#member_details" data-toggle="tab">Member Details</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#spouse_details" data-toggle="tab">Spouse Details</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#tx_timeline" data-toggle="tab">Transaction Details</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#edit_dets" data-toggle="tab">Edit Detatils</a></li>
+                                <!-- <li class="nav-item"><a class="nav-link" href="#edit_dets" data-toggle="tab">Edit Detatils</a></li> -->
                             </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">
@@ -244,7 +244,7 @@
                                 </div>
                                 <!-- /.tab-pane -->
 
-                                <div class="tab-pane" id="edit_dets">
+                                <!-- <div class="tab-pane" id="edit_dets">
                                     <form class="form-horizontal">
                                         <div class="form-group row">
                                             <label for="inputName" class="col-sm-2 col-form-label">Name</label>
@@ -291,7 +291,7 @@
                                             </div>
                                         </div>
                                     </form>
-                                </div>
+                                </div> -->
                                 <!-- /.tab-pane -->
                             </div>
                             <!-- /.tab-content -->

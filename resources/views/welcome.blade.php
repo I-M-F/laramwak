@@ -50,7 +50,7 @@
         </div>
         <div class="h-100 d-inline-flex align-items-center me-4">
           <small class="far fa-clock me-2"></small>
-          <small>Mon - Fri : 09 AM - 09 PM</small>
+          <small>Mon - Fri : 09:00 Hrs - 17:00 Hrs</small>
         </div>
       </div>
       <div class="col-lg-5 px-5 text-end">
