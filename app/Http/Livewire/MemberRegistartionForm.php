@@ -168,8 +168,8 @@ class MemberRegistartionForm extends Component
                 "spouse_maiden_name"=>$this->spouse_maiden_name,
                 "spouse_status"=>$this->spouseStatus,
                 "class"=>$this->class,
-                "id_card"=>$this->id_card,
-                "passport_photo"=>$this->passport_photo,
+                "id_card"=>$this->id_card->getClientOriginalName(),
+                "passport_photo"=>$this->passport_photo->getClientOriginalName(),
                 
             );
             
