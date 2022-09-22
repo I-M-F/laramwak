@@ -34,11 +34,11 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
+            'root' => storage_path('app'),
             'throw' => false,
         ],
 
-        'public' => [
+    'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
@@ -48,7 +48,7 @@ return [
 
        
 
-        'dropbox' => [
+    'dropbox' => [
             'driver' => 'dropbox',
             'key' => env('DROPBOX_APP_KEY'),
             'secret' => env('DROPBOX_APP_SECRET'),
@@ -56,7 +56,7 @@ return [
         ],
 
    
-        's3' => [
+    's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
             'secret' => env('AWS_SECRET_ACCESS_KEY'),
@@ -68,7 +68,7 @@ return [
             'throw' => false,
         ],
 
-        'spaces' => [
+    'spaces' => [
             'driver' => 's3',
             'key' => env('DO_SPACES_KEY'),
             'secret' => env('DO_SPACES_SECRET'),
