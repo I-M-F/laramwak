@@ -13,8 +13,9 @@
                 <!-- card start -->
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">View Document {{asset('/storage/'.$view->docs_data) }}</h5>
+                        <h5 class="card-title">View Document </h5>
                     </div>
+                    <a href="{{asset('/storage/'.$view->docs_data) }}">Link to view Document</a>
                     <!-- Start Card Body -->
                     <div class="card-body">
                         <!-- Element where PSPDFKit will be mounted. -->

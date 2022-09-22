@@ -358,7 +358,7 @@
                                 <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                   <tbody>
                                     <tr>
-                                      <td> <a href="http://127.0.0.1:8000/login" target="_blank">Login</a> </td>
+                                      <td> <a href="http://portal.mwak.ke/" target="_blank">Login</a> </td>
                                     </tr>
                                   </tbody>
                                 </table>
@@ -367,7 +367,7 @@
                           </tbody>
                         </table>
                         <p>Login... Make MWAK Membership Payment... Let's Support MWAK Pillars</p>
-                        <p>Good luck! Hope it works.</p>
+                        
                       </td>
                     </tr>
                   </table>
