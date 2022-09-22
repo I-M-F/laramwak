@@ -151,7 +151,28 @@ class MemberRegistartionForm extends Component
     public function member_register(){
         $this->resetErrorBag();
         if($this->currentStep == 3){
-            dd($this->id_card);
+           
+            $values = array(
+                "first_name"=>$this->first_name,
+                "second_name"=>$this->second_name,
+                "maiden_name"=>$this->maiden_name,
+                "email"=>$this->email,        
+                "phone"=>$this->phone,        
+                "id_number"=>$this->id_number,
+                "county"=>$this->selectedClass,
+                "sub_county"=>$this->selectedSection,
+                "service_number"=>$this->service_number,
+                "spouse_name"=>$this->spouse_name,        
+                "spouse_maiden_name"=>$this->spouse_maiden_name,
+                "spouse_status"=>$this->spouseStatus,
+                "class"=>$this->class,
+                "id_card"=>$idcard,
+                "passport_photo"=>$passport,
+                //"marriage_cert"=>$cert,
+            );
+
+            dd($values);
+
            $this->validate([
                 'id_card'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:2048',
                 'passport_photo'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:2048',
@@ -159,8 +180,7 @@ class MemberRegistartionForm extends Component
                 
             ]);
         }
-        //$idcard = 'IDCard_'.time().$this->id_card->getClientOriginalName();
-        //$upload_id = $this->id_card->storeAs('member_id_docs', $idcard);
+       
         $idcard = $this->id_card->store('public/member_id_docs');
 
         //$passport = 'PASSPORTPHOTO_'.time().$this->passport_photo->getClientOriginalName();
