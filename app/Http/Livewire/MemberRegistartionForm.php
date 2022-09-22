@@ -153,42 +153,25 @@ class MemberRegistartionForm extends Component
     public function member_register(){
         $this->resetErrorBag();
         if($this->currentStep == 3){
-           
-            $values = array(
-                "first_name"=>$this->first_name,
-                "second_name"=>$this->second_name,
-                "maiden_name"=>$this->maiden_name,
-                "email"=>$this->email,        
-                "phone"=>$this->phone,        
-                "id_number"=>$this->id_number,
-                "county"=>$this->selectedClass,
-                "sub_county"=>$this->selectedSection,
-                "service_number"=>$this->service_number,
-                "spouse_name"=>$this->spouse_name,        
-                "spouse_maiden_name"=>$this->spouse_maiden_name,
-                "spouse_status"=>$this->spouseStatus,
-                "class"=>$this->class,
-                "id_card"=>$this->id_cardx,
-                "passport_photo"=>$this->passport_photox,
-                
-            );
-            
-            
-            dd($values);
-
-           $this->validate([
-                'id_card'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:2048',
-                'passport_photo'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:2048',
+        //     $values = array(
+        //         "id_card"=>$this->id_cardx,
+        //         "passport_photo"=>$this->passport_photox,
+        //         );
+        //    dd($values);
+        
+            $this->validate([
+                'id_cardx'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:2048',
+                'passport_photox'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:2048',
                 //'marriage_cert'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:1024',
                 
             ]);
         }
        
-        $idcard = $this->id_card->store('public/member_id_docs');
+        $idcard = $this->id_cardx->store('public/member_id_docs');
 
         //$passport = 'PASSPORTPHOTO_'.time().$this->passport_photo->getClientOriginalName();
         //$upload_passport = $this->passport_photo->storeAs('member_passport_docs', $passport);
-        $passport = $this->passport_photo->store('public/member_passport_docs');
+        $passport = $this->passport_photox->store('public/member_passport_docs');
     
 
             
@@ -284,6 +267,8 @@ class MemberRegistartionForm extends Component
             $this->reset();
             //
             $this->currentStep = 1;
+        }else{
+            dd($idcard);
         }
         
     }
