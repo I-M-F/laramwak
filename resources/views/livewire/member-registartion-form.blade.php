@@ -1,5 +1,5 @@
 <div>
-    <form wire:submit.prevent="member_register" enctype="multipart/form-data">
+    <form method="post" wire:submit.prevent="member_register" enctype="multipart/form-data">
 
         @if ($currentStep == 1)
         <div class="step-one">
@@ -175,7 +175,7 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="id_card">ID card</label>
+                        <label for="">ID card</label>
                         <input type="file" class="form-control" wire:model="id_card">
                         <span class="text-danger">@error('id_card') {{ $message }}@enderror</span>
                     </div>

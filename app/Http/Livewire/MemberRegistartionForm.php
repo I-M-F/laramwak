@@ -169,7 +169,7 @@ class MemberRegistartionForm extends Component
                 "class"=>$this->class,
                 "id_card"=>$this->id_card,
                 "passport_photo"=>$this->passport_photo,
-                //"marriage_cert"=>$cert,
+                
             );
 
             dd($values);
