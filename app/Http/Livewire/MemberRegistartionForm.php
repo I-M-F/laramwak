@@ -172,9 +172,9 @@ class MemberRegistartionForm extends Component
                 "passport_photo"=>$this->passport_photo,
                 
             );
-            $currentURL = URL::current();
             
-            dd($currentURL);
+            
+            dd($values);
 
            $this->validate([
                 'id_card'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:2048',
