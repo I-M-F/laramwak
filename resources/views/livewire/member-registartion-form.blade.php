@@ -184,11 +184,11 @@
                         <input type="file" class="form-control" wire:model="passport_photo">
                         <span class="text-danger">@error('passport_photo') {{ $message }}@enderror</span>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="marriage_cert">Marriage Certificate</label>
                         <input type="file" class="form-control" wire:model="marriage_cert">
                         <span class="text-danger">@error('marriage_cert') {{ $message }}@enderror</span>
-                    </div>
+                    </div> -->
                     <!-- <div class="form-group">
                         <label for="terms"></label>
                         <input type="checkbox" id="terms" wire:model="terms"> You must agree with our <a href="#">Terms and Conditions</a>
