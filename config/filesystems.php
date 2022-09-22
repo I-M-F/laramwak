@@ -38,14 +38,6 @@ return [
             'throw' => false,
         ],
 
-    // 'local' => [
-    //     'driver' => 'local',
-    //     'root' => storage_path('app/public'),
-    //     'url' => env('APP_URL').'/storage',
-    //     'visibility' => 'public',
-    //     'throw' => false,
-    // ],
-
     'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
@@ -56,12 +48,12 @@ return [
 
        
 
-    'dropbox' => [
-            'driver' => 'dropbox',
-            'key' => env('DROPBOX_APP_KEY'),
-            'secret' => env('DROPBOX_APP_SECRET'),
-            'authorization_token' => env('DROPBOX_AUTH_TOKEN'),
-        ],
+    // 'dropbox' => [
+    //         'driver' => 'dropbox',
+    //         'key' => env('DROPBOX_APP_KEY'),
+    //         'secret' => env('DROPBOX_APP_SECRET'),
+    //         'authorization_token' => env('DROPBOX_AUTH_TOKEN'),
+    //     ],
 
    
     's3' => [
@@ -76,14 +68,14 @@ return [
             'throw' => false,
         ],
 
-    'spaces' => [
-            'driver' => 's3',
-            'key' => env('DO_SPACES_KEY'),
-            'secret' => env('DO_SPACES_SECRET'),
-            'endpoint' => env('DO_SPACES_ENDPOINT'),
-            'region' => env('DO_SPACES_REGION'),
-            'bucket' => env('DO_SPACES_BUCKET'),
-         ],
+    // 'spaces' => [
+    //         'driver' => 's3',
+    //         'key' => env('DO_SPACES_KEY'),
+    //         'secret' => env('DO_SPACES_SECRET'),
+    //         'endpoint' => env('DO_SPACES_ENDPOINT'),
+    //         'region' => env('DO_SPACES_REGION'),
+    //         'bucket' => env('DO_SPACES_BUCKET'),
+    //      ],
 
     ],
 
@@ -98,8 +90,8 @@ return [
     |
     */
 
-    // 'links' => [
-    //     public_path('storage') => storage_path('appz/public'),
-    // ],
+    'links' => [
+        public_path('storage') => storage_path('app/public'),
+    ],
 
 ];
