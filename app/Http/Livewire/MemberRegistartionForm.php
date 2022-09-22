@@ -211,7 +211,7 @@ class MemberRegistartionForm extends Component
             $user_val = array(
                 "name"=>$this->first_name,
                 "email"=>$this->email,
-                "photo"=>$idcard,
+                "photo"=>$passport,
                 "role"=>"Member",
                 "password"=>Hash::make($OTP),//$OTP
             );
