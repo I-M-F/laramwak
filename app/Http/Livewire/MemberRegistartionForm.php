@@ -21,6 +21,7 @@ class MemberRegistartionForm extends Component
 {
 
     use WithFileUploads;
+    //use Livewire\WithFileUploads;
     public $first_name;
     public $second_name;
     public $maiden_name;
@@ -33,8 +34,8 @@ class MemberRegistartionForm extends Component
         
     public $spouse_maiden_name;
     public $class;
-    public $id_cardx;
-    public $passport_photox;
+    public $id_card;
+    public $passport_photo;
     //public $marriage_cert;
 
     public $totalSteps = 3;
@@ -166,7 +167,7 @@ class MemberRegistartionForm extends Component
                 "spouse_maiden_name"=>$this->spouse_maiden_name,
                 "spouse_status"=>$this->spouseStatus,
                 "class"=>$this->class,
-                "id_card"=>$this->id_cardx,
+                "id_card"=>$this->id_card,
                 "passport_photo"=>$this->passport_photo,
                 //"marriage_cert"=>$cert,
             );

@@ -176,13 +176,13 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="id_card">ID card</label>
-                        <input type="file" class="form-control" wire:model="id_cardx">
-                        <span class="text-danger">@error('id_cardx') {{ $message }}@enderror</span>
+                        <input type="file" class="form-control" wire:model="id_card">
+                        <span class="text-danger">@error('id_card') {{ $message }}@enderror</span>
                     </div>
                     <div class="form-group">
                         <label for="passport_photo">Passport Photo</label>
-                        <input type="file" class="form-control" wire:model="passport_photox">
-                        <span class="text-danger">@error('passport_photox') {{ $message }}@enderror</span>
+                        <input type="file" class="form-control" wire:model="passport_photo">
+                        <span class="text-danger">@error('passport_photo') {{ $message }}@enderror</span>
                     </div>
                     <!-- <div class="form-group">
                         <label for="marriage_cert">Marriage Certificate</label>
