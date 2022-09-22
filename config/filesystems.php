@@ -32,19 +32,19 @@ return [
 
     'disks' => [
 
-    // 'local' => [
-    //         'driver' => 'local',
-    //         'root' => storage_path('appx'),
-    //         'throw' => false,
-    //     ],
-
     'local' => [
-        'driver' => 'local',
-        'root' => storage_path('app/public'),
-        'url' => env('APP_URL').'/storage',
-        'visibility' => 'public',
-        'throw' => false,
-    ],
+            'driver' => 'local',
+            'root' => storage_path('appx'),
+            'throw' => false,
+        ],
+
+    // 'local' => [
+    //     'driver' => 'local',
+    //     'root' => storage_path('app/public'),
+    //     'url' => env('APP_URL').'/storage',
+    //     'visibility' => 'public',
+    //     'throw' => false,
+    // ],
 
     'public' => [
             'driver' => 'local',
