@@ -1,5 +1,5 @@
 <div>
-    <form wire:submit.prevent="member_register">
+    <form wire:submit.prevent="member_register" enctype="multipart/form-data">
 
         @if ($currentStep == 1)
         <div class="step-one">
