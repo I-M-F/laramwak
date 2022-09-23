@@ -153,11 +153,11 @@ class MemberRegistartionForm extends Component
     public function member_register(){
         $this->resetErrorBag();
         if($this->currentStep == 3){
-            $values = array(
-                "id_card"=>$this->id_cardx,
-                "passport_photo"=>$this->passport_photox,
-                );
-           dd($values);
+        //     $values = array(
+        //         "id_card"=>$this->id_cardx,
+        //         "passport_photo"=>$this->passport_photox,
+        //         );
+        //    dd($values);
 
             $this->validate([
                 'id_cardx'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:2048',
