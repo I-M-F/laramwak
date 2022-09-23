@@ -1,5 +1,6 @@
 <div>
-    <form method="post" wire:submit.prevent="member_register" enctype="multipart/form-data">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<form method="post" wire:submit.prevent="member_register" enctype="multipart/form-data">
 
         @if ($currentStep == 1)
         <div class="step-one">
