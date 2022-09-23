@@ -122,7 +122,7 @@ class UserController extends Controller
             // // Use the service
             $result   = $sms->send([
                 'to'      => $output,
-                'message' => 'Dear ' . $view_member->first_name.' '.$view_member->maiden_name. ' Welcome to MWAK. You have been assigned chapter'.$mwak_no.' visit your chapter to collect your MWAK ID Card. Your Membership No. is ' . $mwak_no.' Thank you for being a member and supporting our pillars.',
+                'message' => 'Dear ' . $view_member->first_name.' '.$view_member->maiden_name. ' Welcome to MWAK. You have been assigned chapter'.$view_member->member_no.' visit your chapter to collect your MWAK ID Card. Your Membership No. is ' . $mwak_no.' Thank you for being a member and supporting our pillars.',
                 'from' => $username
             ]);
             $paymentDB = DB::table('payments')
