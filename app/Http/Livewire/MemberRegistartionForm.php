@@ -35,8 +35,8 @@ class MemberRegistartionForm extends Component
         
     public $spouse_maiden_name;
     public $class;
-    public $id_cardx;
-    public $passport_photox;
+    //public $id_cardx;
+    //public $passport_photox;
     //public $marriage_cert;
 
     public $totalSteps = 3;
@@ -159,23 +159,24 @@ class MemberRegistartionForm extends Component
         //         );
         //    dd($values);
 
-            $this->validate([
-                'id_cardx'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:2048',
-                'passport_photox'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:2048',
-                //'marriage_cert'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:1024',
+            // $this->validate([
+            //     'id_cardx'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:2048',
+            //     'passport_photox'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:2048',
+            //     //'marriage_cert'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:1024',
                 
-            ]);
-        }
+            // ]);
+        //}
        
-        $idcard = $this->id_cardx->store('public/member_id_docs');
+        // $idcard = $this->id_cardx->store('public/member_id_docs');
 
-        //$passport = 'PASSPORTPHOTO_'.time().$this->passport_photo->getClientOriginalName();
-        //$upload_passport = $this->passport_photo->storeAs('member_passport_docs', $passport);
-        $passport = $this->passport_photox->store('public/member_passport_docs');
+        // //$passport = 'PASSPORTPHOTO_'.time().$this->passport_photo->getClientOriginalName();
+        // //$upload_passport = $this->passport_photo->storeAs('member_passport_docs', $passport);
+        //  $this->passport_photox->store('public/member_passport_docs');
     
 
             
-        
+        $passport ='update';
+        $idcard = 'update';
         
         // if($this->marriage_cert == null){
         //    // dd('null');
@@ -188,7 +189,7 @@ class MemberRegistartionForm extends Component
         // }
 
 
-        if($idcard != null){
+        //if($idcard != null){
             $values = array(
                 "first_name"=>$this->first_name,
                 "second_name"=>$this->second_name,
@@ -267,7 +268,12 @@ class MemberRegistartionForm extends Component
 
             $this->reset();
             //
-            $this->currentStep = 1;
+            //$this->currentStep = 1;
+
+            //return view('/login');
+            return redirect('/login');
+
+
         }
         
     }
