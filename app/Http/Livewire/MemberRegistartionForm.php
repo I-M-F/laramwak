@@ -247,7 +247,8 @@ class MemberRegistartionForm extends Component
             );
             Payment::insert($pay2_var);
             
-            $message = 'Dear ' . $this->first_name . ' Welcome to MWAK. Your registation is received pending approval. Please sign in with your email and make member payment. Your one time password is ' . $OTP;
+           // $message = 'Dear ' . $this->first_name . ' Welcome to MWAK. Your registation is received pending approval. Please sign in with your email and make member payment. Your one time password is ' . $OTP;
+           $message = 'Dear ' . $this->first_name . ' Welcome to MWAK. Your registation is received pending approval. Please sign in with your email and make member payment. Your one time password is ' . $OTP;
 
             $this->sendSMS($OTP,$this->first_name,$this->phone,$message);
             //$this->sendEmail(); 
