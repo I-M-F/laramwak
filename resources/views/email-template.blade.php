@@ -367,7 +367,7 @@
                           </tbody>
                         </table>
                         <p>Login... Make MWAK Membership Payment... Let's Support MWAK Pillars</p>
-                        
+                        <p>WALKING FAR TOGETHER.</p>
                       </td>
                     </tr>
                   </table>
