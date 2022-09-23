@@ -268,8 +268,6 @@ class MemberRegistartionForm extends Component
             $this->reset();
             //
             $this->currentStep = 1;
-        }else{
-            dd($idcard);
         }
         
     }

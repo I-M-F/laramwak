@@ -97,7 +97,7 @@ class UserController extends Controller
     {
         $date = date('m-Y');
 
-        $mwak_no = 'MWAK-'.$date.'-'.$id;
+        $mwak_no = 'MWAK-'.$date.'-'.$id+25;
         
         $data = array();
         //$data['chapter'] = $request->chapter;
