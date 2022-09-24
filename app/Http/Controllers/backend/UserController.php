@@ -62,10 +62,22 @@ class UserController extends Controller
         $data['updated_at'] = date('Y-m-d H:i:s');
 
         $insert = DB::table('users')->insert($data);
-        if ($insert) {
-            echo "Succesfull";
-        } else {
-            echo "Something wnet wrong";
+
+
+        if($insert)
+        {          
+            $notification = array(
+                'messege'=>'Succesfull User Updated',
+                'alert-type'=>'success'
+            );
+            return redirect()->route('payment')->with($notification);
+        }
+        else{
+            $notification = array(
+                'messege'=>'Something is Wrong, please try User update again!',
+                'alert-type'=>'error'
+            );
+            return redirect()->route('payment')->with($notification);
         }
     }
 
@@ -109,7 +121,7 @@ class UserController extends Controller
             ->where('id', $id)
             ->update($data);
         if ($update) {
-            echo "Data Updated Succesfully";
+           // echo "Data Updated Succesfully";
             $view_member = DB::table('member_registartions')->where('id', $id)->first();
             // Set your app credentials
             $username = 'MWAK'; // use 'sandbox' for development in the test environment
@@ -122,7 +134,7 @@ class UserController extends Controller
             // // Use the service
             $result   = $sms->send([
                 'to'      => $output,
-                'message' => 'Dear ' . $view_member->first_name.' '.$view_member->maiden_name. ' Welcome to MWAK. You have been assigned chapter'.$view_member->member_no.' visit your chapter to collect your MWAK ID Card. Your Membership No. is ' . $mwak_no.' Thank you for being a member and supporting our pillars.',
+                'message' => 'Dear ' . $view_member->first_name.' '.$view_member->maiden_name. ' Welcome to MWAK. You have been assigned '.$view_member->member_no.' visit your chapter to collect your MWAK ID Card. Your Membership No. is ' . $mwak_no.' Thank you for being a member and supporting MWAK pillars.',
                 'from' => $username
             ]);
             $paymentDB = DB::table('payments')
@@ -133,10 +145,20 @@ class UserController extends Controller
             ->where('id', '=', $view_member->county)
             ->first();
 
-
-            return view('backend.user.view-member', compact('view_member', 'paymentDB','countyDB'));
+       
+            $notification = array(
+                'messege'=>'Succesfull Activated Updated',
+                'alert-type'=>'success'
+            );    
+            return redirect()->route('allmembers')->with($notification);
+            //return view('backend.user.view-member', compact('view_member', 'paymentDB','countyDB'))->with($notification);
         } else {
-            echo "Something wnet wrong";
+            $notification = array(
+                'messege'=>'Something is Wrong, please try Activate again!',
+                'alert-type'=>'error'
+            );
+            return redirect()->route('allmembers',compact('view_member', 'paymentDB','countyDB'))->with($notification);
+            //return view('backend.user.view-member', compact('view_member', 'paymentDB','countyDB'))->with($notification);
         }
     }
 

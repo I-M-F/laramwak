@@ -184,10 +184,8 @@
 
                                             <p class="text-muted">
                                                 <span class="tag tag-danger">{{$view_member->class}}</span>
-                                                <span class="tag tag-success">Cadet</span>
-                                                <!-- <span class="tag tag-info">Javascript</span>
-                                                <span class="tag tag-warning">PHP</span>
-                                                <span class="tag tag-primary">Node.js</span> -->
+                                               
+                                          
                                             </p>
 
                                             <hr>

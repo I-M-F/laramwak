@@ -25,7 +25,7 @@ class FileController extends Controller
         if($file){
 
             $newFile = $request->file('fileDocs');
-            $file_path = $newFile->store('public/mwak_docs');
+            $file_path = $newFile->store('publicx/mwak_docs');
 
             //dd(asset('/storage/'.$file_path));
             // File::create([
@@ -55,10 +55,20 @@ class FileController extends Controller
 
 
             $insert = DB::table('mwakfiles')->insert($values);
-            if ($insert) {
-                echo "Succesfull Data Submission";
-            } else {
-                echo "Something went wrong";
+            if($insert)
+            {          
+                $notification = array(
+                    'messege'=>'Succesfull Document Updated',
+                    'alert-type'=>'success'
+                );
+                return redirect()->route('allDocs')->with($notification);
+            }
+            else{
+                $notification = array(
+                    'messege'=>'Something is Wrong, please try Document update again!',
+                    'alert-type'=>'error'
+                );
+                return redirect()->route('allDocs')->with($notification);
             }
         }
 

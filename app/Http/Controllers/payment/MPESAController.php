@@ -192,6 +192,8 @@ class MPESAController extends Controller
 
         return $this->payment($curl_response);
 
+
+
     }
 
     public function mpesaSTKPush($phone){
@@ -290,11 +292,19 @@ class MPESAController extends Controller
         ->where('phone',$phone)
         ->update($data);
         if($update)
-        {
-            echo "Data Updated Succesfully";
+        {          
+            $notification = array(
+                'messege'=>'Succesfull Transaction Updated',
+                'alert-type'=>'success'
+            );
+            return redirect()->route('payment')->with($notification);
         }
         else{
-            Echo "Something wnet wrong";
+            $notification = array(
+                'messege'=>'Something is Wrong, please try transaction update again!',
+                'alert-type'=>'error'
+            );
+            return redirect()->route('payment')->with($notification);
         }
     }
     /**
