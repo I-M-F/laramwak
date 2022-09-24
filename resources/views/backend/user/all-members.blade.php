@@ -38,7 +38,7 @@
                         <td>{{ $row->email }}</td>
                         <td>{{ $row->phone }}</td>
                         <td>{{ $row->service_number }}</td>
-                        <td><img src="{{ asset('/storage/'.$row->id_card) }}" alt="" title="{{$row->id_card}}" width= '50' height='50' class="img img-responsive"> </td>
+                        <td><img src="{{ asset('/storage/'. substr($row->id_card,6)) }}" alt="" title="{{ substr($row->id_card,6) }}" width= '50' height='50' class="img img-responsive"> </td>
                         
                         <td>
                             <a href="{{ URL::to('/view-member/'.$row->id) }}" class="btn btn-sm btn-info">View</a>

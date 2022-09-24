@@ -40,7 +40,8 @@ class UserController extends Controller
         // ->where('phpbb_topics.topic_first_post_id', '=', 'phpbb_posts.post_id')
         // ->where('phpbb_users', 'phpbb_topics.topic_poster', '=', 'phpbb_users.user_id')
         // ->order_by('topic_time', 'desc')->take(10)->get();
-
+        //$photo_str = substr($all_members->id_card, 6);
+        
         return view('backend.user.all-members', compact('all_members'));
     }
 
@@ -102,7 +103,8 @@ class UserController extends Controller
         $paymentDB = DB::table('payments')
             ->where('phone', '=', $view_member->phone)
             ->first();
-        return view('backend.user.view-member', compact('view_member', 'paymentDB','countyDB','subCountyDB'));
+        $photo_str = substr($view_member->passport_photo, 6);
+        return view('backend.user.view-member', compact('view_member', 'photo_str','paymentDB','countyDB','subCountyDB'));
     }//http://www.mwakportal.mwak.co.ke/
 
     public function updateMember(Request $request, $id)
@@ -157,7 +159,7 @@ class UserController extends Controller
                 'messege'=>'Something is Wrong, please try Activate again!',
                 'alert-type'=>'error'
             );
-            return redirect()->route('allmembers',compact('view_member', 'paymentDB','countyDB'))->with($notification);
+            return redirect()->route('allmembers')->with($notification);
             //return view('backend.user.view-member', compact('view_member', 'paymentDB','countyDB'))->with($notification);
         }
     }
