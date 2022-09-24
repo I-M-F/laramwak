@@ -15,7 +15,7 @@
                     <div class="card-header">
                         <h5 class="card-title">View Document </h5>
                     </div>
-                    <a href="{{asset('/storage/'.$str) }}">Link to view Document</a>
+                    <a href="{{asset('/storage'.$str) }}">Link to view Document</a>
                     <!-- Start Card Body -->
                     <div class="card-body">
                         <!-- Element where PSPDFKit will be mounted. -->
@@ -26,7 +26,7 @@
                         <script>
                             PSPDFKit.load({
                                     container: "#pspdfkit",
-                                    document: "{{asset('/storage/'.$str->docs_data) }}", // Add the path to your document here.
+                                    document: "{{asset('/storage/'.$str) }}", // Add the path to your document here.
                                 })
                                 .then(function(instance) {
                                     console.log("PSPDFKit loaded", instance);
