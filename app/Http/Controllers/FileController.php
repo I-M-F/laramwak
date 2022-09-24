@@ -52,7 +52,7 @@ class FileController extends Controller
                 "date" => $date
             );
 
-
+            //dd($values);
 
             $insert = DB::table('mwakfiles')->insert($values);
             if($insert)
