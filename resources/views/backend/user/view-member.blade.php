@@ -99,7 +99,7 @@
                                 <li class="nav-item"><a class="nav-link active" href="#member_details" data-toggle="tab">Member Details</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#spouse_details" data-toggle="tab">Spouse Details</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#tx_timeline" data-toggle="tab">Transaction Details</a></li>
-                                <!-- <li class="nav-item"><a class="nav-link" href="#edit_dets" data-toggle="tab">Edit Detatils</a></li> -->
+                                <li class="nav-item"><a class="nav-link" href="#edit_dets" data-toggle="tab">Edit Detatils</a></li>
                             </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">
@@ -120,7 +120,7 @@
 
                                             <hr>
 
-                                            
+
                                             <strong><i class="fas fa-map-marker-alt mr-1"></i> ID Number </strong>
 
                                             <p class="text-muted">{{$view_member->id_number}}</p>
@@ -184,17 +184,17 @@
 
                                             <p class="text-muted">
                                                 <span class="tag tag-danger">{{$view_member->class}}</span>
-                                               
-                                          
+
+
                                             </p>
 
                                             <hr>
-<!-- 
+                                            <!-- 
                                             <strong><i class="far fa-file-alt mr-1"></i> Uploaded documents </strong>
 
                                             <p class="text-muted">Lorem ipsum dolor sit amet, xxxxxxxxxxxxxx</p> -->
 
-                                            
+
                                         </div>
                                         <!-- /.card-body -->
                                     </div>
@@ -242,54 +242,97 @@
                                 </div>
                                 <!-- /.tab-pane -->
 
-                                <!-- <div class="tab-pane" id="edit_dets">
-                                    <form class="form-horizontal">
-                                        <div class="form-group row">
-                                            <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                                <div class="tab-pane" id="edit_dets">
+                                    <!-- <form class="form-horizontal"> -->
+                                    <form role="form" enctype="multipart/form-data" action="{{URL::to('/update-member-dets/'.$view_member->id)}}" method="POST">
+                                    @csrf
+                                    <div class="form-group row">
+
+                                            <label for="inputName" class="col-sm-2 col-form-label">First Name</label>
                                             <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="inputName" placeholder="Name">
+                                                <input type="text" class="form-control" name="f_name" placeholder="Enter Your First Name" value="{{$view_member->first_name}}">
+
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                                            <label for="inputName" class="col-sm-2 col-form-label">Middle Name</label>
                                             <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                                <input type="text" class="form-control" name="m_name" placeholder="Enter Your Second Name" value="{{$view_member->second_name}}">
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
+                                            <label for="inputName" class="col-sm-2 col-form-label">Last Name</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="inputName2" placeholder="Name">
+                                                <input type="text" class="form-control" name="l_name" placeholder="Enter Your Last Name" value="{{$view_member->maiden_name}}">
                                             </div>
                                         </div>
+                                        <hr>
+
+
                                         <div class="form-group row">
-                                            <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
+                                     
+                                            <label for="inputName" class="col-sm-2 col-form-label">Chapter.</label>
                                             <div class="col-sm-10">
-                                                <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                                                <input type="text" class="form-control" name="chapter" placeholder="Enter Your Email" value="{{$view_member->member_location}}">
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
+                                        <hr>
+
+                                        <label for="inputName" class="col-sm-2 col-form-label">ID No.</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
+                                                <input type="text" class="form-control" name="id_no" placeholder="Enter Your Email" value="{{$view_member->id_number}}">
                                             </div>
-                                        </div>
+
+                                            <hr>
+
+                                            <label for="inputName" class="col-sm-2 col-form-label">Email.</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="email" placeholder="Enter Your Email" value="{{$view_member->email}}">
+                                            </div>
+                                            <hr>
                                         <div class="form-group row">
-                                            <div class="offset-sm-2 col-sm-10">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                                                    </label>
-                                                </div>
+
+                                            <label for="inputName" class="col-sm-2 col-form-label">Spouse F. Name</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="sp_f_name" placeholder="Enter Spouse First Name" value="{{$view_member->spouse_name}}">
+                                            </div>
+                                            <label for="inputName" class="col-sm-2 col-form-label">Spouse L. Name</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="sp_l_name" placeholder="Enter Spouse Last Name" value="{{$view_member->spouse_maiden_name}}">
+                                            </div>
+                                            
+                                            <label for="inputName" class="col-sm-2 col-form-label">Spouse Status</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="sp_status" placeholder="Enter Spouse Last Name" value="{{$view_member->spouse_status}}">
+                                            </div>
+                                            <label for="inputName" class="col-sm-2 col-form-label">Service Class | Rank</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="sp_class" placeholder="Enter Spouse Last Name" value="{{$view_member->class}}">
+                                            </div>
+
+                                        </div>
+                                        <hr>
+
+                                        <div class="form-group row">
+                                            <label for="inputExperience" class="col-sm-2 col-form-label">ID Card</label>
+                                            <img class="profile-user-img img-fluid img-square" src="{{ asset('/storage/'.$id_photo_str) }}" alt="Member id picture" title="{{$view_member->id_card}}" width='50' height='50' class="img img-responsive">
+                                            <div class="col-sm-10">
+                                                <input type="file" class="form-control" name="id_card" placeholder="Enter Your ID Card" value="{{$view_member->id_card}}">
                                             </div>
                                         </div>
+                                        <hr>
+                                        <div class="form-group row">
+                                            <label for="inputSkills" class="col-sm-2 col-form-label">Passport Photo</label>
+                                            <img class="profile-user-img img-fluid img-square" src="{{ asset('/storage/'.$photo_str) }}" alt="Member passport picture" title="{{$view_member->id_card}}" width='50' height='50' class="img img-responsive">
+                                            <div class="col-sm-10">
+
+                                                <input type="file" class="form-control" name="passport" placeholder="Enter Your Passport" value="{{$view_member->passport_photo}}">
+                                            </div>
+                                        </div>
+
                                         <div class="form-group row">
                                             <div class="offset-sm-2 col-sm-10">
                                                 <button type="submit" class="btn btn-danger">Submit</button>
                                             </div>
                                         </div>
                                     </form>
-                                </div> -->
+                                </div>
                                 <!-- /.tab-pane -->
                             </div>
                             <!-- /.tab-content -->

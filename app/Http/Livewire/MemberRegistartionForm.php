@@ -35,8 +35,8 @@ class MemberRegistartionForm extends Component
         
     public $spouse_maiden_name;
     public $class;
-    //public $id_cardx;
-    //public $passport_photox;
+    public $id_cardx;
+    public $passport_photox;
     //public $marriage_cert;
 
     public $totalSteps = 3;
@@ -159,24 +159,24 @@ class MemberRegistartionForm extends Component
         //         );
         //    dd($values);
 
-            // $this->validate([
-            //     'id_cardx'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:2048',
-            //     'passport_photox'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:2048',
-            //     //'marriage_cert'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:1024',
+            $this->validate([
+                'id_cardx'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:2048',
+                'passport_photox'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:2048',
+                //'marriage_cert'=>'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:1024',
                 
-            // ]);
-        //}
+            ]);
+        }
        
-        // $idcard = $this->id_cardx->store('public/member_id_docs');
+        $idcard = $this->id_cardx->store('public/member_id_docs');
 
         // //$passport = 'PASSPORTPHOTO_'.time().$this->passport_photo->getClientOriginalName();
         // //$upload_passport = $this->passport_photo->storeAs('member_passport_docs', $passport);
-        //  $this->passport_photox->store('public/member_passport_docs');
+        $passport = $this->passport_photox->store('public/member_passport_docs');
     
 
             
-        $passport ='update';
-        $idcard = 'update';
+        //  ='update';
+        // $idcard = 'update';
         
         // if($this->marriage_cert == null){
         //    // dd('null');
@@ -189,7 +189,7 @@ class MemberRegistartionForm extends Component
         // }
 
 
-        //if($idcard != null){
+        if($idcard != null){
             $values = array(
                 "first_name"=>$this->first_name,
                 "second_name"=>$this->second_name,
@@ -223,7 +223,7 @@ class MemberRegistartionForm extends Component
                 "password"=>Hash::make($OTP),//$OTP
             );
           
-            MemberRegistartion::insert($values);
+            $insert = MemberRegistartion::insert($values);
             User::insert($user_val);
             $date = date('Y-m-d H:i:s');
             $newDateFormate = Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('m/d/Y');
@@ -272,6 +272,22 @@ class MemberRegistartionForm extends Component
 
             //return view('/login');
             return redirect('/login');
+
+            if($insert)
+            {          
+                $notification = array(
+                    'messege'=>'Succesfull Document Updated',
+                    'alert-type'=>'success'
+                );
+                return redirect('/login')->with($notification);
+            }
+            else{
+                $notification = array(
+                    'messege'=>'Something is Wrong, please try Document update again!',
+                    'alert-type'=>'error'
+                );
+                return redirect('/login')->with($notification);
+            }
 
 
         }

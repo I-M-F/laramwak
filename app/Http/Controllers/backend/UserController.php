@@ -104,7 +104,8 @@ class UserController extends Controller
             ->where('phone', '=', $view_member->phone)
             ->first();
         $photo_str = substr($view_member->passport_photo, 6);
-        return view('backend.user.view-member', compact('view_member', 'photo_str','paymentDB','countyDB','subCountyDB'));
+        $id_photo_str = substr($view_member->id_card, 6);
+        return view('backend.user.view-member', compact('view_member', 'photo_str','id_photo_str','paymentDB','countyDB','subCountyDB'));
     }//http://www.mwakportal.mwak.co.ke/
 
     public function updateMember(Request $request, $id)
@@ -114,7 +115,7 @@ class UserController extends Controller
         $mwak_no = 'MWAK-'.$date.'-'.$id+25;
         
         $data = array();
-        //$data['chapter'] = $request->chapter;
+        $data['member_location'] = $request->chapter;
         $data['member_no'] = $mwak_no;
         $data['status'] = "Active";
         $data['updated_at'] = date('Y-m-d H:i:s');
@@ -157,6 +158,55 @@ class UserController extends Controller
         } else {
             $notification = array(
                 'messege'=>'Something is Wrong, please try Activate again!',
+                'alert-type'=>'error'
+            );
+            return redirect()->route('allmembers')->with($notification);
+            //return view('backend.user.view-member', compact('view_member', 'paymentDB','countyDB'))->with($notification);
+        }
+    }
+
+    public function updateMemberDets(Request $request, $id)
+    {
+        $newFile = $request->file('id_card');
+        $idcard = $newFile->store('public/member_id_docs');
+
+        $passportFile = $request->file('passport');
+        $passport = $passportFile->store('public/member_passport_docs');
+       
+        $data = array();
+        $data['member_location'] = $request->chapter;
+        $data['first_name']=$request->f_name;
+        $data['second_name']=$request->m_name;
+        $data['maiden_name']=$request->l_name;
+        $data['member_location']=$request->chapter;
+        $data['id_number']=$request->id_no;
+        $data['email']=$request->email;
+        $data['spouse_name']=$request->sp_f_name;
+        $data['spouse_maiden_name']=$request->sp_l_name;
+        $data['spouse_status']=$request->sp_status;
+        $data['class']=$request->sp_class;
+        $data['id_card']=$idcard;
+        $data['passport_photo']=$passport;
+
+       // dd($data);
+
+        $update = DB::table('member_registartions')
+            ->where('id', $id)
+            ->update($data);
+        if ($update) {
+           // echo "Data Updated Succesfully";
+       
+
+       
+            $notification = array(
+                'messege'=>'Succesfull Updated',
+                'alert-type'=>'success'
+            );    
+            return redirect()->route('allmembers')->with($notification);
+            //return view('backend.user.view-member', compact('view_member', 'paymentDB','countyDB'))->with($notification);
+        } else {
+            $notification = array(
+                'messege'=>'Something is Wrong, please try Update again!',
                 'alert-type'=>'error'
             );
             return redirect()->route('allmembers')->with($notification);
