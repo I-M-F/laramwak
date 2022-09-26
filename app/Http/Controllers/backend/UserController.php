@@ -167,11 +167,25 @@ class UserController extends Controller
 
     public function updateMemberDets(Request $request, $id)
     {
+        $view_member = DB::table('member_registartions')->where('id', $id)->first();
         $newFile = $request->file('id_card');
-        $idcard = $newFile->store('public/member_id_docs');
+        if($newFile == null)
+        {
+            $idcard = $view_member->id_card;
+        }else{
+            $idcard = $newFile->store('public/member_id_docs');
+        }
+        
 
         $passportFile = $request->file('passport');
-        $passport = $passportFile->store('public/member_passport_docs');
+
+        if($passportFile == null)
+        {
+            $passport = $view_member->passport_photo;
+        }else{
+            $passport = $passportFile->store('public/member_passport_docs');
+        }
+        
        
         $data = array();
         $data['member_location'] = $request->chapter;
