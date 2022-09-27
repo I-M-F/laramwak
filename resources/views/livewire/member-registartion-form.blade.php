@@ -175,7 +175,7 @@
                     STEP 3/3 - Attachments
                 </div>
                 <div class="card-body">
-                You will be able to edit and add a copy of your ID and Passport photo as soon as you are approved and logged in, make payment and Approved.
+                You will be able to edit your profile, add a copy of your ID and Passport photo as soon as you are approved and logged in.
                     <!-- <div class="form-group">
                         <label for="">ID card</label>
                         <input type="file" class="form-control" wire:model="id_cardx">
