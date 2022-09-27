@@ -175,7 +175,8 @@
                     STEP 3/3 - Attachments
                 </div>
                 <div class="card-body">
-                    <div class="form-group">
+                You will be able to edit and add a copy of your ID and Passport photo as soon as you are approved and logged in, make payment and Approved.
+                    <!-- <div class="form-group">
                         <label for="">ID card</label>
                         <input type="file" class="form-control" wire:model="id_cardx">
                         <span class="text-danger">@error('$id_cardx') {{ $message }}@enderror</span>
@@ -184,7 +185,7 @@
                         <label for="passport_photo">Passport Photo</label>
                         <input type="file" class="form-control" wire:model="passport_photox">
                         <span class="text-danger">@error('passport_photox') {{ $message }}@enderror</span>
-                    </div>
+                    </div> -->
                     <!-- <div class="form-group">
                         <label for="marriage_cert">Marriage Certificate</label>
                         <input type="file" class="form-control" wire:model="marriage_cert">
