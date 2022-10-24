@@ -213,7 +213,7 @@ class UserController extends Controller
 
        
             $notification = array(
-                'messege'=>'Succesfull Updated',
+                'messege'=>'Succesfull Deleted',
                 'alert-type'=>'success'
             );    
             return redirect()->route('allmembers')->with($notification);
@@ -255,17 +255,33 @@ class UserController extends Controller
         }
     }
 
-    public function DeleteUser($id)
+    public function DeleteUser($email)
     {
         # code...
-        $delete = DB::table('users')
-            ->where('id', $id)
+        $deleteUser = DB::table('users')
+            ->where('email', $email)
             ->delete();
+
+        $delete = DB::table('member_registartions')
+        ->where('email', $email)
+        ->delete();
+
+
 
         if ($delete) {
             echo "Data Removed Succesfully";
+            $notification = array(
+                'messege' => 'Succesfull Updated',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('allmembers')->with($notification);
         } else {
-            echo "Something wnet wrong";
+            echo "Something whet wrong";
+            $notification = array(
+                'messege' => 'Something is Wrong, please try Update again!',
+                'alert-type' => 'error'
+            );
+            return redirect()->route('allmembers')->with($notification);
         }
     }
 

@@ -32,7 +32,7 @@ Route::post('/update-user/{id}', [App\Http\Controllers\backend\UserController::c
 Route::post('/update-member/{id}', [App\Http\Controllers\backend\UserController::class, 'updateMember'])->name('updateMember');
 Route::post('/update-member-dets/{id}', [App\Http\Controllers\backend\UserController::class, 'updateMemberDets'])->name('updateMemberDets');
 
-Route::get('/delete-user/{id}', [App\Http\Controllers\backend\UserController::class, 'DeleteUser'])->name('deleteuser');
+Route::get('/delete-user/{email}', [App\Http\Controllers\backend\UserController::class, 'DeleteUser'])->name('deleteuser');
 
 
 // Payments Managment

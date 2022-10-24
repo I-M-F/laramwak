@@ -4,21 +4,21 @@
 <div class="content-wrapper">
 
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
 
 
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">MWAK Members List</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">MWAK Members List</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
                   <tr>
                     <th>Reg No. </th>
                     <th>Name</th>
@@ -28,32 +28,32 @@
                     <th>Photo</th>
                     <th>Action</th>
                   </tr>
-                  </thead>
-                  <tbody>
-           
+                </thead>
+                <tbody>
+
                   @foreach($all_members as $key=>$row)
-                    <tr>
-                        <td>{{ $key+1 }}</td>
-                        <td>{{ $row->first_name.' '.$row->maiden_name }}</td>
-                        <td>{{ $row->email }}</td>
-                        <td>{{ $row->phone }}</td>
-                        <td>{{ $row->service_number }}</td>
-                        <td><img src="{{ asset('/storage/'. substr($row->id_card,6)) }}" alt="" title="{{ substr($row->id_card,6) }}" width= '50' height='50' class="img img-responsive"> </td>
-                        
-                        <td>
-                            <a href="{{ URL::to('/view-member/'.$row->id) }}" class="btn btn-sm btn-info">View</a>
-                            <a href="{{ URL::to('/edit-user/'.$row->id) }}" class="btn btn-sm btn-info">Send SMS</a>
-                            <a href="{{ URL::to('/delete-user/'.$row->id) }}" class="btn btn-sm btn-danger">Delete</a>
-                        </td>
-
-                    </tr>
-                    @endforeach
-
-
-                  </tbody>
-                  <tfoot>
                   <tr>
-                  <th>Reg No. </th>
+                    <td>{{ $key+1 }}</td>
+                    <td>{{ $row->first_name.' '.$row->maiden_name }}</td>
+                    <td>{{ $row->email }}</td>
+                    <td>{{ $row->phone }}</td>
+                    <td>{{ $row->service_number }}</td>
+                    <td><img src="{{ asset('/storage/'. substr($row->id_card,6)) }}" alt="" title="{{ substr($row->id_card,6) }}" width='50' height='50' class="img img-responsive"> </td>
+
+                    <td>
+                      <a href="{{ URL::to('/view-member/'.$row->id) }}" class="btn btn-sm btn-info">View</a>
+                      <a href="{{ URL::to('/edit-user/'.$row->id) }}" class="btn btn-sm btn-info">Send SMS</a>
+                      <a href="{{ URL::to('/delete-user/'.$row->email) }}" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+
+                  </tr>
+                  @endforeach
+
+
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th>Reg No. </th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone</th>
@@ -61,18 +61,18 @@
                     <th>Photo</th>
                     <th>Action</th>
                   </tr>
-                  </tfoot>
-                </table>
-              </div>
-              <!-- /.card-body -->
+                </tfoot>
+              </table>
             </div>
-            <!-- /.card -->
+            <!-- /.card-body -->
           </div>
-          <!-- /.col -->
+          <!-- /.card -->
         </div>
-        <!-- /.row -->
+        <!-- /.col -->
       </div>
-      <!-- /.container-fluid -->
-    </section>
+      <!-- /.row -->
     </div>
+    <!-- /.container-fluid -->
+  </section>
+</div>
 @endsection
