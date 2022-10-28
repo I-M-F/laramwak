@@ -51,7 +51,16 @@ class HomeController extends Controller
         return view('backend.layouts.dashboard', compact('total_rev','allDocs','pending_payments','approved_payments','new_member','approved_members'));
         } else {
         $all = DB::table('mwakfiles')->get();
+        
+        $status_role = DB::table('users')->first();
+
+        if($status_role->role == 'Unverified' ){
+            return view('backend.user.unverified',compact('status_role'));
+        } elseif($status_role->role == 'Rejected') {
+            return view('backend.user.rejected',compact('status_role'));
+        }
          return view('backend.user.all-docs',compact('all')); 
+         //check if verified status 
          //return redirect()->route('backend.user.all-docs');
          //return redirect('all-docs');
 

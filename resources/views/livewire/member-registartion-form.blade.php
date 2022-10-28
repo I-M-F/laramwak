@@ -1,6 +1,6 @@
 <div>
 
-<form method="post" wire:submit.prevent="member_register" enctype="multipart/form-data">
+    <form method="post" wire:submit.prevent="member_register" enctype="multipart/form-data">
 
         @if ($currentStep == 1)
         <div class="step-one">
@@ -84,6 +84,62 @@
                         </div>
                         @endif
                     </div>
+                    <!-- xxxx -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="skills">Professional | Occupation | Skills</label>
+                                <select class="form-control" wire:model="skills">
+                                    <option value="" selected>Select Job Indurstry</option>
+                                    <option value="Arts, Design, Entertainment, Sports, and Media">Arts, Design, Entertainment, Sports, and Media Occupations</option>
+                                    <option value="Building and Grounds Cleaning and Maintenance">Building and Grounds Cleaning and Maintenance Occupations</option>
+                                    <option value="Business and Financial Operations">Business and Financial Operations Occupations</option>
+                                    <option value="Community and Social Services">Community and Social Services Occupations</option>
+                                    <option value="Computer and Mathematical">Computer and Mathematical Occupations</option>
+                                    <option value="Construction and Extraction">Construction and Extraction Occupations</option>
+                                    <option value="Education, Training, and Library">Education, Training, and Library Occupations</option>
+                                    <option value="Farming, Fishing, and Forestry">Farming, Fishing, and Forestry Occupations</option>
+                                    <option value="Food Preparation and Serving Related">Food Preparation and Serving Related Occupations</option>
+                                    <option value="Healthcare Practitioners and Technical">Healthcare Practitioners and Technical Occupations</option>
+                                    <option value="Healthcare Support">Healthcare Support Occupations</option>
+                                    <option value="Installation, Maintenance, and Repair">Installation, Maintenance, and Repair Occupations</option>
+                                    <option value="Legal">Legal Occupions</option>
+                                    <option value="Life, Physical, and Social Science">Life, Physical, and Social Science Occupations</option>
+                                    <option value="Management">Management Occupations</option>
+                                    <option value="Military Specific">Military Specific Occupations</option>
+                                    <option value="Office and Administrative Support">Office and Administrative Support Occupations</option>
+                                    <option value="Personal Care and Service">Personal Care and Service Occupations</option>
+                                    <option value="Production">Production Occupations</option>
+                                    <option value="Protective Service">Protective Service Occupations</option>
+                                    <option value="Sales and Related">Sales and Related Occupations</option>
+
+
+
+                                </select>
+                                <span class="text-danger">@error('skills') {{ $message }}@enderror</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="pillar">Interests</label>
+                                <select class="form-control" wire:model="pillar">
+                                    <option value="" selected>Select a Pillar of Interest</option>
+                                    <option value="Health">Health</option>
+                                    <option value="Mentorship">Mentorship </option>
+                                    <option value="Eductaion">Eductaion</option>
+                                    <option value="Housing">Housing</option>
+                                    <option value="Veterans Affairs">Veterans Affairs </option>
+                                    <option value="Recreation & Wellbeing">Recreation & Wellbeing</option>
+                                    <option value="Funding">Funding</option>
+                                    <option value="Partnership & Collaboration">Partnership & Collaboration</option>
+
+                                </select>
+                                <span class="text-danger">@error('pillar') {{ $message }}@enderror</span>
+                            </div>
+                        </div>
+                    </div>
+
 
                 </div>
             </div>
@@ -124,7 +180,7 @@
                                     <option value="Widow">Widow</option>
 
                                 </select>
-                                <span class="text-danger">@error('spouseStatus') {{ $message }}@enderror</span> 
+                                <span class="text-danger">@error('spouseStatus') {{ $message }}@enderror</span>
                             </div>
                         </div>
 
@@ -175,7 +231,7 @@
                     STEP 3/3 - Attachments
                 </div>
                 <div class="card-body">
-                You will be able to edit your profile, add a copy of your ID and Passport photo as soon as you are approved and logged in.
+                    Congratulatiuons for Registering, wait for verification and you will be able to edit your profile, add a copy of your ID and Passport photo as soon as you are approved and logged in.
                     <!-- <div class="form-group">
                         <label for="">ID card</label>
                         <input type="file" class="form-control" wire:model="id_cardx">

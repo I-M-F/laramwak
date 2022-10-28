@@ -58,7 +58,28 @@
                                 </li>
                                 @endif
                             </ul>
-                            @if($view_member->status=='Pending')
+                            @if($status_role->role == 'Unverified' || $status_role->role == 'Rejected')
+
+
+                            <form role="form" action="{{URL::to('/approve-member/'.$view_member->email)}}" method="POST">
+                                @csrf
+                                <div class="form-group row">
+                                    <label for="">Approval</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="exampleformControlSelect1" name="status_role" required>
+                                            <option>--Approve Member --</option>
+                                            <option value="Verified">Verified</option>
+                                            <option value="Rejected">Rejected</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- <a type="submit" class="btn btn-primary btn-block"><b>Activate</b></a>
+                                 -->
+                                <button type="submit" class="btn btn-primary btn-block">Approve</button>
+                            </form>
+                            @else
+                            @if($view_member->status=='Pending' && $status_role->role == 'Admin')
                             <form role="form" action="{{URL::to('/update-member/'.$view_member->id)}}" method="POST">
                                 @csrf
                                 <div class="form-group row">
@@ -83,6 +104,7 @@
                                 <button type="submit" class="btn btn-primary btn-block">Activate</button>
                             </form>
                             @endif
+                            @endif
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -91,15 +113,20 @@
 
                     <!-- /.card -->
                 </div>
-                <!-- /.col -->
+                <!-- /.col  -->
                 <div class="col-md-9">
                     <div class="card">
                         <div class="card-header p-2">
                             <ul class="nav nav-pills">
+                                <!-- only admin can see -->
                                 <li class="nav-item"><a class="nav-link active" href="#member_details" data-toggle="tab">Member Details</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#spouse_details" data-toggle="tab">Spouse Details</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#tx_timeline" data-toggle="tab">Transaction Details</a></li>
+                                @if(auth()->user()->role=='Admin')
                                 <li class="nav-item"><a class="nav-link" href="#edit_dets" data-toggle="tab">Edit Detatils</a></li>
+                                @else
+                                <li class="nav-item"><a class="nav-link" href="#user_edit_dets" data-toggle="tab">Edit Detatils</a></li>
+                                @endif
                             </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">
@@ -245,8 +272,8 @@
                                 <div class="tab-pane" id="edit_dets">
                                     <!-- <form class="form-horizontal"> -->
                                     <form role="form" enctype="multipart/form-data" action="{{URL::to('/update-member-dets/'.$view_member->id)}}" method="POST">
-                                    @csrf
-                                    <div class="form-group row">
+                                        @csrf
+                                        <div class="form-group row">
 
                                             <label for="inputName" class="col-sm-2 col-form-label">First Name</label>
                                             <div class="col-sm-10">
@@ -266,7 +293,7 @@
 
 
                                         <div class="form-group row">
-                                     
+
                                             <label for="inputName" class="col-sm-2 col-form-label">Chapter.</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="chapter" placeholder="Enter Your Email" value="{{$view_member->member_location}}">
@@ -275,17 +302,17 @@
                                         <hr>
 
                                         <label for="inputName" class="col-sm-2 col-form-label">ID No.</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="id_no" placeholder="Enter Your Email" value="{{$view_member->id_number}}">
-                                            </div>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="id_no" placeholder="Enter Your Email" value="{{$view_member->id_number}}">
+                                        </div>
 
-                                            <hr>
+                                        <hr>
 
-                                            <label for="inputName" class="col-sm-2 col-form-label">Email.</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="email" placeholder="Enter Your Email" value="{{$view_member->email}}">
-                                            </div>
-                                            <hr>
+                                        <label for="inputName" class="col-sm-2 col-form-label">Email.</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="email" placeholder="Enter Your Email" value="{{$view_member->email}}">
+                                        </div>
+                                        <hr>
                                         <div class="form-group row">
 
                                             <label for="inputName" class="col-sm-2 col-form-label">Spouse F. Name</label>
@@ -296,7 +323,7 @@
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="sp_l_name" placeholder="Enter Spouse Last Name" value="{{$view_member->spouse_maiden_name}}">
                                             </div>
-                                            
+
                                             <label for="inputName" class="col-sm-2 col-form-label">Spouse Status</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="sp_status" placeholder="Enter Spouse Last Name" value="{{$view_member->spouse_status}}">
@@ -307,6 +334,50 @@
                                             </div>
 
                                         </div>
+                                        <hr>
+
+                                        <div class="form-group row">
+                                            <label for="inputExperience" class="col-sm-2 col-form-label">ID Card</label>
+                                            <img class="profile-user-img img-fluid img-square" src="{{ asset('/storage/'.$id_photo_str) }}" alt="Member id picture" title="{{$view_member->id_card}}" width='50' height='50' class="img img-responsive">
+                                            <div class="col-sm-10">
+                                                <input type="file" class="form-control" name="id_card" placeholder="Enter Your ID Card" value="{{$view_member->id_card}}">
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="form-group row">
+                                            <label for="inputSkills" class="col-sm-2 col-form-label">Passport Photo</label>
+                                            <img class="profile-user-img img-fluid img-square" src="{{ asset('/storage/'.$photo_str) }}" alt="Member passport picture" title="{{$view_member->id_card}}" width='50' height='50' class="img img-responsive">
+                                            <div class="col-sm-10">
+
+                                                <input type="file" class="form-control" name="passport" placeholder="Enter Your Passport" value="{{$view_member->passport_photo}}">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="offset-sm-2 col-sm-10">
+                                                <button type="submit" class="btn btn-danger">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane" id="user_edit_dets">
+                                    <!-- <form class="form-horizontal"> -->
+                                    <form role="form" enctype="multipart/form-data" action="{{URL::to('/update-member-dets/'.$view_member->id)}}" method="POST">
+                                        @csrf
+                                        <div class="form-group row">
+
+                                            <label for="inputName" class="col-sm-2 col-form-label">Password</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" class="form-control" name="password" placeholder="Enter Your New Password" value="{{$status_role->password}}">
+
+                                            </div>
+
+                                        </div>
+                                        <hr>
+
+
+
                                         <hr>
 
                                         <div class="form-group row">

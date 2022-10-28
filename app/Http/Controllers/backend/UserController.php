@@ -33,15 +33,13 @@ class UserController extends Controller
     public function AllMembers()
     {
         //SELECT * FROM member_registartions, payments WHERE member_registartions.phone 
-        $all_members = DB::table('member_registartions')->get();
+        //$all_members = DB::table('member_registartions')->get();
+        $all_members = DB::table('member_registartions')
+        ->join('users', 'member_registartions.email', '=','users.email')            
+        ->get();
 
-        // DB::table(DB::raw('phpbb_topics t, phpbb_posts p, phpbb_users u')) 
-        // ->select(DB::raw('p.post_text, p.bbcode_uid, u.username, t.forum_id, t.topic_title, t.topic_time, t.topic_id, t.topic_poster'))
-        // ->where('phpbb_topics.topic_first_post_id', '=', 'phpbb_posts.post_id')
-        // ->where('phpbb_users', 'phpbb_topics.topic_poster', '=', 'phpbb_users.user_id')
-        // ->order_by('topic_time', 'desc')->take(10)->get();
-        //$photo_str = substr($all_members->id_card, 6);
-        
+   
+        //dd();
         return view('backend.user.all-members', compact('all_members'));
     }
 
@@ -94,18 +92,22 @@ class UserController extends Controller
         // return view('backend.user.view-member', compact('edit'));
 
         $view_member = DB::table('member_registartions')->where('id', $id)->first();
+        //dd($view_member);
         $countyDB = DB::table('counties')
         ->where('id', '=', $view_member->county)
         ->first();
         $subCountyDB = DB::table('constituencies')
         ->where('county_id', '=', $view_member->sub_county)
         ->first();
+        $status_role = DB::table('users')
+            ->where('email', '=', $view_member->email)
+            ->first();
         $paymentDB = DB::table('payments')
             ->where('phone', '=', $view_member->phone)
             ->first();
         $photo_str = substr($view_member->passport_photo, 6);
         $id_photo_str = substr($view_member->id_card, 6);
-        return view('backend.user.view-member', compact('view_member', 'photo_str','id_photo_str','paymentDB','countyDB','subCountyDB'));
+        return view('backend.user.view-member', compact('view_member', 'status_role','photo_str','id_photo_str','paymentDB','countyDB','subCountyDB'));
     }//http://www.mwakportal.mwak.co.ke/
 
     public function updateMember(Request $request, $id)
@@ -159,6 +161,62 @@ class UserController extends Controller
             $notification = array(
                 'messege'=>'Something is Wrong, please try Activate again!',
                 'alert-type'=>'error'
+            );
+            return redirect()->route('allmembers')->with($notification);
+            //return view('backend.user.view-member', compact('view_member', 'paymentDB','countyDB'))->with($notification);
+        }
+    }
+
+    public function approveMember(Request $request, $email)
+    {
+        $view_member = DB::table('member_registartions')->where('email', $email)->first();
+        if($request->status_role == 'Verified'){
+            $data['role'] = "Member";
+            $msg = 'Dear ' . $view_member->first_name . ' ' . $view_member->maiden_name . ' Welcome to MWAK. You have been succesfully verified. Log in and proceed to make payments and upload photos. Thank you for being a member and supporting MWAK pillars.';
+        }else{
+            $data['role'] = "Rejected";
+            $msg = 'Dear ' . $view_member->first_name . ' ' . $view_member->maiden_name . 'Kindly contact MWAK regarding your Member Verification. phone: +254718111186 email: info@mwak.ke';
+        }
+        
+        $data['updated_at'] = date('Y-m-d H:i:s');
+
+        $update = DB::table('users')
+        ->where('email', $email)
+            ->update($data);
+        if ($update) {
+            
+            $username = 'MWAK'; // use 'sandbox' for development in the test environment
+            $apiKey   = 'e5ea09562f3ad404503a38c8e3f3ef3cdaf3efa89193b27268b954a3f6bf7694'; // use your sandbox app API key for development in the test environment
+            $AT       = new AfricasTalking($username, $apiKey);
+
+            // // Get one of the services
+            $sms      = $AT->sms();
+            $output = preg_replace("/^0/", "+254", $view_member->phone);
+            // // Use the service
+            $result   = $sms->send([
+                'to'      => $output,
+                'message' => $msg,
+                'from' => $username
+            ]);
+            $paymentDB = DB::table('payments')
+                ->where('phone', '=', $view_member->phone)
+                ->first();
+
+            $countyDB = DB::table('counties')
+                ->where('id', '=', $view_member->county)
+                ->first();
+
+
+            $notification = array(
+                'messege' => 'Succesfull Activated Updated',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('allmembers')->with($notification);
+            //return view('backend.user.view-member', compact('view_member', 'paymentDB','countyDB'))->with($notification);
+        } else {
+            $notification = array(
+                'messege' => 'Something is Wrong, please try Activate again!',
+                'alert-type' => 'error'
             );
             return redirect()->route('allmembers')->with($notification);
             //return view('backend.user.view-member', compact('view_member', 'paymentDB','countyDB'))->with($notification);
@@ -228,6 +286,66 @@ class UserController extends Controller
         }
     }
 
+    public function userUpdateMemberDets(Request $request, $id)
+    {
+        $view_member = DB::table('member_registartions')->where('id', $id)->first();
+        $newFile = $request->file('id_card');
+        if ($newFile == null) {
+            $idcard = $view_member->id_card;
+        } else {
+            $idcard = $newFile->store('public/member_id_docs');
+        }
+
+
+        $passportFile = $request->file('passport');
+
+        if ($passportFile == null) {
+            $passport = $view_member->passport_photo;
+        } else {
+            $passport = $passportFile->store('public/member_passport_docs');
+        }
+
+
+        $userData = array();
+        $userData['password'] =  Hash::make($request->password);
+        $userData['updated_at'] = date('Y-m-d H:i:s');
+
+        $updateUser = DB::table('users')
+            ->where('email', $view_member->email)
+            ->update($userData);
+
+        $data = array();
+        $data['id_card'] = $idcard;
+        $data['passport_photo'] = $passport;
+
+
+
+        // dd($data);
+
+        $update = DB::table('member_registartions')
+        ->where('id', $id)
+            ->update($data);
+        if ($update) {
+            // echo "Data Updated Succesfully";
+
+
+
+            $notification = array(
+                'messege' => 'Succesfull Deleted',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('allmembers')->with($notification);
+            //return view('backend.user.view-member', compact('view_member', 'paymentDB','countyDB'))->with($notification);
+        } else {
+            $notification = array(
+                'messege' => 'Something is Wrong, please try Update again!',
+                'alert-type' => 'error'
+            );
+            return redirect()->route('allmembers')->with($notification);
+            //return view('backend.user.view-member', compact('view_member', 'paymentDB','countyDB'))->with($notification);
+        }
+    }
+
     public function genMwak(){
 
     }
@@ -241,6 +359,7 @@ class UserController extends Controller
         $data['name'] = $request->name;
         $data['email'] = $request->email;
         $data['role'] = $request->role;
+        
         $data['password'] = Hash::make($request->password);
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['updated_at'] = date('Y-m-d H:i:s');

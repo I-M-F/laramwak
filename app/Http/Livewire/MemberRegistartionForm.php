@@ -28,7 +28,10 @@ class MemberRegistartionForm extends Component
     public $maiden_name;
     public $email;    
     public $phone;    
-    public $id_number;   
+    public $id_number;
+    
+    public $skills;
+    public $pillar;
 
     public $service_number;
     public $spouse_name;  
@@ -96,6 +99,8 @@ class MemberRegistartionForm extends Component
                 'phone'=>'required|digits:10|unique:member_registartions',
                 'selectedClass'=>'required|string',
                 'selectedSection'=>'required|string',
+                 'skills'=>'required|string',
+                'pillar'=>'required|string',
             ]);
         } elseif($this->currentStep == 2){
             $this->validate([
@@ -199,6 +204,8 @@ class MemberRegistartionForm extends Component
                 "id_number"=>$this->id_number,
                 "county"=>$this->selectedClass,
                 "sub_county"=>$this->selectedSection,
+                "skills"=>$this->skills,
+                "pillar"=>$this->pillar,
                 "service_number"=>$this->service_number,
                 "spouse_name"=>$this->spouse_name,        
                 "spouse_maiden_name"=>$this->spouse_maiden_name,
@@ -209,17 +216,13 @@ class MemberRegistartionForm extends Component
                 //"marriage_cert"=>$cert,
             );
 
-            //dd($values);
-
- 
-
-
+           
             $OTP = random_int(111111, 999999);
             $user_val = array(
                 "name"=>$this->first_name,
                 "email"=>$this->email,
                 "photo"=>$passport,
-                "role"=>"Member",
+                "role"=>"Unverified",
                 "password"=>Hash::make($OTP),//$OTP
             );
           
@@ -228,10 +231,21 @@ class MemberRegistartionForm extends Component
             $date = date('Y-m-d H:i:s');
             $newDateFormate = Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('m/d/Y');
             //insert into payment
+            if($this->class == 'General' || $this->class == 'Lieutenant General' || $this->class == 'Major General' || $this->class == 'Brigadier' || $this->class == 'Colonel' || $this->class == 'Lieutenant Colonel' || $this->class == 'Major' || $this->class == 'Captain' || $this->class == 'Lieutenant' || $this->class == 'Second Lieutenant')
+           {
+            //dd($this->class . ' xxx');
+                $member_fee = 5000;
+                $annual_fee = 3000;
+           }else{
+                //dd($this->class.' xx');
+                $member_fee = 2000;
+                $annual_fee = 1000;
+           }
+           
             $pay_var = array(
                 "payment_description"=>"MWAK Membership Fees",    
                 "phone"=>$this->phone,     
-                "amount"=>"5000",        
+                "amount"=>$member_fee,        
                 "tx_number"=>"Pending",
                 "status"=>"Pending",  
                 "date"=>$newDateFormate
@@ -241,7 +255,7 @@ class MemberRegistartionForm extends Component
             $pay2_var = array(
                 "payment_description"=>"MWAK Annual Subscription Fees",    
                 "phone"=>$this->phone,     
-                "amount"=>"3000",        
+                "amount"=>$annual_fee,        
                 "tx_number"=>"Pending",
                 "status"=>"Pending",  
                 "date"=>$newDateFormate
@@ -249,7 +263,7 @@ class MemberRegistartionForm extends Component
             Payment::insert($pay2_var);
             
            // $message = 'Dear ' . $this->first_name . ' Welcome to MWAK. Your registation is received pending approval. Please sign in with your email and make member payment. Your one time password is ' . $OTP;
-           $message = 'Dear ' . $this->first_name . ' Welcome to MWAK. Your registation is received pending approval. Please sign in with your email to add your passport photo and ID copy. Your one time password is ' . $OTP;
+           $message = 'Dear ' . $this->first_name . ' Welcome to MWAK. Your registation is received pending verification. Please sign in after verification with your email to add your passport photo and ID copy. Your one time password is ' . $OTP;
 
             $this->sendSMS($OTP,$this->first_name,$this->phone,$message);
             //$this->sendEmail(); 

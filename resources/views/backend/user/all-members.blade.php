@@ -37,8 +37,14 @@
                     <td>{{ $row->first_name.' '.$row->maiden_name }}</td>
                     <td>{{ $row->email }}</td>
                     <td>{{ $row->phone }}</td>
+                    @if($row->role=='Unverified')
+                    <td style="background-color:green ">{{ $row->service_number }}</td>
+                    @elseif($row->role=='Rejected')
+                    <td style="background-color:red ">{{ $row->service_number }}</td>
+                    @else
                     <td>{{ $row->service_number }}</td>
-                    <td><img src="{{ asset('/storage/'. substr($row->id_card,6)) }}" alt="" title="{{ substr($row->id_card,6) }}" width='50' height='50' class="img img-responsive"> </td>
+                    @endif
+                    <td><img src=" {{ asset('/storage/'. substr($row->id_card,6)) }}" alt="" title="{{ substr($row->id_card,6) }}" width='50' height='50' class="img img-responsive"> </td>
 
                     <td>
                       <a href="{{ URL::to('/view-member/'.$row->id) }}" class="btn btn-sm btn-info">View</a>

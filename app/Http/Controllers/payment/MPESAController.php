@@ -32,7 +32,7 @@ class MPESAController extends Controller
             # code...
             $phone = DB::table('member_registartions')->where('email','=',Auth::user()->email)->value('phone');
             $paymentDB = DB::table('payments')
-            ->where('phone','=',$phone)
+            ->where('id','=',$phone)
             ->get();
         }       
   
@@ -110,13 +110,14 @@ class MPESAController extends Controller
     }
 
     public function mwakSTKPush($phone){
+        //dd($phone);
                 # access token
         $consumerKey = 'o1QYI6OQjLTNrvJbFYreRjacWHEh9fxe'; //Fill with your app Consumer Key
         $consumerSecret = 'xT2hd4Kirj5H0AY3'; // Fill with your app Secret
 
         # define the variales
         # provide the following details, this part is found on your test credentials on the developer account
-        $BusinessShortCode = '174379';
+        $BusinessShortCode = '7893469';
         $Passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';  
         
         $paymentDB = DB::table('payments')
@@ -140,21 +141,24 @@ class MPESAController extends Controller
         $headers = ['Content-Type:application/json; charset=utf8'];
 
             # M-PESA endpoint urls
-        $access_token_url = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials';
-        $initiate_url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
+        $access_token_url = 'https://api.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials';
+        $initiate_url = 'https://api.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
 
         # callback url
         $CallBackURL = 'https://morning-basin-87523.herokuapp.com/callback_url.php';  
 
         $curl = curl_init($access_token_url);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+       
+        curl_setopt($curl,CURLOPT_HTTPHEADER,$headers);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($curl, CURLOPT_HEADER, FALSE);
-        curl_setopt($curl, CURLOPT_USERPWD, $consumerKey.':'.$consumerSecret);
+        curl_setopt($curl, CURLOPT_USERPWD, $consumerKey . ':' . $consumerSecret);
         $result = curl_exec($curl);
-        $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        $status = curl_getinfo($curl,
+            CURLINFO_HTTP_CODE
+        );
         $result = json_decode($result);
-        $access_token = $result->access_token;  
+        $access_token = $result->access_token;
         curl_close($curl);
 
         # header for stk push
@@ -196,38 +200,38 @@ class MPESAController extends Controller
 
     }
 
-    public function mpesaSTKPush($phone){
+    // public function mpesaSTKPush($phone){
 
-            $simu = preg_replace("/^0/", "254", $phone);
+    //         $simu = preg_replace("/^0/", "254", $phone);
         
-            $ch = curl_init('https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest');
-            $lipa_time = Carbon::rawParse('now')->format('YmdHms');
-            $data = array(
-                'BusinessShortCode'=> 174379,
-                'Password'=> "MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMjIwOTEyMDkxNTI5",
-                'Timestamp'=> $lipa_time,
-                'TransactionType'=> "CustomerPayBillOnline",
-                'Amount'=> 1,
-                'PartyA'=> $simu,
-                'PartyB'=> 174379,
-                'PhoneNumber'=> $simu,
-                'CallBackURL'=> "http://app.mwak.ke/payment",
-                'AccountReference'=> "MWAK",
-                'TransactionDesc'=> "Payment of MWAK" 
-            );
-            $info = http_build_query($data);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, [
-                'Authorization: Bearer KY9flPHOOYU8EkqaGnXCJ1sw7S2z',
-                'Content-Type: application/json'
-            ]);
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $info);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            $response     = curl_exec($ch);
-            curl_close($ch);
-            echo $response .'----'.$info ;
+    //         $ch = curl_init('https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest');
+    //         $lipa_time = Carbon::rawParse('now')->format('YmdHms');
+    //         $data = array(
+    //             'BusinessShortCode'=> 174379,
+    //             'Password'=> "MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMjIwOTEyMDkxNTI5",
+    //             'Timestamp'=> $lipa_time,
+    //             'TransactionType'=> "CustomerPayBillOnline",
+    //             'Amount'=> 1,
+    //             'PartyA'=> $simu,
+    //             'PartyB'=> 174379,
+    //             'PhoneNumber'=> $simu,
+    //             'CallBackURL'=> "http://app.mwak.ke/payment",
+    //             'AccountReference'=> "MWAK",
+    //             'TransactionDesc'=> "Payment of MWAK" 
+    //         );
+    //         $info = http_build_query($data);
+    //         curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    //             'Authorization: Bearer KY9flPHOOYU8EkqaGnXCJ1sw7S2z',
+    //             'Content-Type: application/json'
+    //         ]);
+    //         curl_setopt($ch, CURLOPT_POST, 1);
+    //         curl_setopt($ch, CURLOPT_POSTFIELDS, $info);
+    //         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    //         $response     = curl_exec($ch);
+    //         curl_close($ch);
+    //         echo $response .'----'.$info ;
 
-    }
+    // }
 
     public function customerMpesaSTKPush($phone)//$phone
     {
@@ -259,26 +263,26 @@ class MPESAController extends Controller
     $msg_resp = json_decode($resp);
     
     
-    // if ($msg_resp ->success == 'true') {
-    //     echo "WAIT FOR  STK POP UP🔥";
-    //   } else {
-    //     echo "Transaction Failed";
+    if ($msg_resp ->success == 'true') {
+        echo "WAIT FOR  STK POP UP🔥";
+      } else {
+        echo "Transaction Failed";
        
-    //   }
+      }
 
       //dd($msg_resp);
     }
 
-    public function editTx($phone)
+    public function editTx($id)
     {
         //dd($phone);
 
-        $edit = DB::table('payments')->where('phone',$phone)->first();
+        $edit = DB::table('payments')->where('id',$id)->first();
         //dd($edit);
         return view('backend.user.edit-tx', compact('edit'));
     }
 
-    public function updateTx(Request $request,$phone)
+    public function updateTx(Request $request,$id)
     {
   
         $data = array();
@@ -289,7 +293,7 @@ class MPESAController extends Controller
         $data['updated_at'] = date('Y-m-d H:i:s');
 
         $update = DB::table('payments')
-        ->where('phone',$phone)
+        ->where('id',$id)
         ->update($data);
         if($update)
         {          

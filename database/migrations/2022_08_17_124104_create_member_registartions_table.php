@@ -25,7 +25,9 @@ return new class extends Migration
             $table->string('county')->nullable();
             $table->string('sub_county')->nullable();
             $table->string('member_location')->default('Nairobi');
-            $table->string('member_no')->nullable(); 
+            $table->string('member_no')->nullable();
+            $table->string('skills')->nullable();
+            $table->string('pillar')->nullable();
             $table->string('service_number')->unique();
             $table->string('spouse_name')->nullable();
             $table->string('spouse_second_name')->nullable();

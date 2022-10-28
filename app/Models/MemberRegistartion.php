@@ -20,6 +20,8 @@ class MemberRegistartion extends Model
         'phone',        
         'id_number',
         'member_location',
+        'skills',
+        'pillar',
         'service_number',
         'spouse_name',        
         'spouse_maiden_name',

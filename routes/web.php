@@ -31,6 +31,7 @@ Route::get('/view-member/{id}', [App\Http\Controllers\backend\UserController::cl
 Route::post('/update-user/{id}', [App\Http\Controllers\backend\UserController::class, 'UpdateUser'])->name('updateuser');
 Route::post('/update-member/{id}', [App\Http\Controllers\backend\UserController::class, 'updateMember'])->name('updateMember');
 Route::post('/update-member-dets/{id}', [App\Http\Controllers\backend\UserController::class, 'updateMemberDets'])->name('updateMemberDets');
+Route::post('/approve-member/{id}', [App\Http\Controllers\backend\UserController::class, 'approveMember'])->name('approveMember');
 
 Route::get('/delete-user/{email}', [App\Http\Controllers\backend\UserController::class, 'DeleteUser'])->name('deleteuser');
 
@@ -51,6 +52,7 @@ Route::get('/sendEmail', [App\Http\Controllers\payment\MPESAController::class, '
 Route::get('/add-docs', [App\Http\Controllers\FileController::class, 'addDocs'])->name('addDocs');
 Route::post('/upload-docs', [App\Http\Controllers\FileController::class, 'uploadDocs'])->name('uploadDocs');
 Route::get('/all-docs', [App\Http\Controllers\FileController::class, 'allDocs'])->name('allDocs');
+
 Route::get('/view-docs/{id}', [App\Http\Controllers\FileController::class, 'viewDocs'])->name('viewDocs');
 
 //Route::get('/import-data', [App\Http\Controllers\backend\UserController::class, 'importUsers'])->name('import-data');
