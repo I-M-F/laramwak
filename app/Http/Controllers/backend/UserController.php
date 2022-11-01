@@ -132,7 +132,7 @@ class UserController extends Controller
         $data['status'] = "Active";
         $data['updated_at'] = date('Y-m-d H:i:s');
 
-        dd($data);
+        //dd($data);
         $update = DB::table('member_registartions')
             ->where('id', $id)
             ->update($data);
