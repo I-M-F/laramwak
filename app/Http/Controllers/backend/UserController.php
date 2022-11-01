@@ -113,15 +113,26 @@ class UserController extends Controller
     public function updateMember(Request $request, $id)
     {
         $date = date('m-Y');
+        //
+        $dateMWAK = date('Y-m-d H:i:s');
+        $values = array(
+            "member_id" => $request->id,            
+            "date" => $dateMWAK
+        );        
 
-        $mwak_no = 'MWAK-'.$date.'-'.$id+25;
+        $mwak_id = DB::table('mwak_regs')->insertGetId($values);
+
         
+
+        $mwak_no = 'MWAK-'.$date.'-'. $mwak_id;
+      
         $data = array();
         $data['member_location'] = $request->chapter;
         $data['member_no'] = $mwak_no;
         $data['status'] = "Active";
         $data['updated_at'] = date('Y-m-d H:i:s');
 
+        dd($data);
         $update = DB::table('member_registartions')
             ->where('id', $id)
             ->update($data);

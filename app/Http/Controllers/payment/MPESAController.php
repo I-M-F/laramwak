@@ -120,6 +120,7 @@ class MPESAController extends Controller
         $BusinessShortCode = '7893469';
         $Passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';  
         
+        
         $paymentDB = DB::table('payments')
             ->where('phone', '=', $phone)
             ->first();
@@ -199,6 +200,9 @@ class MPESAController extends Controller
 
 
     }
+
+
+
 
     // public function mpesaSTKPush($phone){
 
