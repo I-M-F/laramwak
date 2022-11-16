@@ -44,6 +44,8 @@ Route::get('/edit-tx/{phone}', [App\Http\Controllers\payment\MPESAController::cl
 Route::get('/tuma-sms/{phone}', [App\Http\Controllers\payment\MPESAController::class, 'tumaSMS'])->name('tumaSMS');
 Route::post('/update-tx/{phone}', [App\Http\Controllers\payment\MPESAController::class, 'updateTx'])->name('updateTx');
 Route::post('/pay-notify/{id}', [App\Http\Controllers\payment\MPESAController::class, 'payNotify'])->name('payNotify');
+Route::get('/pending-pay', [App\Http\Controllers\payment\MPESAController::class, 'pendingNotify'])->name('pendingNotify');
+
 // Member Management
 Route::view('/member-register','member-register')->name('member-register');
 Route::get('/edit-user/{id}', [App\Http\Controllers\backend\UserController::class, 'EditUser'])->name('edituser');

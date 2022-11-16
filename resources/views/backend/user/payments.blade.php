@@ -48,7 +48,6 @@
                       @if($row->status=='Pending')
                       <a href="{{ URL::to('/mpesaSTKPush/'.$row->phone) }}" class="btn btn-sm btn-info">Lipa Na MPesa</a>
                       <a href="{{ URL::to('/edit-tx/'.$row->id) }}" class="btn btn-sm btn-info">Edit </a>
-                      <a href="{{ URL::to('/tuma-sms/'.$row->id) }}" class="btn btn-sm btn-info">Send SMS </a>
                       <!-- <a href="{{ URL::to('/sendEmail') }}" class="btn btn-sm btn-info">Pay With VISA/MasterCard Email</a>
                              -->
 
@@ -80,6 +79,8 @@
               </table>
             </div>
             <!-- /.card-body -->
+            <a href="{{ URL::to('/pending-pay/') }}" class="btn btn-sm btn-info">Pending Payment Reminder </a>
+
           </div>
           <!-- /.card -->
         </div>
