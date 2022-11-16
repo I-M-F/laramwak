@@ -294,7 +294,7 @@ class MPESAController extends Controller
 
         $tuma = DB::table('payments')->where('id', $id)->get();
         $member = DB::table('member_registartions')->where('phone', $tuma->phone)->get();
-        //dd($edit);
+        dd($member);
         return view('backend.user.tuma-sms', compact('tuma', 'member'));
     }
 
