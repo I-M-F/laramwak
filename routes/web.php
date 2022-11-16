@@ -41,7 +41,9 @@ Route::get('/payment', [App\Http\Controllers\payment\MPESAController::class, 'pa
 Route::get('/getAccessToken', [App\Http\Controllers\payment\MPESAController::class, 'getAccessToken'])->name('getAccessToken');
 Route::get('/mpesaSTKPush/{phone}', [App\Http\Controllers\payment\MPESAController::class, 'mwakSTKPush'])->name('mwakSTKPush');
 Route::get('/edit-tx/{phone}', [App\Http\Controllers\payment\MPESAController::class, 'editTx'])->name('editTx');
+Route::get('/tuma-sms/{phone}', [App\Http\Controllers\payment\MPESAController::class, 'tumaSMS'])->name('tumaSMS');
 Route::post('/update-tx/{phone}', [App\Http\Controllers\payment\MPESAController::class, 'updateTx'])->name('updateTx');
+Route::post('/pay-notify/{id}', [App\Http\Controllers\payment\MPESAController::class, 'payNotify'])->name('payNotify');
 // Member Management
 Route::view('/member-register','member-register')->name('member-register');
 Route::get('/edit-user/{id}', [App\Http\Controllers\backend\UserController::class, 'EditUser'])->name('edituser');
