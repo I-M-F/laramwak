@@ -305,6 +305,8 @@ class MPESAController extends Controller
 
         foreach ($paymentDB as $user) {
 
+            
+
             $member = DB::table('member_registartions')->where('phone', $user->phone)->first();
             //printf($member->first_name);
            // $member = DB::table('member_registartions')->where('phone', $tuma->phone)->first();
@@ -313,6 +315,7 @@ class MPESAController extends Controller
             //dd($message);
 
             //$this->SendNotifySMS($user->phone, $message);
+
 
             printf($message);
 
