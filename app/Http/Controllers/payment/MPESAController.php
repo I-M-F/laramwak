@@ -310,10 +310,10 @@ class MPESAController extends Controller
             $member = DB::table('member_registartions')->where('phone', $user->phone)->first();
 
             //dd($member);
-            if (is_null($member)) {
-                # code...
-                dd($user->phone);
-            }
+            // if (is_null($member)) {
+            //     # code...
+            //     dd($user->phone);
+            // }
             
             //printf($member->first_name);
            // $member = DB::table('member_registartions')->where('phone', $tuma->phone)->first();
@@ -321,10 +321,10 @@ class MPESAController extends Controller
             $message = 'Dear ' . $member->first_name . ', MWAK would like to remind you that Kes ' . $user->amount . '/=  for  ' . $user->payment_description . ' is due. Make Payment to Mpesa details below. KCB Paybill number 7893469 account name - Your First Name/Spouse Name. If paid kindly ignore this SMS.';
             //dd($message);
 
-            //$this->SendNotifySMS($user->phone, $message);
+            $this->SendNotifySMS($user->phone, $message);
 
 
-            printf($message.'\n');
+            //printf($message.'\n');
 
 
         }
