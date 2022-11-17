@@ -156,7 +156,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{URL::to('/pendingpay')}}" class="nav-link">
+              <a href="{{URL::to('/pendingPayList')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Pending Payments</p>
               </a>

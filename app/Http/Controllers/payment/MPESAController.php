@@ -31,6 +31,7 @@ class MPESAController extends Controller
             $paymentDB = DB::table('payments')->get();
         } else {
             # code...
+
             $phone = DB::table('member_registartions')->where('email', '=', Auth::user()->email)->value('phone');
             $paymentDB = DB::table('payments')
                 ->where('id', '=', $phone)
@@ -55,9 +56,15 @@ class MPESAController extends Controller
         //$phone = Auth::user()->email;
 
         if ($user == 'Admin') {
-            # code...
-            $paymentDB = DB::table('payments')->where('status','Pending')->get();
-            printf($paymentDB);
+           
+
+            $paymentDB = DB::table('payments')
+            ->join('member_registartions', 'payments.phone', '=', 'member_registartions.phone')
+            ->get();
+
+
+            //printf($paymentDB);
+            
 
         } else {
             # code...
@@ -67,7 +74,7 @@ class MPESAController extends Controller
                 ->get();
         }
 
-        return view('backend.user.payments', compact('all', 'response', 'member', 'paymentDB'));
+        return view('backend.user.pendingpay', compact('all', 'response', 'member', 'paymentDB'));
 
         //dd($user);
     }

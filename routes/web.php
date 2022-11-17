@@ -38,7 +38,7 @@ Route::get('/delete-user/{email}', [App\Http\Controllers\backend\UserController:
 
 // Payments Managment
 Route::get('/payment', [App\Http\Controllers\payment\MPESAController::class, 'payment'])->name('payment');
-Route::get('/pendingpay', [App\Http\Controllers\payment\MPESAController::class, 'pendingPay'])->name('pendingPay');
+Route::get('/pendingPayList', [App\Http\Controllers\payment\MPESAController::class, 'pendingPay'])->name('pendingPay');
 Route::get('/getAccessToken', [App\Http\Controllers\payment\MPESAController::class, 'getAccessToken'])->name('getAccessToken');
 Route::get('/mpesaSTKPush/{phone}', [App\Http\Controllers\payment\MPESAController::class, 'mwakSTKPush'])->name('mwakSTKPush');
 Route::get('/edit-tx/{phone}', [App\Http\Controllers\payment\MPESAController::class, 'editTx'])->name('editTx');
