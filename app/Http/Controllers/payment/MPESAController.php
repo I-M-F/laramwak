@@ -326,6 +326,12 @@ class MPESAController extends Controller
 
             //printf($message.'\n');
 
+            $notification = array(
+                'messege' => 'Succesfully Notified User',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('payment')->with($notification);
+
 
         }
 
