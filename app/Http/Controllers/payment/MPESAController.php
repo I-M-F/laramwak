@@ -308,6 +308,12 @@ class MPESAController extends Controller
             
 
             $member = DB::table('member_registartions')->where('phone', $user->phone)->first();
+
+            if ($member->first_name == NULL) {
+                # code...
+                $member->first_name = 'Jina';
+            } 
+            
             //printf($member->first_name);
            // $member = DB::table('member_registartions')->where('phone', $tuma->phone)->first();
 
@@ -317,7 +323,7 @@ class MPESAController extends Controller
             //$this->SendNotifySMS($user->phone, $message);
 
 
-            printf($message);
+            printf($message.'\n');
 
 
         }
