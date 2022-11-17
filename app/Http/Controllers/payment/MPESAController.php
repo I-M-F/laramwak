@@ -42,6 +42,36 @@ class MPESAController extends Controller
         //dd($user);
     }
 
+    public function pendingPay()
+    {
+        //haven't paid, Name, phone, spouse name, spouse rank, amount to pay
+        $response = $this->getAccessToken();
+
+        $all = DB::table('users')->get();
+        $member = DB::table('member_registartions')->get();
+        $this->middleware('auth');
+        //{{auth()->user()->role}} 
+        $user = Auth::user()->role;
+        //$phone = Auth::user()->email;
+
+        if ($user == 'Admin') {
+            # code...
+            $paymentDB = DB::table('payments')->where('status','Pending')->get();
+            printf($paymentDB);
+
+        } else {
+            # code...
+            $phone = DB::table('member_registartions')->where('email', '=', Auth::user()->email)->value('phone');
+            $paymentDB = DB::table('payments')
+            ->where('id', '=', $phone)
+                ->get();
+        }
+
+        return view('backend.user.payments', compact('all', 'response', 'member', 'paymentDB'));
+
+        //dd($user);
+    }
+
     public function getAccessToken()
     {
 

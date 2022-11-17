@@ -155,6 +155,12 @@
                 <p>All Payments</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{URL::to('/pendingpay')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Pending Payments</p>
+              </a>
+            </li>
             <!-- @if(auth()->user()->role=='Admin')
               <li class="nav-item">
                 <a href="{{URL::to('/edit-payments')}}" class="nav-link">
