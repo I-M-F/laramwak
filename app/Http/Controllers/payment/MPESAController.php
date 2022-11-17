@@ -309,8 +309,8 @@ class MPESAController extends Controller
 
             $member = DB::table('member_registartions')->where('phone', $user->phone)->first();
 
-            dd($member);
-            if (!is_null($member->first_name)) {
+            //dd($member);
+            if (!is_null($member)) {
                 # code...
                 $member->first_name = 'Jina';
             } 
