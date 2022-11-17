@@ -60,6 +60,7 @@ class MPESAController extends Controller
 
             $paymentDB = DB::table('payments')
             ->join('member_registartions', 'payments.phone', '=', 'member_registartions.phone')
+            ->where('payments.status','Pending')
             ->get();
 
 
