@@ -26,6 +26,7 @@
                     <th>Phone</th>
                     <th>Spouse Name</th>
                     <th>Service Number</th>
+                    <th>Spouse Rank</th>
                     <th>Photo</th>
                     <th>Action</th>
                   </tr>
@@ -46,7 +47,7 @@
                     @else
                     <td>{{ $row->service_number }}</td>
                     @endif
-                    
+                    <td>{{ $row->class }}</td>
                     <td><img src=" {{ asset('/storage/'. substr($row->id_card,6)) }}" alt="" title="{{ substr($row->id_card,6) }}" width='50' height='50' class="img img-responsive"> </td>
 
                     <td>
@@ -68,6 +69,7 @@
                     <th>Phone</th>
                     <th>Spouse Name</th>
                     <th>Service Number</th>
+                    <th>Spouse Rank</th>
                     <th>Photo</th>
                     <th>Action</th>
                   </tr>
