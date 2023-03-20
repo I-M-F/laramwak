@@ -24,6 +24,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone</th>
+                    <th>Spouse Name</th>
                     <th>Service Number</th>
                     <th>Photo</th>
                     <th>Action</th>
@@ -37,6 +38,7 @@
                     <td>{{ $row->first_name.' '.$row->maiden_name }}</td>
                     <td>{{ $row->email }}</td>
                     <td>{{ $row->phone }}</td>
+                    <td>{{ $row->spouse_name.' '.$row->spouse_maiden_name}}</td>
                     @if($row->role=='Unverified')
                     <td style="background-color:green ">{{ $row->service_number }}</td>
                     @elseif($row->role=='Rejected')
@@ -44,6 +46,7 @@
                     @else
                     <td>{{ $row->service_number }}</td>
                     @endif
+                    
                     <td><img src=" {{ asset('/storage/'. substr($row->id_card,6)) }}" alt="" title="{{ substr($row->id_card,6) }}" width='50' height='50' class="img img-responsive"> </td>
 
                     <td>
@@ -63,6 +66,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone</th>
+                    <th>Spouse Name</th>
                     <th>Service Number</th>
                     <th>Photo</th>
                     <th>Action</th>
