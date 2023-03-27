@@ -25,13 +25,13 @@
                     <th>Email</th>
                     <th>Phone</th>
                     <th>ID</th>
-                    <th>County</th>
-                    <th>Sub County</th>
+                    <!-- <th>County</th>
+                    <th>Sub County</th> -->
                     <th>Spouse Name</th>
                     <th>Service Number</th>
                     <th>Spouse Rank</th>
-                    <th>Photo</th>
-                    <th>Action</th>
+                    <!-- <th>Photo</th>
+                    <th>Action</th> -->
                   </tr>
                 </thead>
                 <tbody>
@@ -43,8 +43,8 @@
                     <td>{{ $row->email }}</td>
                     <td>{{ $row->phone }}</td>
                     <td>{{ $row->id_number }}</td>
-                    <td>{{ isset($get_county[$row->id]['county']) ? $get_county[$row->id]['county']->name : '' }}</td>
-                    <td>{{ isset($get_county[$row->id]['sub_county']) ? $get_county[$row->id]['sub_county']->name : '' }}</td>
+                    <!-- <td>{{ isset($get_county[$row->id]['county']) ? $get_county[$row->id]['county']->name : '' }}</td>
+                    <td>{{ isset($get_county[$row->id]['sub_county']) ? $get_county[$row->id]['sub_county']->name : '' }}</td> -->
 
                     <td>{{ $row->spouse_name.' '.$row->spouse_maiden_name}}</td>
                     @if($row->role=='Unverified')
@@ -55,13 +55,13 @@
                     <td>{{ $row->service_number }}</td>
                     @endif
                     <td>{{ $row->class }}</td>
-                    <td><img src=" {{ asset('/storage/'. substr($row->id_card,6)) }}" alt="" title="{{ substr($row->id_card,6) }}" width='50' height='50' class="img img-responsive"> </td>
+                    <!-- <td><img src=" {{ asset('/storage/'. substr($row->id_card,6)) }}" alt="" title="{{ substr($row->id_card,6) }}" width='50' height='50' class="img img-responsive"> </td>
 
                     <td>
                       <a href="{{ URL::to('/view-member/'.$row->id) }}" class="btn btn-sm btn-info">View</a>
                       <a href="{{ URL::to('/edit-user/'.$row->id) }}" class="btn btn-sm btn-info">Send SMS</a>
                       <a href="{{ URL::to('/delete-user/'.$row->email) }}" class="btn btn-sm btn-danger">Delete</a>
-                    </td>
+                    </td> -->
 
                   </tr>
                   @endforeach
@@ -75,14 +75,14 @@
                     <th>Email</th>
                     <th>Phone</th>
                     <th>ID</th>
-                    <th>County</th>
-                    <th>Sub County</th>
+                    <!-- <th>County</th>
+                    <th>Sub County</th> -->
                     <th>Interest</th>
                     <th>Spouse Name</th>
                     <th>Service Number</th>
                     <th>Spouse Rank</th>
-                    <th>Photo</th>
-                    <th>Action</th>
+                    <!-- <th>Photo</th>
+                    <th>Action</th> -->
                   </tr>
                 </tfoot>
               </table>
