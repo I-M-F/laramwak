@@ -37,20 +37,40 @@ class UserController extends Controller
         $all_members = DB::table('member_registartions')
         ->join('users', 'member_registartions.email', '=','users.email')            
         ->get();
-        
-        $view_member = DB::table('member_registartions')->where('email', $all_members->email)->first();
-        
-        $countyDB = DB::table('counties')
-        ->where('id', '=', $view_member->county)
-        ->first();
-        
-        $subCountyDB = DB::table('constituencies')
-        ->where('county_id', '=', $view_member->sub_county)
-        ->first();
+
+        // $view_member = DB::table('member_registartions')->where('email', $all_members->email)->first();
+
+        // $countyDB = DB::table('counties')
+        // ->where('id', '=', $view_member->county)
+        // ->first();
+
+        // $subCountyDB = DB::table('constituencies')
+        // ->where('county_id', '=', $view_member->sub_county)
+        // ->first();
+
+        $view_members = [];
+        foreach ($all_members as $member) {
+            $view_member = DB::table('member_registartions')->where('email', $member->email)->first();
+            $countyDB = DB::table('counties')
+            ->where('id', '=', $view_member->county)
+                ->first();
+            $subCountyDB = DB::table('constituencies')
+            ->where('county_id',
+                '=',
+                $view_member->sub_county
+            )
+            ->first();
+
+            $view_members[] = [
+                'member' => $view_member,
+                'county' => $countyDB,
+                'sub_county' => $subCountyDB
+            ];
+        }
 
    
-        //dd();
-        return view('backend.user.all-members', compact('all_members', 'countyDB', 'subCountyDB'));
+        dd($view_members);
+        return view('backend.user.all-members', compact('all_members', 'view_members'));
     }
 
     // AddUser
