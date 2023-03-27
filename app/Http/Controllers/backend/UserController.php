@@ -32,36 +32,24 @@ class UserController extends Controller
 
     public function AllMembers()
     {
-        //SELECT * FROM member_registartions, payments WHERE member_registartions.phone 
-        
         $all_members = DB::table('member_registartions')
-        ->join('users', 'member_registartions.email', '=','users.email')            
+        ->join('users', 'member_registartions.email', '=', 'users.email')
         ->get();
 
-    
-        $view_members = [];
+        $get_county = [];
         foreach ($all_members as $member) {
-            $view_member = DB::table('member_registartions')->where('email', $member->email)->first();
             $countyDB = DB::table('counties')
-            ->where('id', '=', $view_member->county)
+            ->where('id', '=', $member->county)
                 ->first();
             $subCountyDB = DB::table('constituencies')
-            ->where('county_id',
-                '=',
-                $view_member->sub_county
-            )
-            ->first();
+            ->where('county_id', '=', $member->sub_county)
+                ->first();
 
-            $view_members[] = [
-                'member' => $view_member,
-                'county' => $countyDB,
-                'sub_county' => $subCountyDB
-            ];
+            $get_county[$member->id] = ['county' => $countyDB, 'sub_county' => $subCountyDB];
         }
 
-   
-        dd($view_members);
-        return view('backend.user.all-members', compact('view_members'));
+        dd($get_county);
+        return view('backend.user.all-members', compact('all_members', 'get_county'));
     }
 
     // AddUser
