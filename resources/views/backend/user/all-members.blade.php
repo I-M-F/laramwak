@@ -50,7 +50,7 @@
                     <td>{{ $row['member']->spouse_name.' '.$row['member']->spouse_maiden_name}}</td>
                     @if($row['member']->role=='Unverified')
                     <td style="background-color:green ">{{ $row['member']->service_number }}</td>
-                    @elseif($row->role=='Rejected')
+                    @elseif($row['member']->role=='Rejected')
                     <td style="background-color:red ">{{ $row['member']->service_number }}</td>
                     @else
                     <td>{{ $row['member']->service_number }}</td>
