@@ -171,10 +171,10 @@ class MPESAController extends Controller
             "orgShortCode" => "7893469",
             "orgPassKey" => "6bfa2a1c0a3dba7c0357a93d9af342fa5abe8dc2cd022206e47516be3bb7d5ba",
             "callbackUrl" => "https://posthere.io/f613-4b7f-b82b",
-            "transactionDescription" => "paymentDB->description"
+            "transactionDescription" => $paymentDB->payment_description
         ];
 
-        dd($paymentDB);
+        //dd($paymentDB);
         $headers = [
                 "accept: application/json",
                 "routeCode: 207",
