@@ -44,8 +44,8 @@
                     <td>{{ $row->email }}</td>
                     <td>{{ $row->phone }}</td>
                     <td>{{ $row->id_number }}</td>
-                    <td>{{ $countyDB->name }}</td>
-                    <td>{{ $subCountyDB->name }}</td>
+                    <td>{{ isset($get_county[$row->id]['county']) ? $get_county[$row->id]['county']->name : '' }}</td>
+                    <td>{{ isset($get_county[$row->id]['sub_county']) ? $get_county[$row->id]['sub_county']->name : '' }}</td>
                     <td>{{ $row->phone }}</td>
                     <td>{{ $row->spouse_name.' '.$row->spouse_maiden_name}}</td>
                     @if($row->role=='Unverified')
