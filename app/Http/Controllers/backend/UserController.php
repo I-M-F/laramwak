@@ -48,7 +48,7 @@ class UserController extends Controller
             $get_county[$member->id] = ['county' => $countyDB, 'sub_county' => $subCountyDB];
         }
 
-        dd($get_county);
+        //dd($get_county);
         return view('backend.user.all-members', compact('all_members', 'get_county'));
     }
 
