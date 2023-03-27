@@ -40,7 +40,7 @@ Route::get('/delete-user/{email}', [App\Http\Controllers\backend\UserController:
 Route::get('/payment', [App\Http\Controllers\payment\MPESAController::class, 'payment'])->name('payment');
 Route::get('/pendingPayList', [App\Http\Controllers\payment\MPESAController::class, 'pendingPay'])->name('pendingPay');
 Route::get('/getAccessToken', [App\Http\Controllers\payment\MPESAController::class, 'getAccessToken'])->name('getAccessToken');
-Route::get('/mpesaSTKPush/{phone}', [App\Http\Controllers\payment\MPESAController::class, 'mwakSTKPush'])->name('mwakSTKPush');
+Route::get('/mpesaSTKPush/{phone}', [App\Http\Controllers\payment\MPESAController::class, 'mwakKCBMPESASTKPUSH'])->name('mwakKCBMPESASTKPUSH');
 Route::get('/edit-tx/{phone}', [App\Http\Controllers\payment\MPESAController::class, 'editTx'])->name('editTx');
 Route::get('/tuma-sms/{phone}', [App\Http\Controllers\payment\MPESAController::class, 'tumaSMS'])->name('tumaSMS');
 Route::post('/update-tx/{phone}', [App\Http\Controllers\payment\MPESAController::class, 'updateTx'])->name('updateTx');
