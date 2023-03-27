@@ -37,7 +37,7 @@
                 </thead>
                 <tbody>
 
-                  @foreach($all_members as $key=>$row)
+                  @foreach($view_members as $key=>$row)
                   <tr>
                     <td>{{ $key+1 }}</td>
                     <td>{{ $row->first_name.' '.$row->maiden_name }}</td>

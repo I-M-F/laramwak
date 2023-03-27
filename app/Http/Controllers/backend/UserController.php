@@ -38,16 +38,7 @@ class UserController extends Controller
         ->join('users', 'member_registartions.email', '=','users.email')            
         ->get();
 
-        // $view_member = DB::table('member_registartions')->where('email', $all_members->email)->first();
-
-        // $countyDB = DB::table('counties')
-        // ->where('id', '=', $view_member->county)
-        // ->first();
-
-        // $subCountyDB = DB::table('constituencies')
-        // ->where('county_id', '=', $view_member->sub_county)
-        // ->first();
-
+    
         $view_members = [];
         foreach ($all_members as $member) {
             $view_member = DB::table('member_registartions')->where('email', $member->email)->first();
@@ -69,8 +60,8 @@ class UserController extends Controller
         }
 
    
-        dd($view_members);
-        return view('backend.user.all-members', compact('all_members', 'view_members'));
+        //dd($view_members);
+        return view('backend.user.all-members', compact('view_members'));
     }
 
     // AddUser
