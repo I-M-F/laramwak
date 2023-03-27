@@ -17,7 +17,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="example12" class="table table-bordered table-striped">
+              <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
                     <th>Reg No. </th>
@@ -25,11 +25,11 @@
                     <th>Email</th>
                     <th>Phone</th>
                     <th>ID</th>
-                    <th>County</th>
+                    <!-- <th>County</th>
                     <th>Sub County</th>
                     <th>Spouse Name</th>
                     <th>Service Number</th>
-                    <th>Spouse Rank</th>
+                    <th>Spouse Rank</th> -->
                     <th>Photo</th>
                     <th>Action</th>
                   </tr>
@@ -43,7 +43,7 @@
                     <td>{{ $row->email }}</td>
                     <td>{{ $row->phone }}</td>
                     <td>{{ $row->id_number }}</td>
-                    <td>{{ isset($get_county[$row->id]['county']) ? $get_county[$row->id]['county']->name : '' }}</td>
+                    <!-- <td>{{ isset($get_county[$row->id]['county']) ? $get_county[$row->id]['county']->name : '' }}</td>
                     <td>{{ isset($get_county[$row->id]['sub_county']) ? $get_county[$row->id]['sub_county']->name : '' }}</td>
 
                     <td>{{ $row->spouse_name.' '.$row->spouse_maiden_name}}</td>
@@ -54,7 +54,7 @@
                     @else
                     <td>{{ $row->service_number }}</td>
                     @endif
-                    <td>{{ $row->class }}</td>
+                    <td>{{ $row->class }}</td> -->
                     <td><img src=" {{ asset('/storage/'. substr($row->id_card,6)) }}" alt="" title="{{ substr($row->id_card,6) }}" width='50' height='50' class="img img-responsive"> </td>
 
                     <td>
@@ -76,13 +76,13 @@
                     <th>Phone</th>
                     <th>ID</th>
                     <!-- <th>County</th>
-                    <th>Sub County</th> -->
-                    <!-- <th>Interest</th> -->
+                    <th>Sub County</th>
+                    
                     <th>Spouse Name</th>
                     <th>Service Number</th>
-                    <th>Spouse Rank</th>
-                    <!-- <th>Photo</th>
-                    <th>Action</th> -->
+                    <th>Spouse Rank</th> -->
+                    <th>Photo</th>
+                    <th>Action</th>
                   </tr>
                 </tfoot>
               </table>
