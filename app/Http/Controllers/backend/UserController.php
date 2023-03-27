@@ -60,7 +60,7 @@ class UserController extends Controller
         }
 
    
-        //dd($view_members);
+        dd($view_members);
         return view('backend.user.all-members', compact('view_members'));
     }
 
