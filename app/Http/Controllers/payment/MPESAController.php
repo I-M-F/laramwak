@@ -151,6 +151,59 @@ class MPESAController extends Controller
         return $lipa_na_mpesa_password;
     }
 
+    public function mwakKCBMPESASTKPUSH($phone){
+
+        $url = "https://uat.buni.kcbgroup.com/mm/api/request/1.0.0/stkpush";
+
+        $paymentDB = DB::table('payments')
+        ->where('phone', '=', $phone)
+        ->first();
+
+
+
+        $simuNo = preg_replace("/^0/", "254", $phone);
+
+        $data = [
+            "phoneNumber" => $simuNo,
+            "amount" => $paymentDB->amount,
+            "invoiceNumber" => "INV-10122",
+            "sharedShortCode" => true,
+            "orgShortCode" => "7893469",
+            "orgPassKey" => "6bfa2a1c0a3dba7c0357a93d9af342fa5abe8dc2cd022206e47516be3bb7d5ba",
+            "callbackUrl" => "https://posthere.io/f613-4b7f-b82b",
+            "transactionDescription" => $paymentDB->description
+        ];
+
+        dd($paymentDB);
+        $headers = [
+                "accept: application/json",
+                "routeCode: 207",
+                "operation: STKPush",
+                "messageId: 232323_KCBOrg_8875661561",
+                "Content-Type: application/json",
+                "Authorization: Bearer 8b8R3\$vs"
+            ];
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $response = curl_exec($ch);
+
+        if ($response === false) {
+            echo "Curl error: " . curl_error($ch);
+        } else {
+            echo "Response: " . $response;
+        }
+
+        curl_close($ch);
+
+    }
+
     public function mwakSTKPush($phone)
     {
         //dd($phone);
