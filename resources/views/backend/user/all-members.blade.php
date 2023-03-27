@@ -27,7 +27,7 @@
                     <th>ID</th>
                     <th>County</th>
                     <th>Sub County</th>
-                    <th>Interest</th>
+                    <!-- <th>Interest</th> -->
                     <th>Spouse Name</th>
                     <th>Service Number</th>
                     <th>Spouse Rank</th>
@@ -46,7 +46,7 @@
                     <td>{{ $row->id_number }}</td>
                     <td>{{ isset($get_county[$row->id]['county']) ? $get_county[$row->id]['county']->name : '' }}</td>
                     <td>{{ isset($get_county[$row->id]['sub_county']) ? $get_county[$row->id]['sub_county']->name : '' }}</td>
-                    <td>{{ $row->skill.' '.$row->pillar }}</td>
+                    <!-- <td>{{ $row->skill.' '.$row->pillar }}</td> -->
                     <td>{{ $row->spouse_name.' '.$row->spouse_maiden_name}}</td>
                     @if($row->role=='Unverified')
                     <td style="background-color:green ">{{ $row->service_number }}</td>
