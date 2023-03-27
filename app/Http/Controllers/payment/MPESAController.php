@@ -158,6 +158,7 @@ class MPESAController extends Controller
         $consumerKey = 'o1QYI6OQjLTNrvJbFYreRjacWHEh9fxe'; //Fill with your app Consumer Key
         $consumerSecret = 'xT2hd4Kirj5H0AY3'; // Fill with your app Secret
 
+       
         # define the variales
         # provide the following details, this part is found on your test credentials on the developer account
         $BusinessShortCode = '7893469';

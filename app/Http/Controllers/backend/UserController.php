@@ -38,9 +38,17 @@ class UserController extends Controller
         ->join('users', 'member_registartions.email', '=','users.email')            
         ->get();
 
+        $countyDB = DB::table('counties')
+        ->where('id', '=', $all_members->county)
+        ->first();
+        
+        $subCountyDB = DB::table('constituencies')
+        ->where('county_id', '=', $all_members->sub_county)
+        ->first();
+
    
         //dd();
-        return view('backend.user.all-members', compact('all_members'));
+        return view('backend.user.all-members', compact('all_members', 'countyDB', 'subCountyDB'));
     }
 
     // AddUser

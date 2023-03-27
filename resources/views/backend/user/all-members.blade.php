@@ -24,6 +24,10 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone</th>
+                    <th>ID</th>
+                    <th>County</th>
+                    <th>Sub County</th>
+                    <th>Interest</th>
                     <th>Spouse Name</th>
                     <th>Service Number</th>
                     <th>Spouse Rank</th>
@@ -38,6 +42,10 @@
                     <td>{{ $key+1 }}</td>
                     <td>{{ $row->first_name.' '.$row->maiden_name }}</td>
                     <td>{{ $row->email }}</td>
+                    <td>{{ $row->phone }}</td>
+                    <td>{{ $row->id_number }}</td>
+                    <td>{{ $countyDB->name }}</td>
+                    <td>{{ $subCountyDB->name }}</td>
                     <td>{{ $row->phone }}</td>
                     <td>{{ $row->spouse_name.' '.$row->spouse_maiden_name}}</td>
                     @if($row->role=='Unverified')
@@ -67,6 +75,10 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone</th>
+                    <th>ID</th>
+                    <th>County</th>
+                    <th>Sub County</th>
+                    <th>Interest</th>
                     <th>Spouse Name</th>
                     <th>Service Number</th>
                     <th>Spouse Rank</th>
