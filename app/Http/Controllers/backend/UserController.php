@@ -33,17 +33,17 @@ class UserController extends Controller
     public function AllMembers()
     {
         //SELECT * FROM member_registartions, payments WHERE member_registartions.phone 
-        //$all_members = DB::table('member_registartions')->get();
+        $members = DB::table('member_registartions')->get();
         $all_members = DB::table('member_registartions')
         ->join('users', 'member_registartions.email', '=','users.email')            
         ->get();
 
         $countyDB = DB::table('counties')
-        ->where('id', '=', $all_members->county)
+        ->where('id', '=', $members->county)
         ->first();
         
         $subCountyDB = DB::table('constituencies')
-        ->where('county_id', '=', $all_members->sub_county)
+        ->where('county_id', '=', $members->sub_county)
         ->first();
 
    
