@@ -46,7 +46,7 @@
                     <td>{{ $row->id_number }}</td>
                     <td>{{ isset($get_county[$row->id]['county']) ? $get_county[$row->id]['county']->name : '' }}</td>
                     <td>{{ isset($get_county[$row->id]['sub_county']) ? $get_county[$row->id]['sub_county']->name : '' }}</td>
-                    <td>{{ $row->phone }}</td>
+                    <td>{{ $row->skill.' '.$row->pillar }}</td>
                     <td>{{ $row->spouse_name.' '.$row->spouse_maiden_name}}</td>
                     @if($row->role=='Unverified')
                     <td style="background-color:green ">{{ $row->service_number }}</td>
