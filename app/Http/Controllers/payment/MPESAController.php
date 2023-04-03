@@ -177,7 +177,7 @@ class MPESAController extends Controller
 
         // Execute the cURL request
         $response = curl_exec($ch);
-
+        print_r($response);
         // Check for errors
         if (curl_errno($ch)) {
             $error_message = curl_error($ch);
@@ -189,7 +189,7 @@ class MPESAController extends Controller
 
         // Decode the response from JSON to an associative array
         $response_array = json_decode($response, true);
-
+        print_r($response_array);
         // Check if the access token is available
         if (isset($response_array["access_token"])) {
             // Extract the access token from the response array
@@ -197,7 +197,7 @@ class MPESAController extends Controller
             // Use the access token as needed
         } else {
             // Handle the error
-            $access_token=$response;
+            $access_token="no token";
         }
 
 
