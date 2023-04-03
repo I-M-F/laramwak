@@ -153,42 +153,70 @@ class MPESAController extends Controller
 
     public function mwakKCBMPESASTKPUSH($phone)
     {
-        
-        // Set the access token URL
-        $access_token_url = "https://api.buni.kcbgroup.com/token?grant_type=client_credentials";
+        $curl = curl_init();
 
-        // Set the consumer key and secret
-        $consumer_key = "aB5aFMZ8WCQL2YpuYqnwFy0JjYQa";
-        $consumer_secret = "Vwvr5pn1eS4Cuh8SVR1BCR9ThUca";
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.buni.kcbgroup.com/token?grant_type=client_credentials',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: Basic YUI1YUZNWjhXQ1FMMllwdVlxbndGeTBKallRYTpWd3ZyNXBuMWVTNEN1aDhTVlIxQkNSOVRoVWNh'
+            ),
+        ));
 
-        // Set the headers for the cURL request
-        $headers = array(
-            "Content-Type: application/json",
-            "Authorization: Basic " . base64_encode($consumer_key . ":" . $consumer_secret),
-        );
+        $response = curl_exec($curl);
+        $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
-        $curl = curl_init($access_token_url);
+        // Check for cURL errors
+        if (curl_errno($curl)) {
+            $error_msg = curl_error($curl);
+            curl_close($curl);
+            throw new Exception("cURL error: " . $error_msg);
+        }
 
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($curl, CURLOPT_HEADER, FALSE);
-        //curl_setopt($curl, CURLOPT_USERPWD, $consumerKey . ':' . $consumerSecret);
-        $result = curl_exec($curl);
-        $status = curl_getinfo(
-                $curl,
-                CURLINFO_HTTP_CODE
-            );
-        $result = json_decode($result);
-        $access_token = $result->access_token;
+        // Check for HTTP errors
+        if ($status < 200 || $status >= 300) {
+            curl_close($curl);
+            throw new \Exception("HTTP error: " . $status);
+        }
+
+        // Check if response is empty or not
+        if (empty($response)) {
+            curl_close($curl);
+            throw new \Exception("Empty response received");
+        }
+
+        // Decode the response JSON
+        $response_data = json_decode($response);
+
+        // Check for JSON decoding errors
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            curl_close($curl);
+            throw new \Exception("JSON decoding error: " . json_last_error_msg());
+        }
+
+        // Check if access token is present in the response
+        if (!isset($response_data->access_token)) {
+            curl_close($curl);
+            throw new \Exception("Access token not found in response");
+        }
+
+        $access_token = $response_data->access_token;
+
         curl_close($curl);
 
         # header for stk push
         $stkheader = ['Content-Type:application/json', 'Authorization:Bearer ' . $access_token];
 
-
         // Do something with access token here
         dd($access_token);
     }
+
 
 
     public function mwakSTKPush($phone)
