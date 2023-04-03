@@ -180,6 +180,7 @@ class MPESAController extends Controller
         // Check if curl_exec() returned an error
         if (!$result) {
             // Handle error here
+            dd($result);
             return;
         }
 
@@ -188,12 +189,14 @@ class MPESAController extends Controller
         // Check if json_decode() returned an error
         if (!$result) {
             // Handle error here
+            dd($result);
             return;
         }
 
         // Check if access token is set
         if (!isset($result->access_token)) {
             // Handle error here
+            dd($result->access_token);
             return;
         }
 
