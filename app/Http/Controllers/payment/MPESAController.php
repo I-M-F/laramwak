@@ -153,54 +153,28 @@ class MPESAController extends Controller
 
     public function mwakKCBMPESASTKPUSH($phone)
     {
-        // KCB Endpoint URL's
-        $initiate_url = "https://api.buni.kcbgroup.com/mm/api/request/1.0.0/stkpush";
         $access_token_url = "https://api.buni.kcbgroup.com/token?grant_type=client_credentials";
 
         //Fill with your app Consumer Key
         $consumerKey = 'aB5aFMZ8WCQL2YpuYqnwFy0JjYQa';
         $consumerSecret = 'Vwvr5pn1eS4Cuh8SVR1BCR9ThUca';
 
-        // header for access token
-        $headers = ['Content-Type:application/json; charset=utf8'];
-
-        $curl = curl_init($access_token_url);
-
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_HEADER, false);
-        curl_setopt($curl, CURLOPT_USERPWD, $consumerKey . ':' . $consumerSecret);
-        $result = curl_exec($curl);
-        $status = curl_getinfo(
-            $curl,
-            CURLINFO_HTTP_CODE
+        $headers = array(
+            'Content-Type: application/json',
+            'Authorization: Basic ' . base64_encode($consumerKey . ':' . $consumerSecret)
         );
-        curl_close($curl);
 
-        // Check if curl_exec() returned an error
-        if (!$result) {
-            // Handle error here
-            dd($result);
-            return;
-        }
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $access_token_url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-        $result = json_decode($result);
+        $response = curl_exec($ch);
 
-        // Check if json_decode() returned an error
-        if (!$result) {
-            // Handle error here
-            dd($result);
-            return;
-        }
+        $response_data = json_decode($response, true);
+        $access_token = $response_data['access_token'];
 
-        // Check if access token is set
-        if (!isset($result->access_token)) {
-            // Handle error here
-            dd($result->access_token);
-            return;
-        }
-
-        $access_token = $result->access_token;
+        curl_close($ch);
 
         // Do something with access token here
         dd($access_token);
