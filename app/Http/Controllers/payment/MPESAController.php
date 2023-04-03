@@ -197,7 +197,7 @@ class MPESAController extends Controller
             // Use the access token as needed
         } else {
             // Handle the error
-            $access_token="no token";
+            $access_token=$response_array;
         }
 
 
