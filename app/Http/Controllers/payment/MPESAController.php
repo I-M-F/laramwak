@@ -210,11 +210,45 @@ class MPESAController extends Controller
 
         curl_close($curl);
 
-        # header for stk push
-        $stkheader = ['Content-Type:application/json', 'Authorization:Bearer ' . $access_token];
+               // Do something with access token here
+        //dd($access_token);
 
-        // Do something with access token here
-        dd($access_token);
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.buni.kcbgroup.com/mm/api/request/1.0.0/stkpush',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => '{
+    "phoneNumber": "254720478650",
+    "amount": "10",
+    "invoiceNumber": "INV-10122",
+    "sharedShortCode": true,
+    "orgShortCode": "174379",
+    "orgPassKey": "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919",
+    "callbackUrl": "https://posthere.io/f613-4b7f-b82b",
+    "transactionDescription": "school fee payment"
+}',
+            CURLOPT_HTTPHEADER => array(
+                'accept: application/json',
+                'routeCode: 207',
+                'operation: STKPush',
+                'messageId: 232323_KCBOrg_8875661561',
+                'Content-Type: application/json',
+                'Authorization: Bearer '. $access_token
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        dd($response) ;
+
     }
 
 
