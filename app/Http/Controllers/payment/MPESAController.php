@@ -152,16 +152,39 @@ class MPESAController extends Controller
     }
 
     public function mwakKCBMPESASTKPUSH($phone){
-
-        $url = "https://uat.buni.kcbgroup.com/mm/api/request/1.0.0/stkpush";
+        // KCB Endpoint URL's
+        $initiate_url = "https://api.buni.kcbgroup.com/mm/api/request/1.0.0/stkpush";
+        $access_token_url = "https://api.buni.kcbgroup.com/token?grant_type=client_credentials";
 
         $paymentDB = DB::table('payments')
         ->where('phone', '=', $phone)
         ->first();
 
-
-
         $simuNo = preg_replace("/^0/", "254", $phone);
+
+        //Fill with your app Consumer Key
+        $consumerKey = 'aB5aFMZ8WCQL2YpuYqnwFy0JjYQa';
+        $consumerSecret = 'Vwvr5pn1eS4Cuh8SVR1BCR9ThUca';
+
+        # header for access token
+        $headers = ['Content-Type:application/json; charset=utf8'];
+
+        $curl = curl_init($access_token_url);
+
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($curl, CURLOPT_HEADER, FALSE);
+        curl_setopt($curl, CURLOPT_USERPWD, $consumerKey . ':' . $consumerSecret);
+        $result = curl_exec($curl);
+        $status = curl_getinfo(
+            $curl,
+            CURLINFO_HTTP_CODE
+        );
+        $result = json_decode($result);
+        $access_token = $result->access_token;
+        curl_close($curl);
+
+        dd($access_token);
 
         $data = [
             "phoneNumber" => $simuNo,
@@ -186,10 +209,11 @@ class MPESAController extends Controller
 
         $ch = curl_init();
 
-        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_URL, $initiate_url);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_USERPWD, $consumerKey . ':' . $consumerSecret);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         $response = curl_exec($ch);
