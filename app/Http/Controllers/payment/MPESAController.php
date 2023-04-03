@@ -167,38 +167,23 @@ class MPESAController extends Controller
             "Authorization: Basic " . base64_encode($consumer_key . ":" . $consumer_secret),
         );
 
-        // Initialize a new cURL session
-        $ch = curl_init();
+        $curl = curl_init($access_token_url);
 
-        // Set the cURL options
-        curl_setopt($ch, CURLOPT_URL, $access_token_url);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($curl, CURLOPT_HEADER, FALSE);
+        //curl_setopt($curl, CURLOPT_USERPWD, $consumerKey . ':' . $consumerSecret);
+        $result = curl_exec($curl);
+        $status = curl_getinfo(
+                $curl,
+                CURLINFO_HTTP_CODE
+            );
+        $result = json_decode($result);
+        $access_token = $result->access_token;
+        curl_close($curl);
 
-        // Execute the cURL request
-        $response = curl_exec($ch);
-        print_r($response);
-        // Check for errors
-        if (curl_errno($ch)) {
-            $error_message = curl_error($ch);
-            // Handle the error
-        }
-
-        // Close the cURL session
-        curl_close($ch);
-
-        // Decode the response from JSON to an associative array
-        $response_array = json_decode($response, true);
-        print_r($response_array);
-        // Check if the access token is available
-        if (isset($response_array["access_token"])) {
-            // Extract the access token from the response array
-            $access_token = $response_array["access_token"];
-            // Use the access token as needed
-        } else {
-            // Handle the error
-            $access_token="no token";
-        }
+        # header for stk push
+        $stkheader = ['Content-Type:application/json', 'Authorization:Bearer ' . $access_token];
 
 
         // Do something with access token here
