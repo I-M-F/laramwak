@@ -151,7 +151,7 @@ class MPESAController extends Controller
         return $lipa_na_mpesa_password;
     }
 
-    public function mwakKCBMPESASTKPUSH()
+    public function mwakKCBMPESASTKPUSH($phone)
     {
         // KCB Endpoint URL's
         $initiate_url = "https://api.buni.kcbgroup.com/mm/api/request/1.0.0/stkpush";
