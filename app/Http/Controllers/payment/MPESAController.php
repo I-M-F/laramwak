@@ -230,7 +230,7 @@ class MPESAController extends Controller
     "invoiceNumber": "MWAK-7893469",
     "sharedShortCode": true,
     "orgShortCode": "7893469",
-    "orgPassKey": "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919",
+    "orgPassKey": "6bfa2a1c0a3dba7c0357a93d9af342fa5abe8dc2cd022206e47516be3bb7d5ba",
     "callbackUrl": "https://posthere.io/f613-4b7f-b82b",
     "transactionDescription": "school fee payment"
 }',
