@@ -226,7 +226,7 @@ class MPESAController extends Controller
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => '{
     "phoneNumber": "254720478650",
-    "amount": "10",
+    "amount": "1",
     "invoiceNumber": "INV-10122",
     "sharedShortCode": true,
     "orgShortCode": "174379",
