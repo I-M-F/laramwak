@@ -151,82 +151,58 @@ class MPESAController extends Controller
         return $lipa_na_mpesa_password;
     }
 
-    public function mwakKCBMPESASTKPUSH($phone){
+    public function mwakKCBMPESASTKPUSH()
+    {
         // KCB Endpoint URL's
         $initiate_url = "https://api.buni.kcbgroup.com/mm/api/request/1.0.0/stkpush";
         $access_token_url = "https://api.buni.kcbgroup.com/token?grant_type=client_credentials";
-
-        $paymentDB = DB::table('payments')
-        ->where('phone', '=', $phone)
-        ->first();
-
-        $simuNo = preg_replace("/^0/", "254", $phone);
 
         //Fill with your app Consumer Key
         $consumerKey = 'aB5aFMZ8WCQL2YpuYqnwFy0JjYQa';
         $consumerSecret = 'Vwvr5pn1eS4Cuh8SVR1BCR9ThUca';
 
-        # header for access token
+        // header for access token
         $headers = ['Content-Type:application/json; charset=utf8'];
 
         $curl = curl_init($access_token_url);
 
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($curl, CURLOPT_HEADER, FALSE);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HEADER, false);
         curl_setopt($curl, CURLOPT_USERPWD, $consumerKey . ':' . $consumerSecret);
         $result = curl_exec($curl);
         $status = curl_getinfo(
             $curl,
             CURLINFO_HTTP_CODE
         );
-        $result = json_decode($result);
-        $access_token = $result->access_token;
         curl_close($curl);
 
-        dd($access_token);
-
-        $data = [
-            "phoneNumber" => $simuNo,
-            "amount" => $paymentDB->amount,
-            "invoiceNumber" => "INV-10122",
-            "sharedShortCode" => true,
-            "orgShortCode" => "7893469",
-            "orgPassKey" => "6bfa2a1c0a3dba7c0357a93d9af342fa5abe8dc2cd022206e47516be3bb7d5ba",
-            "callbackUrl" => "https://posthere.io/f613-4b7f-b82b",
-            "transactionDescription" => $paymentDB->payment_description
-        ];
-
-        //dd($paymentDB);
-        $headers = [
-                "accept: application/json",
-                "routeCode: 207",
-                "operation: STKPush",
-                "messageId: 232323_KCBOrg_8875661561",
-                "Content-Type: application/json",
-                "Authorization: Bearer 8b8R3\$vs"
-            ];
-
-        $ch = curl_init();
-
-        curl_setopt($ch, CURLOPT_URL, $initiate_url);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_USERPWD, $consumerKey . ':' . $consumerSecret);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        $response = curl_exec($ch);
-
-        if ($response === false) {
-            echo "Curl error: " . curl_error($ch);
-        } else {
-            echo "Response: " . $response;
+        // Check if curl_exec() returned an error
+        if (!$result) {
+            // Handle error here
+            return;
         }
 
-        curl_close($ch);
+        $result = json_decode($result);
 
+        // Check if json_decode() returned an error
+        if (!$result) {
+            // Handle error here
+            return;
+        }
+
+        // Check if access token is set
+        if (!isset($result->access_token)) {
+            // Handle error here
+            return;
+        }
+
+        $access_token = $result->access_token;
+
+        // Do something with access token here
+        dd($access_token);
     }
+
 
     public function mwakSTKPush($phone)
     {
