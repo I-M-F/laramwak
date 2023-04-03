@@ -153,6 +153,7 @@ class MPESAController extends Controller
 
     public function mwakKCBMPESASTKPUSH($phone)
     {
+        
         // Set the access token URL
         $access_token_url = "https://api.buni.kcbgroup.com/token?grant_type=client_credentials";
 
@@ -177,16 +178,27 @@ class MPESAController extends Controller
         // Execute the cURL request
         $response = curl_exec($ch);
 
+        // Check for errors
+        if (curl_errno($ch)) {
+            $error_message = curl_error($ch);
+            // Handle the error
+        }
+
         // Close the cURL session
         curl_close($ch);
 
         // Decode the response from JSON to an associative array
         $response_array = json_decode($response, true);
 
-        // Extract the access token from the response array
-        $access_token = $response_array["access_token"];
-
-// Use the access token as needed
+        // Check if the access token is available
+        if (isset($response_array["access_token"])) {
+            // Extract the access token from the response array
+            $access_token = $response_array["access_token"];
+            // Use the access token as needed
+        } else {
+            // Handle the error
+            $access_token="no token";
+        }
 
 
         // Do something with access token here
