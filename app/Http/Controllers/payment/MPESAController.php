@@ -227,9 +227,9 @@ class MPESAController extends Controller
             CURLOPT_POSTFIELDS => '{
     "phoneNumber": "254720478650",
     "amount": "1",
-    "invoiceNumber": "INV-10122",
+    "invoiceNumber": "MWAK-7893469",
     "sharedShortCode": true,
-    "orgShortCode": "174379",
+    "orgShortCode": "7893469",
     "orgPassKey": "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919",
     "callbackUrl": "https://posthere.io/f613-4b7f-b82b",
     "transactionDescription": "school fee payment"
