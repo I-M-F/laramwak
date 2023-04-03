@@ -153,28 +153,41 @@ class MPESAController extends Controller
 
     public function mwakKCBMPESASTKPUSH($phone)
     {
+        // Set the access token URL
         $access_token_url = "https://api.buni.kcbgroup.com/token?grant_type=client_credentials";
 
-        //Fill with your app Consumer Key
-        $consumerKey = 'aB5aFMZ8WCQL2YpuYqnwFy0JjYQa';
-        $consumerSecret = 'Vwvr5pn1eS4Cuh8SVR1BCR9ThUca';
+        // Set the consumer key and secret
+        $consumer_key = "aB5aFMZ8WCQL2YpuYqnwFy0JjYQa";
+        $consumer_secret = "Vwvr5pn1eS4Cuh8SVR1BCR9ThUca";
 
+        // Set the headers for the cURL request
         $headers = array(
-            'Content-Type: application/json',
-            'Authorization: Basic ' . base64_encode($consumerKey . ':' . $consumerSecret)
+            "Content-Type: application/json",
+            "Authorization: Basic " . base64_encode($consumer_key . ":" . $consumer_secret),
         );
 
+        // Initialize a new cURL session
         $ch = curl_init();
+
+        // Set the cURL options
         curl_setopt($ch, CURLOPT_URL, $access_token_url);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
+        // Execute the cURL request
         $response = curl_exec($ch);
 
-        $response_data = json_decode($response, true);
-        $access_token = $response_data['access_token'];
-
+        // Close the cURL session
         curl_close($ch);
+
+        // Decode the response from JSON to an associative array
+        $response_array = json_decode($response, true);
+
+        // Extract the access token from the response array
+        $access_token = $response_array["access_token"];
+
+// Use the access token as needed
+
 
         // Do something with access token here
         dd($access_token);
