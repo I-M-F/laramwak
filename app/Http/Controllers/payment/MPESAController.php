@@ -176,7 +176,7 @@ class MPESAController extends Controller
         if (curl_errno($curl)) {
             $error_msg = curl_error($curl);
             curl_close($curl);
-            throw new Exception("cURL error: " . $error_msg);
+            throw new \Exception("cURL error: " . $error_msg);
         }
 
         // Check for HTTP errors
@@ -210,9 +210,7 @@ class MPESAController extends Controller
 
         curl_close($curl);
 
-               // Do something with access token here
-        //dd($access_token);
-
+        //STK Push
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -228,7 +226,7 @@ class MPESAController extends Controller
     "phoneNumber": "254720478650",
     "amount": "1",
     "invoiceNumber": "MWAK-7893469",
-    "sharedShortCode": true,
+    "sharedShortCode": false,
     "orgShortCode": "7893469",
     "orgPassKey": "6bfa2a1c0a3dba7c0357a93d9af342fa5abe8dc2cd022206e47516be3bb7d5ba",
     "callbackUrl": "https://posthere.io/f613-4b7f-b82b",
