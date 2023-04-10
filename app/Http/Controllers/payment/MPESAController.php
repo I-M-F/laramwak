@@ -257,7 +257,7 @@ class MPESAController extends Controller
 
         curl_close($curl);
         //update payment db
-        dd($response) ;
+        //dd($response) ;
         return $this->payment($response);
     }
 
