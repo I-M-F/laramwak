@@ -153,6 +153,17 @@ class MPESAController extends Controller
 
     public function mwakKCBMPESASTKPUSH($phone)
     {
+        $paymentDB = DB::table('payments')
+        ->where('phone', '=', $phone)
+            ->first();
+
+
+
+        $simu_no = preg_replace("/^0/", "254", $phone); // This is your phone number, 
+        dd($simu_no);
+        $TransactionDesc = $paymentDB->payment_description;
+        $Amount = $paymentDB->amount;
+
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -223,14 +234,14 @@ class MPESAController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => '{
-    "phoneNumber": "254720478650",
-    "amount": "1",
+    "phoneNumber": "' . $simu_no . '",
+    "amount": "' . $Amount . '",
     "invoiceNumber": "MWAK-7893469",
     "sharedShortCode": false,
     "orgShortCode": "7893469",
     "orgPassKey": "6bfa2a1c0a3dba7c0357a93d9af342fa5abe8dc2cd022206e47516be3bb7d5ba",
     "callbackUrl": "https://posthere.io/f613-4b7f-b82b",
-    "transactionDescription": "school fee payment"
+    "transactionDescription" : "' . $TransactionDesc . '"
 }',
             CURLOPT_HTTPHEADER => array(
                 'accept: application/json',
@@ -245,6 +256,7 @@ class MPESAController extends Controller
         $response = curl_exec($curl);
 
         curl_close($curl);
+        //update payment db
         dd($response) ;
 
     }
