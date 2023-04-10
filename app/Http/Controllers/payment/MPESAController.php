@@ -160,7 +160,7 @@ class MPESAController extends Controller
 
 
         $simu_no = preg_replace("/^0/", "254", $phone); // This is your phone number, 
-        dd($simu_no);
+        //dd($simu_no);
         $TransactionDesc = $paymentDB->payment_description;
         $Amount = $paymentDB->amount;
 
@@ -258,7 +258,7 @@ class MPESAController extends Controller
         curl_close($curl);
         //update payment db
         dd($response) ;
-
+        return $this->payment($response);
     }
 
 
