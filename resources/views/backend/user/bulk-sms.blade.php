@@ -33,7 +33,8 @@
                             <div class="form-group row">
                                 <label for="name" class="col-sm-2 col-form-label"> SMS Message Details</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="smsdets" placeholder="Enter Message Details" required>
+                                    <!-- <input type="text" class="form-control" name="smsdets" placeholder="Enter Message Details" required> -->
+                                    <textarea class="form-control" name="smsdets" placeholder="Enter Message Details" required rows="5"></textarea>
                                 </div>
                             </div>
 
