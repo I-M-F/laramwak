@@ -74,12 +74,12 @@
                 <p>All Users</p>
               </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="{{URL::to('/add-user-index')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Add Users</p>
+                <p>XXAdd Users</p>
               </a>
-            </li>
+            </li> -->
           </ul>
         </li>
 
@@ -102,9 +102,21 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{URL::to('/add-user-index')}}" class="nav-link">
+              <a href="{{URL::to('/add-all')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Add Member</p>
+                <p>Add Members</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{URL::to('/commissioned')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Commissioned </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{URL::to('/non-commissioned')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Non-Commissioned </p>
               </a>
             </li>
           </ul>
@@ -114,7 +126,7 @@
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
             <p>
-              Document Management
+              Communication 
               <i class="fas fa-angle-left right"></i>
               <!-- <span class="badge badge-info right">6</span> -->
             </p>
@@ -130,6 +142,12 @@
               <a href="{{URL::to('/add-docs')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Add Document</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{URL::to('/bulk-sms')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Bulk SMS</p>
               </a>
             </li>
           </ul>
@@ -161,6 +179,31 @@
                 <p>Pending Payments</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{URL::to('/comPayList')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Commissioned Payments</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{URL::to('/nonComPayList')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>NonCommissioned Payments</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{URL::to('/subPayList')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Subscription Payments</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{URL::to('/annualPayList')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Annual Payments</p>
+              </a>
+            </li>
+
             <!-- @if(auth()->user()->role=='Admin')
               <li class="nav-item">
                 <a href="{{URL::to('/edit-payments')}}" class="nav-link">

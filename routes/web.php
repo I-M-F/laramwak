@@ -35,6 +35,8 @@ Route::post('/approve-member/{id}', [App\Http\Controllers\backend\UserController
 
 Route::get('/delete-user/{email}', [App\Http\Controllers\backend\UserController::class, 'DeleteUser'])->name('deleteuser');
 
+Route::get('/add-all', [App\Http\Controllers\backend\UserController::class, 'addAllMembers'])->name('addAllMembers');
+Route::post('/insert-all', [App\Http\Controllers\backend\UserController::class, 'insertAllMembers'])->name('insertAllMembers');
 
 // Payments Managment
 Route::get('/payment', [App\Http\Controllers\payment\MPESAController::class, 'payment'])->name('payment');
@@ -54,6 +56,9 @@ Route::get('/all-members', [App\Http\Controllers\backend\UserController::class, 
 Route::get('/sendSMS', [App\Http\Controllers\payment\MPESAController::class, 'sendSMS'])->name('sendSMS');
 Route::get('/sendEmail', [App\Http\Controllers\payment\MPESAController::class, 'sendEmail'])->name('sendEmail');
 
+Route::post('/all-bulk-sms', [App\Http\Controllers\FileController::class, 'allBulkSMS'])->name('allBulkSMS');
+Route::get('/bulk-sms', [App\Http\Controllers\FileController::class, 'bulkSMS'])->name('bulkSMS');
+
 Route::get('/add-docs', [App\Http\Controllers\FileController::class, 'addDocs'])->name('addDocs');
 Route::post('/upload-docs', [App\Http\Controllers\FileController::class, 'uploadDocs'])->name('uploadDocs');
 Route::get('/all-docs', [App\Http\Controllers\FileController::class, 'allDocs'])->name('allDocs');
@@ -66,4 +71,5 @@ Route::get('/view-docs/{id}', [App\Http\Controllers\FileController::class, 'view
 // Route::get('/datatables', function () {
 //     return view('backend.datatables');
 // });
+
 

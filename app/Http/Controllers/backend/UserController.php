@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers\backend;
 
+use App\Models\MemberRegistartion;
+use App\Models\Payment;
+use App\Models\User;
+use Carbon\Carbon;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
@@ -14,6 +19,8 @@ use AfricasTalking\SDK\AfricasTalking;
 use App\Imports\CountyImport;
 
 use Smalot\PdfParser\Parser;
+
+use Mail;
 
 class UserController extends Controller
 {
@@ -87,6 +94,179 @@ class UserController extends Controller
             );
             return redirect()->route('payment')->with($notification);
         }
+    }
+
+    public function addAllMembers(){
+        return view('backend.user.add-all');
+    }
+
+    public function insertAllMembers(Request $request){
+        // Check if a file was uploaded
+        if (!$request->hasFile('fileDocs')) {
+            return redirect()->back()->withErrors(['message' => 'No file was uploaded.']);
+        }
+
+        $file = $request->file('fileDocs');
+
+        //
+
+        //$data = Excel::load($file)->get();
+        $data = Excel::toArray([], $file);
+        //  0 => "S/NO"
+        //   1 => "NAME (S)"
+        //   2 => "phone"
+        //   3 => "ID NUMBER"
+        //   4 => "EMAIL"
+        //   5 => "COUNTY OF RESIDENCE"
+        //   6 => "SUB COUNTY"
+        //   7 => "PROFESSIONAL/OCCUPATION/SKILLS"
+        //   8 => "INREST IN "
+        //   9 => "NAME OF SPOUSE"
+        //   10 => "SPOUSE SVC NO"
+        //   11 => "RANK"
+        //   12 => "STATUS"
+        //   13 => "DATE REGISTERED"
+        //   14 => null
+        //   15 => "REGISTERED"
+        if (count($data) > 0) {
+            $values = [];
+
+            $passport  = 'update';
+            $idcard = 'update';
+            foreach ($data[0] as $key => $value) {
+                if ($key == 0) {
+                    continue; // Skip header row
+                }
+                $values[] = [
+                    'first_name' => $value[1],
+                    'second_name' => $value[2],
+                    'maiden_name' => $value[3],
+                    'phone' => $value[4],
+                    'id_number' => $value[5],
+                    'email' => $value[6],
+                    'county' => $value[7],
+                    'sub_county' => $value[8],
+                    'skills' => $value[9],
+                    'pillar' => $value[10],
+                    'spouse_name' => $value[11],
+                    'spouse_maiden_name' => $value[12],
+                    'service_number' => $value[13],
+                    'class' => $value[14],
+                    'spouse_status' => $value[15],
+                    'id_card'=> $idcard,
+                    'passport_photo'=> $passport
+
+             
+                   
+                ];
+            }
+
+            if (count($values) > 0) {
+             
+                
+
+                $OTP = random_int(111111, 999999);
+                $user_val = array(
+                    "name" => $value[1],
+                    "email" => $value[6],                    
+                    "role" => "Unverified",
+                    "password" => Hash::make($OTP), //$OTP
+                );
+                
+                $insert = MemberRegistartion::insert($values);
+        
+                User::insert($user_val);
+
+                $date = date('Y-m-d H:i:s');
+                $newDateFormate = Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('m/d/Y');
+                //insert into payment
+                if ($value[14] == 'General' || $value[14] == 'Lieutenant General' || $value[14] == 'Major General' || $value[14] == 'Brigadier' || $value[14] == 'Colonel' || $value[14] == 'Lieutenant Colonel' || $value[14] == 'Major' || $value[14] == 'Captain' || $value[14] == 'Lieutenant' || $value[14] == 'Second Lieutenant') {
+                    //dd($this->class . ' xxx');
+                    $member_fee = 5000;
+                    $annual_fee = 3000;
+                } else {
+                    //dd($this->class.' xx');
+                    $member_fee = 2000;
+                    $annual_fee = 1000;
+                }
+
+                $pay_var = array(
+                    "payment_description" => "MWAK Membership Fees",
+                    "phone" => $value[4],
+                    "amount" => $member_fee,
+                    "tx_number" => "Pending",
+                    "status" => "Pending",
+                    "date" => $newDateFormate
+                );
+                Payment::insert($pay_var);
+
+                $pay2_var = array(
+                    "payment_description" => "MWAK Annual Subscription Fees",
+                    "phone" => $value[4],
+                    "amount" => $annual_fee,
+                    "tx_number" => "Pending",
+                    "status" => "Pending",
+                    "date" => $newDateFormate
+                );
+                Payment::insert($pay2_var);
+                $message = 'Dear ' . $value[1] . ' Welcome to MWAK. Your registation is received pending verification. Please sign in after verification with your email to add your passport photo and ID copy. Your one time password is ' . $OTP;
+
+                $this->sendSMS($OTP, $value[1], $value[4], $message);
+                //$this->sendEmail(); 
+                $mailData = [
+                    'recipient' => $value[6],
+                    'fromEmail' => 'info@mwak.co.ke',
+                    'fromName' => 'MWAK',
+                    'title' => 'Mail from MWAK',
+                    'body' => $message
+                ];
+                Mail::send('email-template', $mailData, function ($message) use ($mailData) {
+                    $message->to($mailData['recipient'])
+                    ->from($mailData['fromEmail'], $mailData['fromName'])
+                    ->subject($mailData['title']);
+                });
+
+                //$this->reset();
+
+
+
+                return redirect('/add-all');
+
+                if ($insert) {
+                    $notification = array(
+                        'messege' => 'Succesfull Document Updated',
+                        'alert-type' => 'success'
+                    );
+                    return redirect('/add-all')->with($notification);
+                } else {
+                    $notification = array(
+                        'messege' => 'Something is Wrong, please try Document update again!',
+                        'alert-type' => 'error'
+                    );
+                    return redirect('/add-all')->with($notification);
+                }
+
+            }
+        }
+    }
+
+    public function SendSMS($OTP, $first_name, $phone, $message)
+    {
+
+        $username = 'MWAK'; // use 'sandbox' for development in the test environment
+        $apiKey   = 'e5ea09562f3ad404503a38c8e3f3ef3cdaf3efa89193b27268b954a3f6bf7694'; // use your sandbox app API key for development in the test environment
+        $AT       = new AfricasTalking($username, $apiKey);
+
+        // // Get one of the services
+        $sms      = $AT->sms();
+        $output = preg_replace("/^0/", "+254", $phone);
+        // // Use the service
+        $result   = $sms->send([
+            'to'      => $output,
+            'message' => $message,
+            'from' => $username
+        ]);
+        //print_r($result);
     }
 
     public function EditUser($id)

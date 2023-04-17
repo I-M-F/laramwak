@@ -10,6 +10,9 @@ use Carbon\Carbon;
 use DB;
 use Illuminate\Support\Facades\Storage;
 
+use Maatwebsite\Excel\Facades\Excel;
+use AfricasTalking\SDK\AfricasTalking;
+
 class FileController extends Controller
 {
     //
@@ -75,6 +78,67 @@ class FileController extends Controller
         // dd($values);
 
     }
+
+    public function bulkSMS()
+    {
+        return view('backend.user.bulk-sms');
+    }
+
+ 
+
+    public function allBulkSMS(Request $request)
+    {
+        
+        // Check if a file was uploaded
+        if (!$request->hasFile('fileDocs')) {
+            return redirect()->back()->withErrors(['message' => 'No file was uploaded.']);
+        }
+
+        $file = $request->file('fileDocs');
+        $numbers = [];
+
+        // Check if the uploaded file is an Excel file
+        if ($file->getClientOriginalExtension() === 'xlsx') {
+            $data = Excel::toArray([], $file);
+            // dd($data);
+            //$numbers = array_column($data[0][2], 'phone');
+            $numbers = collect($data[0])->skip(1)->pluck('2')->toArray();
+        }
+        // Check if the uploaded file is a CSV file
+        else if ($file->getClientOriginalExtension() === 'csv') {
+            $file = fopen($file, 'r');
+            while (($row = fgetcsv($file)) !== false) {
+                $numbers[] = $row[2];
+            }
+            fclose($file);
+        } else {
+            return redirect()->back()->withErrors(['message' => 'The uploaded file must be an Excel or CSV file.']);
+        }
+
+        if (empty($numbers)) {
+            return redirect()->back()->withErrors(['message' => 'The uploaded file does not contain any phone numbers.']);
+        }
+
+
+
+        //$this->SendNotifySMS(implode(', ', $numbers), $request->smsdets);
+        foreach ($numbers as $number) {
+           $this->SendNotifySMS($number, $request->smsdets);
+          
+        }
+
+
+        //return redirect()->route('payment')->with($notification);
+        // return view('backend.user.bulk-sms', compact('numbers'));
+        return redirect()->back()->with(['message' => 'Bulk SMS send successfully.']);
+
+        //return redirect()->back()->withErrors(['message' => 'Bulk SMS sent successfully']);
+    }
+
+
+
+
+
     public function allDocs()
     {
 
@@ -88,5 +152,28 @@ class FileController extends Controller
         $view = DB::table('mwakfiles')->where('id', $id)->first();
         $str = substr($view->docs_data, 6);
         return view('backend.user.view-docs', compact('str','view'));
+    }
+
+    public function SendNotifySMS($phone, $message)
+    {
+       // print_r($message);
+
+        //dd($message);
+  
+        $username = 'MWAK'; // use 'sandbox' for development in the test environment
+        $apiKey   = 'e5ea09562f3ad404503a38c8e3f3ef3cdaf3efa89193b27268b954a3f6bf7694'; // use your sandbox app API key for development in the test environment
+        $AT       = new AfricasTalking($username, $apiKey);
+
+        // // Get one of the services
+        $sms      = $AT->sms();
+        //$output = preg_replace("/^0/", "+254", $phone);
+        $output = '+254' .  $phone;
+        // Use the service
+        $result   = $sms->send([
+            'to'      => $output,
+            'message' => $message,
+            'from' => $username
+        ]);
+        print_r($result);
     }
 }
