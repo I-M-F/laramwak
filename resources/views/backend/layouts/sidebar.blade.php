@@ -182,13 +182,13 @@
             <li class="nav-item">
               <a href="{{URL::to('/comPayList')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Commissioned Payments</p>
+                <p>Commissioned</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{URL::to('/nonComPayList')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>NonCommissioned Payments</p>
+                <p>Non-Commissioned</p>
               </a>
             </li>
             <li class="nav-item">
