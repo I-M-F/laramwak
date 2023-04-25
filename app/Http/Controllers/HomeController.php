@@ -7,7 +7,7 @@ use Auth;
 use Illuminate\Http\Request;
 
 //use Abraham\TwitterOAuth\TwitterOAuth;
-use Thujohn\Twitter\Twitter;
+//use Thujohn\Twitter\Twitter;
 
 class HomeController extends Controller
 {
@@ -61,11 +61,11 @@ class HomeController extends Controller
             // ]);
 
             // Create an instance of the Twitter class
-            $twitter = new Twitter();
+            //$twitter = new Twitter();
 
             //dd($twitter);
             // Call the getUserTimeline() method on the $twitter instance
-            $tweets = $twitter->getUserTimeline(['screen_name' => '@kdfinfo', 'count' => 3]);
+            //$tweets = $twitter->getUserTimeline(['screen_name' => '@kdfinfo', 'count' => 3]);
             //dd($tweets);
 
             // Loop through the tweets and display each one
