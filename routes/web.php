@@ -65,6 +65,9 @@ Route::get('/all-docs', [App\Http\Controllers\FileController::class, 'allDocs'])
 
 Route::get('/view-docs/{id}', [App\Http\Controllers\FileController::class, 'viewDocs'])->name('viewDocs');
 
+// Route::get('/tweets/{kdfinfo}', [App\Http\Controllers\TwitterController::class, 'getUserTimeline'])->name('getUserTimeline');
+// Route::get('/twitter', 'TwitterController@getIndex');
+
 //Route::get('/import-data', [App\Http\Controllers\backend\UserController::class, 'importUsers'])->name('import-data');
 // Route::post('/upload', [App\Http\Controllers\backend\UserController::class, 'uploadUsers'])->name('upload');
 //Data Table

@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "abraham/twitteroauth": "^5.0",
         "africastalking/africastalking": "^3.0",
         "google/apiclient": "^2.12",
         "guzzlehttp/guzzle": "^7.2",
@@ -35,7 +36,8 @@
         "symfony/string": "6.0.*",
         "symfony/translation": "6.0.*",
         "symfony/translation-contracts": "3.0.*",
-        "symfony/var-dumper": "6.0.*"
+        "symfony/var-dumper": "6.0.*",
+        "thujohn/twitter": "^1.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -85,12 +87,15 @@
     },
     "config": {
         "optimize-autoloader": true,
+        "process-timeout": 600,
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true
         }
     },
+    
+
     "minimum-stability": "dev",
     "prefer-stable": true
 }

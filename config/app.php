@@ -195,6 +195,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Thujohn\Twitter\TwitterServiceProvider::class
+        
+
     ],
 
     /*
@@ -210,6 +213,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Twitter' => Thujohn\Twitter\Facades\Twitter::class,
     ])->toArray(),
 
     'debug_blacklist' => [
