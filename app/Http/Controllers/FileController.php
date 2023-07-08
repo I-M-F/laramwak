@@ -170,7 +170,8 @@ class FileController extends Controller
 
     private function extractPhoneNumbersFromExcel($file)
     {
-        $spreadsheet = IOFactory::load($file);
+        $reader = new Xlsx();
+        $spreadsheet = $reader->load($file);
         $sheet = $spreadsheet->getActiveSheet();
         $numbers = [];
 
