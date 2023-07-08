@@ -199,7 +199,7 @@ class FileController extends Controller
         //dd($row = fgetcsv($handle));
 
         while (($row = fgetcsv($handle)) !== false) {
-            $numbers[] = $row[4] ?? null;
+            $numbers[] = $row[1] ?? null;
         }
 
         fclose($handle);
@@ -247,11 +247,11 @@ class FileController extends Controller
 
 
         // Use the service
-        // $result   = $sms->send([
-        //     'to'      => $output,
-        //     'message' => $message,
-        //     'from' => $username
-        // ]);
-        // print_r($result);
+        $result   = $sms->send([
+            'to'      => $output,
+            'message' => $message,
+            'from' => $username
+        ]);
+        print_r($result);
     }
 }
