@@ -188,10 +188,10 @@ class FileController extends Controller
         $numbers = [];
         $handle = fopen($file, 'r');
 
-        dd($row = fgetcsv($handle));
+        //dd($row = fgetcsv($handle));
 
         while (($row = fgetcsv($handle)) !== false) {
-            $numbers[] = $row[2] ?? null;
+            $numbers[] = $row[4] ?? null;
         }
 
         fclose($handle);
@@ -232,6 +232,7 @@ class FileController extends Controller
         $sms      = $AT->sms();
         //$output = preg_replace("/^0/", "+254", $phone);
         $output = '+254' .  $phone;
+        dd($output);
         // Use the service
         $result   = $sms->send([
             'to'      => $output,
