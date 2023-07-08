@@ -196,6 +196,7 @@ class FileController extends Controller
 
         fclose($handle);
 
+        dd($numbers);
         return array_filter($numbers);
     }
 
