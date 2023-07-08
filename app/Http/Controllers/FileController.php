@@ -188,6 +188,8 @@ class FileController extends Controller
         $numbers = [];
         $handle = fopen($file, 'r');
 
+        dd($row = fgetcsv($handle));
+
         while (($row = fgetcsv($handle)) !== false) {
             $numbers[] = $row[2] ?? null;
         }
