@@ -158,7 +158,7 @@ class FileController extends Controller
         
         foreach ($numbers as $number) {
             // $this->SendNotifySMS(implode(', ', $numbers), $request->smsdets);
-            print_r($number);
+            $this->SendNotifySMS($number, $request->smsdets);
         }
 
         //return redirect()->back()->with(['message' => 'Bulk SMS sent successfully.']);
@@ -243,15 +243,15 @@ class FileController extends Controller
         
         $output = '+254' .  $phone;
         //dd($output);
-        //print_r($output);
+        print_r($output);
 
 
         // Use the service
-        $result   = $sms->send([
-            'to'      => $output,
-            'message' => $message,
-            'from' => $username
-        ]);
-        print_r($result);
+        // $result   = $sms->send([
+        //     'to'      => $output,
+        //     'message' => $message,
+        //     'from' => $username
+        // ]);
+        // print_r($result);
     }
 }
