@@ -84,55 +84,115 @@ class FileController extends Controller
         return view('backend.user.bulk-sms');
     }
 
- 
+
+
+    // public function allBulkSMS(Request $request)
+    // {
+
+    //     // Check if a file was uploaded
+    //     if (!$request->hasFile('fileDocs')) {
+    //         return redirect()->back()->withErrors(['message' => 'No file was uploaded.']);
+    //     }
+
+    //     $file = $request->file('fileDocs');
+    //     $numbers = [];
+
+    //     // Check if the uploaded file is an Excel file
+    //     if ($file->getClientOriginalExtension() === 'xlsx') {
+    //         $data = Excel::toArray([], $file);
+    //        //  dd($data);
+    //         //$numbers = array_column($data[0][2], 'phone');
+    //         $numbers = collect($data[0])->skip(1)->pluck('2')->toArray();
+    //     }
+    //     // Check if the uploaded file is a CSV file
+    //     else if ($file->getClientOriginalExtension() === 'csv') {
+    //         $file = fopen($file, 'r');
+    //         while (($row = fgetcsv($file)) !== false) {
+    //             $numbers[] = $row[2];
+    //         }
+    //         fclose($file);
+    //     } else {
+    //         return redirect()->back()->withErrors(['message' => 'The uploaded file must be an Excel or CSV file.']);
+    //     }
+
+    //     if (empty($numbers)) {
+    //         return redirect()->back()->withErrors(['message' => 'The uploaded file does not contain any phone numbers.']);
+    //     }
+
+
+
+    //     //$this->SendNotifySMS(implode(', ', $numbers), $request->smsdets);
+    //     foreach ($numbers as $number) {
+    //        $this->SendNotifySMS($number, $request->smsdets);
+
+    //     }
+
+
+    //     //return redirect()->route('payment')->with($notification);
+    //     // return view('backend.user.bulk-sms', compact('numbers'));
+    //     return redirect()->back()->with(['message' => 'Bulk SMS send successfully.']);
+
+    //     //return redirect()->back()->withErrors(['message' => 'Bulk SMS sent successfully']);
+    // }
 
     public function allBulkSMS(Request $request)
     {
-        
-        // Check if a file was uploaded
         if (!$request->hasFile('fileDocs')) {
             return redirect()->back()->withErrors(['message' => 'No file was uploaded.']);
         }
 
         $file = $request->file('fileDocs');
-        $numbers = [];
-
-        // Check if the uploaded file is an Excel file
-        if ($file->getClientOriginalExtension() === 'xlsx') {
-            $data = Excel::toArray([], $file);
-            // dd($data);
-            //$numbers = array_column($data[0][2], 'phone');
-            $numbers = collect($data[0])->skip(1)->pluck('2')->toArray();
-        }
-        // Check if the uploaded file is a CSV file
-        else if ($file->getClientOriginalExtension() === 'csv') {
-            $file = fopen($file, 'r');
-            while (($row = fgetcsv($file)) !== false) {
-                $numbers[] = $row[2];
-            }
-            fclose($file);
-        } else {
-            return redirect()->back()->withErrors(['message' => 'The uploaded file must be an Excel or CSV file.']);
-        }
+        $numbers = $this->extractPhoneNumbersFromFile($file);
 
         if (empty($numbers)) {
             return redirect()->back()->withErrors(['message' => 'The uploaded file does not contain any phone numbers.']);
         }
 
+        //$this->sendSMSNotifications($numbers, $request->smsdets);
 
+        $this->SendNotifySMS($numbers, $request->smsdets);
 
-        //$this->SendNotifySMS(implode(', ', $numbers), $request->smsdets);
-        foreach ($numbers as $number) {
-           $this->SendNotifySMS($number, $request->smsdets);
-          
+        return redirect()->back()->with(['message' => 'Bulk SMS sent successfully.']);
+    }
+
+    private function extractPhoneNumbersFromFile($file)
+    {
+        $extension = $file->getClientOriginalExtension();
+
+        if ($extension === 'xlsx') {
+            return $this->extractPhoneNumbersFromExcel($file);
+        } elseif ($extension === 'csv') {
+            return $this->extractPhoneNumbersFromCSV($file);
+        } else {
+            return [];
+        }
+    }
+
+    private function extractPhoneNumbersFromExcel($file)
+    {
+        $spreadsheet = IOFactory::load($file);
+        $sheet = $spreadsheet->getActiveSheet();
+        $numbers = [];
+
+        foreach ($sheet->toArray() as $row) {
+            $numbers[] = $row[2] ?? null;
         }
 
+        return array_filter($numbers);
+    }
 
-        //return redirect()->route('payment')->with($notification);
-        // return view('backend.user.bulk-sms', compact('numbers'));
-        return redirect()->back()->with(['message' => 'Bulk SMS send successfully.']);
+    private function extractPhoneNumbersFromCSV($file)
+    {
+        $numbers = [];
+        $handle = fopen($file, 'r');
 
-        //return redirect()->back()->withErrors(['message' => 'Bulk SMS sent successfully']);
+        while (($row = fgetcsv($handle)) !== false) {
+            $numbers[] = $row[2] ?? null;
+        }
+
+        fclose($handle);
+
+        return array_filter($numbers);
     }
 
 
