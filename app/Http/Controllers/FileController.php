@@ -232,14 +232,16 @@ class FileController extends Controller
         // // Get one of the services
         $sms      = $AT->sms();
         //$output = preg_replace("/^0/", "+254", $phone);
-        $output = '+254' .  $phone;
+        $result_phone = 'Array values: ' . implode(', ', $phone);
+        $output = '+254' .  $result_phone;
         dd($output);
+        print_r($output);
         // Use the service
-        $result   = $sms->send([
-            'to'      => $output,
-            'message' => $message,
-            'from' => $username
-        ]);
-        print_r($result);
+        // $result   = $sms->send([
+        //     'to'      => $output,
+        //     'message' => $message,
+        //     'from' => $username
+        // ]);
+        // print_r($result);
     }
 }
