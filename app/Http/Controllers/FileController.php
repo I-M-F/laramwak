@@ -161,7 +161,7 @@ class FileController extends Controller
             print_r($number);
         }
 
-        return redirect()->back()->with(['message' => 'Bulk SMS sent successfully.']);
+        //return redirect()->back()->with(['message' => 'Bulk SMS sent successfully.']);
     }
 
     private function extractPhoneNumbersFromFile($file)
