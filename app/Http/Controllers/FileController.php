@@ -222,7 +222,7 @@ class FileController extends Controller
     {
        // print_r($message);
 
-        //dd($message);
+        dd($phone);
   
         $username = 'MWAK'; // use 'sandbox' for development in the test environment
         $apiKey   = 'e5ea09562f3ad404503a38c8e3f3ef3cdaf3efa89193b27268b954a3f6bf7694'; // use your sandbox app API key for development in the test environment
