@@ -26,7 +26,7 @@ class FileController extends Controller
     {
 
         $file = $request->hasFile('fileDocs');
-        if($file){
+        if ($file) {
 
             $newFile = $request->file('fileDocs');
             $file_path = $newFile->store('public/mwak_docs');
@@ -38,14 +38,14 @@ class FileController extends Controller
             //     'date' => $date
             // ]);
             //
-        // }
+            // }
 
-        // if ($request->fileDocs) {
-        //     $mwakDocs = 'MWAKDocs_' . time() . $request->fileDocs->getClientOriginalName();
-        //     $upload_docs = $request->fileDocs->storeAs('mwak_docsx', $mwakDocs);
-        // }
+            // if ($request->fileDocs) {
+            //     $mwakDocs = 'MWAKDocs_' . time() . $request->fileDocs->getClientOriginalName();
+            //     $upload_docs = $request->fileDocs->storeAs('mwak_docsx', $mwakDocs);
+            // }
 
-        // if ($mwakDocs) {
+            // if ($mwakDocs) {
 
             $date = date('Y-m-d H:i:s');
 
@@ -59,18 +59,16 @@ class FileController extends Controller
             //dd($values);
 
             $insert = DB::table('mwakfiles')->insert($values);
-            if($insert)
-            {          
+            if ($insert) {
                 $notification = array(
-                    'messege'=>'Succesfull Document Updated',
-                    'alert-type'=>'success'
+                    'messege' => 'Succesfull Document Updated',
+                    'alert-type' => 'success'
                 );
                 return redirect()->route('allDocs')->with($notification);
-            }
-            else{
+            } else {
                 $notification = array(
-                    'messege'=>'Something is Wrong, please try Document update again!',
-                    'alert-type'=>'error'
+                    'messege' => 'Something is Wrong, please try Document update again!',
+                    'alert-type' => 'error'
                 );
                 return redirect()->route('allDocs')->with($notification);
             }
@@ -152,16 +150,16 @@ class FileController extends Controller
         //$this->sendSMSNotifications($numbers, $request->smsdets);
 
         ////dd($numbers);
-       
+
         //$this->SendNotifySMS($numbers, $request->smsdets);
 
-        
+
         foreach ($numbers as $number) {
             // $this->SendNotifySMS(implode(', ', $numbers), $request->smsdets);
             $this->SendNotifySMS($number, $request->smsdets);
         }
 
-        //return redirect()->back()->with(['message' => 'Bulk SMS sent successfully.']);
+        return redirect()->back()->with(['message' => 'Bulk SMS sent successfully.']);
     }
 
     private function extractPhoneNumbersFromFile($file)
@@ -224,15 +222,15 @@ class FileController extends Controller
     {
         $view = DB::table('mwakfiles')->where('id', $id)->first();
         $str = substr($view->docs_data, 6);
-        return view('backend.user.view-docs', compact('str','view'));
+        return view('backend.user.view-docs', compact('str', 'view'));
     }
 
     public function SendNotifySMS($phone, $message)
     {
-       // print_r($message);
+        // print_r($message);
 
         //dd($phone);
-  
+
         $username = 'MWAK'; // use 'sandbox' for development in the test environment
         $apiKey   = 'e5ea09562f3ad404503a38c8e3f3ef3cdaf3efa89193b27268b954a3f6bf7694'; // use your sandbox app API key for development in the test environment
         $AT       = new AfricasTalking($username, $apiKey);
@@ -240,10 +238,10 @@ class FileController extends Controller
         // // Get one of the services
         $sms      = $AT->sms();
         //$output = preg_replace("/^0/", "+254", $phone);
-        
+
         $output = '+254' .  $phone;
         //dd($output);
-        print_r($output);
+        // print_r($output);
 
 
         // Use the service
@@ -252,6 +250,6 @@ class FileController extends Controller
             'message' => $message,
             'from' => $username
         ]);
-        print_r($result);
+        //print_r($result);
     }
 }
