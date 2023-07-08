@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 
 use Maatwebsite\Excel\Facades\Excel;
 use AfricasTalking\SDK\AfricasTalking;
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 
 class FileController extends Controller
 {
