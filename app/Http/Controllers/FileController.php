@@ -150,9 +150,16 @@ class FileController extends Controller
         }
 
         //$this->sendSMSNotifications($numbers, $request->smsdets);
+
+        ////dd($numbers);
+       
+        //$this->SendNotifySMS($numbers, $request->smsdets);
+
         
-       dd($numbers);
-        $this->SendNotifySMS($numbers, $request->smsdets);
+        foreach ($numbers as $number) {
+            // $this->SendNotifySMS(implode(', ', $numbers), $request->smsdets);
+            print_r($number);
+        }
 
         return redirect()->back()->with(['message' => 'Bulk SMS sent successfully.']);
     }
@@ -233,18 +240,18 @@ class FileController extends Controller
         // // Get one of the services
         $sms      = $AT->sms();
         //$output = preg_replace("/^0/", "+254", $phone);
-        $result_phone = implode(', ', $phone);
+        
         $output = '+254' .  $phone;
         //dd($output);
         //print_r($output);
 
 
         // Use the service
-        // $result   = $sms->send([
-        //     'to'      => $output,
-        //     'message' => $message,
-        //     'from' => $username
-        // ]);
-        // print_r($result);
+        $result   = $sms->send([
+            'to'      => $output,
+            'message' => $message,
+            'from' => $username
+        ]);
+        print_r($result);
     }
 }
