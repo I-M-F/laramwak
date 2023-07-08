@@ -150,13 +150,9 @@ class FileController extends Controller
         }
 
         //$this->sendSMSNotifications($numbers, $request->smsdets);
-
-        foreach ($numbers as $number) {
-                   //$this->SendNotifySMS($number, $request->smsdets);
-                print_r($number);
-        }
-
-       // $this->SendNotifySMS($numbers, $request->smsdets);
+        
+       dd($numbers);
+        $this->SendNotifySMS($numbers, $request->smsdets);
 
         return redirect()->back()->with(['message' => 'Bulk SMS sent successfully.']);
     }
