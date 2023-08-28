@@ -576,15 +576,17 @@ class UserController extends Controller
         }
     }
 
-    public function DeleteUser($email)
+    public function DeleteUser($id)
     {
         # code...
+        $view_member = DB::table('member_registartions')->where('id_number', $id)->first();
+
         $deleteUser = DB::table('users')
-            ->where('email', $email)
+            ->where('id_number', $id)
             ->delete();
 
         $delete = DB::table('member_registartions')
-        ->where('email', $email)
+        ->where('email', $view_member->email)
         ->delete();
 
 
