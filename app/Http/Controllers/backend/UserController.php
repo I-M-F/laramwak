@@ -582,11 +582,11 @@ class UserController extends Controller
         $view_member = DB::table('member_registartions')->where('id_number', $id)->first();
 
         $deleteUser = DB::table('users')
-            ->where('id_number', $id)
+            ->where('email', $view_member->email)
             ->delete();
 
         $delete = DB::table('member_registartions')
-        ->where('email', $view_member->email)
+        ->where('id_number', $id)
         ->delete();
 
 
