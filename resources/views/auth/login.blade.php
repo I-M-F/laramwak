@@ -22,7 +22,7 @@
       <a href="/" class="h1"><b>MWAK</b>Portal</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Sign xxx in to start your session</p>
 
       <form method="POST" action="{{ route('login') }}">
                         @csrf
