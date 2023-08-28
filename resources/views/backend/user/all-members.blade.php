@@ -40,9 +40,18 @@
                   <tr>
                     <td>{{ $key+1 }}</td>
                     <td>{{ $row->first_name.' '.$row->maiden_name }}</td>
-                    <td>{{ $row->email }}</td>
+                    <td>{{ $row->member_no }}</td>
                     <td>{{ $row->phone }}</td>
                     <td>{{ $row->id_number }}</td>
+
+                    @if($row->role=='Unverified')
+                    <td style="background-color:green ">{{ $row->service_number }}</td>
+                    @elseif($row->role=='Rejected')
+                    <td style="background-color:red ">{{ $row->service_number }}</td>
+                    @else
+                    <td>{{ $row->service_number }}</td>
+                    @endif
+
                     <!-- <td>{{ isset($get_county[$row->id]['county']) ? $get_county[$row->id]['county']->name : '' }}</td>
                     <td>{{ isset($get_county[$row->id]['sub_county']) ? $get_county[$row->id]['sub_county']->name : '' }}</td> -->
 
