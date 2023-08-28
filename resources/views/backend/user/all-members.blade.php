@@ -68,7 +68,7 @@
                     <td><img src=" {{ asset('/storage/'. substr($row->id_card,6)) }}" alt="" title="{{ substr($row->id_card,6) }}" width='50' height='50' class="img img-responsive"> </td>
 
                     <td>
-                      <a href="{{ URL::to('/view-member/'.$row->id) }}" class="btn btn-sm btn-info">View</a>
+                      <a href="{{ URL::to('/view-member/'.$row->id_number) }}" class="btn btn-sm btn-info">View</a>
                       <a href="{{ URL::to('/edit-user/'.$row->id) }}" class="btn btn-sm btn-info">Send SMS</a>
                       <a href="{{ URL::to('/delete-user/'.$row->email) }}" class="btn btn-sm btn-danger">Delete</a>
                     </td>
