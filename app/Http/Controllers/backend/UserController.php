@@ -427,7 +427,7 @@ class UserController extends Controller
 
     public function updateMemberDets(Request $request, $id)
     {
-        $view_member = DB::table('member_registartions')->where('id', $id)->first();
+        $view_member = DB::table('member_registartions')->where('email', $id)->first();
         $newFile = $request->file('id_card');
         if($newFile == null)
         {
@@ -465,7 +465,7 @@ class UserController extends Controller
        // dd($data);
 
         $update = DB::table('member_registartions')
-            ->where('id', $id)
+            ->where('email', $id)
             ->update($data);
         if ($update) {
            // echo "Data Updated Succesfully";
