@@ -127,7 +127,7 @@
                                     <option value="" selected>Select a Pillar of Interest</option>
                                     <option value="Health">Health</option>
                                     <option value="Mentorship">Mentorship </option>
-                                    <option value="Eductaion">Eductaion</option>
+                                    <option value="Eductaion">Education</option>
                                     <option value="Housing">Housing</option>
                                     <option value="Veterans Affairs">Veterans Affairs </option>
                                     <option value="Recreation & Wellbeing">Recreation & Wellbeing</option>
