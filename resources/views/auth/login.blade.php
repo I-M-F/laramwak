@@ -24,7 +24,7 @@
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form method="POST" action="{{ route('login') }}">
+      <form method="POST" action="{{ route('loginx') }}">
                         @csrf
         <div class="input-group mb-3">
           <input type="email" name="email" class="form-control" placeholder="Email">
@@ -53,7 +53,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submitx" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
           </div>
           <!-- /.col -->
         </div>
