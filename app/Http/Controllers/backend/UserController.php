@@ -283,7 +283,7 @@ class UserController extends Controller
         // return view('backend.user.view-member', compact('edit'));
 
         $view_member = DB::table('member_registartions')->where('email', $id)->first();
-        dd($view_member);
+        //dd($view_member);
         $countyDB = DB::table('counties')
         ->where('id', '=', $view_member->county)
         ->first();
