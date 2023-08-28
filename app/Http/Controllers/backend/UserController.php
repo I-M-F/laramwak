@@ -429,7 +429,7 @@ class UserController extends Controller
     {
         $view_member = DB::table('member_registartions')->where('email', $id)->first();
 
-        dd($view_member);
+        //dd($view_member);
         $newFile = $request->file('id_card');
         if($newFile == null)
         {
