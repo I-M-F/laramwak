@@ -429,7 +429,7 @@ class UserController extends Controller
     {
         $view_member = DB::table('member_registartions')->where('email', $id)->first();
 
-        dd($request);
+        //dd($request);
         $newFile = $request->file('id_card');
         if($newFile == null)
         {
@@ -464,7 +464,7 @@ class UserController extends Controller
         $data['id_card']=$idcard;
         $data['passport_photo']=$passport;
 
-       // dd($data);
+        dd($data);
 
         $update = DB::table('member_registartions')
             ->where('email', $id)
