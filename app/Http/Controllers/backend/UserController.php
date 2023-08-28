@@ -35,7 +35,7 @@ class UserController extends Controller
 
         $all = DB::table('users')->get();
 
-        dd($all);
+        //dd($all);
         return view('backend.user.all-user', compact('all'));
     }
 
@@ -57,7 +57,7 @@ class UserController extends Controller
             $get_county[$member->id] = ['county' => $countyDB, 'sub_county' => $subCountyDB];
         }
 
-        //dd($all_members);
+        dd($all_members);
         return view('backend.user.all-members', compact('all_members', 'get_county'));
     }
 
