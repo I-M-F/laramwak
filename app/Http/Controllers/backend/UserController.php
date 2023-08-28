@@ -34,6 +34,8 @@ class UserController extends Controller
     {
 
         $all = DB::table('users')->get();
+
+        dd($all);
         return view('backend.user.all-user', compact('all'));
     }
 
