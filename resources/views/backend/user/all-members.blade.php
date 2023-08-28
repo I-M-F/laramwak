@@ -46,6 +46,8 @@
                     <td>{{ $row->id_number }}</td>
 
                     @if($row->role=='Unverified')
+                    <td style="background-color:yellow ">{{ $row->service_number }}</td>
+                    @elseif($row->role=='Verified')
                     <td style="background-color:green ">{{ $row->service_number }}</td>
                     @elseif($row->role=='Rejected')
                     <td style="background-color:red ">{{ $row->service_number }}</td>
