@@ -450,7 +450,7 @@ class UserController extends Controller
         
        
         $data = array();
-        $data['member_location'] = $request->chapter;
+        //$data['member_location'] = $request->chapter;
         $data['first_name']=$request->f_name;
         $data['second_name']=$request->m_name;
         $data['maiden_name']=$request->l_name;
