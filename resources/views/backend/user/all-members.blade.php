@@ -25,6 +25,7 @@
                     <th>Email</th>
                     <th>Phone</th>
                     <th>ID</th>
+                    <th>Service Number</th>
                     <!-- <th>County</th>
                     <th>Sub County</th>
                     <th>Spouse Name</th>
@@ -84,6 +85,7 @@
                     <th>Email</th>
                     <th>Phone</th>
                     <th>ID</th>
+                    <th>Service Number</th>
                     <!-- <th>County</th>
                     <th>Sub County</th>
                     
