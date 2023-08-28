@@ -454,7 +454,7 @@ class UserController extends Controller
         $data['first_name']=$request->f_name;
         $data['second_name']=$request->m_name;
         $data['maiden_name']=$request->l_name;
-        $data['member_location']=$request->chapter;
+        //$data['member_location']=$request->chapter;
         $data['id_number']=$request->id_no;
         $data['email']=$request->email;
         $data['spouse_name']=$request->sp_f_name;
