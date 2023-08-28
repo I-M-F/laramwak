@@ -428,6 +428,8 @@ class UserController extends Controller
     public function updateMemberDets(Request $request, $id)
     {
         $view_member = DB::table('member_registartions')->where('email', $id)->first();
+
+        dd($view_member);
         $newFile = $request->file('id_card');
         if($newFile == null)
         {
