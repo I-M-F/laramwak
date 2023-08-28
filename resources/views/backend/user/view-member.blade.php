@@ -79,7 +79,7 @@
                                 <button type="submit" class="btn btn-primary btn-block">Approve</button>
                             </form>
                             @else
-                            @if($view_member->status=='Pending' || $status_role->role == 'Admin')
+                            @if($view_member->status=='Pending' && $status_role->role == 'Admin')
                             <form role="form" action="{{URL::to('/update-member/'.$view_member->id)}}" method="POST">
                                 @csrf
                                 <div class="form-group row">
