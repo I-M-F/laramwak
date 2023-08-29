@@ -126,7 +126,7 @@
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
             <p>
-              Communication 
+              Communication
               <i class="fas fa-angle-left right"></i>
               <!-- <span class="badge badge-info right">6</span> -->
             </p>
@@ -154,7 +154,7 @@
         </li>
 
 
-        @endif
+
 
         <li class="nav-item">
           <a href="#" class="nav-link">
@@ -214,7 +214,28 @@
               @endif         -->
           </ul>
         </li>
+        @endif
         @if(auth()->user()->role=='Member')
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Payment Management
+              <i class="fas fa-angle-left right"></i>
+              <!-- <span class="badge badge-info right">6</span> -->
+            </p>
+          </a>
+
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{URL::to('/payment')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>All Payments</p>
+              </a>
+            </li>
+        </li>
+
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
