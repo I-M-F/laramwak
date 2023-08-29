@@ -33,7 +33,7 @@
             <div class="info-box-content">
               <span class="info-box-text">Approved Members</span>
               <span class="info-box-number">
-                <!-- {{$approved_members}} -->
+                
 
               </span>
             </div>
