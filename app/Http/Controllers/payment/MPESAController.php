@@ -38,7 +38,7 @@ class MPESAController extends Controller
                 ->get();
         }
 
-        dd($user);
+        dd($phone);
         return view('backend.user.payments', compact('all', 'response', 'member', 'paymentDB'));
 
         
