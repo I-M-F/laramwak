@@ -4,7 +4,7 @@
 
 <h2 class="m-0">Rejected</h2>
 
-<h6>User <span class="text-info bg-dark"> {{$status_role->name}} </span> Rejected - mwak.co.ke</h6>
+<h6>User <span class="text-info bg-dark"> {{$member_dets->name}} </span> Rejected - mwak.co.ke</h6>
 
 <p>If Rejected contact Admin <span class="text-info">+254 718111186 </span>, or email <span class="text-info">info@mwak.ke</span> sorry of rthe inconvinece.</p>
 
