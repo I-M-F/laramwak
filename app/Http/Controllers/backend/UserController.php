@@ -286,7 +286,7 @@ class UserController extends Controller
         $view_member = DB::table('member_registartions')->where('id_number', $id)
         ->orWhere('email', $id)
         ->first();
-        dd($view_member);
+        //dd($view_member);
         $countyDB = DB::table('counties')
         ->where('id', '=', $view_member->county)
         ->first();
