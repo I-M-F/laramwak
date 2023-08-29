@@ -89,7 +89,7 @@ class HomeController extends Controller
             $member_dets = DB::table('member_registartions')
             ->join('users', 'member_registartions.email', '=', 'users.email')
             ->where('member_registartions.email', $email)
-            ->get();
+            ->first();
 
            // dd($member_dets);
 
