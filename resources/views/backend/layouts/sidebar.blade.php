@@ -217,11 +217,13 @@
         @endif
         @if(auth()->user()->role=='Member')
 
+ 
+
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="{{URL::to('/home')}}" class="nav-link active">
             <i class="nav-icon fas fa-th"></i>
             <p>
-              Payment Management
+              Dashboard
               <i class="fas fa-angle-left right"></i>
               <!-- <span class="badge badge-info right">6</span> -->
             </p>
