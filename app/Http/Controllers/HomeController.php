@@ -80,11 +80,18 @@ class HomeController extends Controller
 
             $status_role = DB::table('users')->first();
 
-            $all_members = DB::table('member_registartions')
+            $email = Auth::user()->email;
+
+            // $all_members = DB::table('member_registartions')
+            // ->join('users', 'member_registartions.email', '=', 'users.email')
+            // ->get();
+
+            $member_dets = DB::table('member_registartions')
             ->join('users', 'member_registartions.email', '=', 'users.email')
+            ->where('member_registartions.email', $email)
             ->get();
 
-            dd(Auth::user()->email);
+            dd($member_dets);
 
             if ($status_role->role == 'Unverified') {
                 return view('backend.user.unverified', compact('status_role'));
