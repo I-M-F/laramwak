@@ -282,8 +282,11 @@ class UserController extends Controller
         // $edit = DB::table('users')->where('id',$id)->first();
         // return view('backend.user.view-member', compact('edit'));
 
-        $view_member = DB::table('member_registartions')->where('id_number', $id)->first();
-        //dd($view_member);
+        //$view_member = DB::table('member_registartions')->where('id_number', $id)->first();
+        $view_member = DB::table('member_registartions')->where('id_number', $id)
+        ->orWhere('email', $id)
+        ->first();
+        dd($view_member);
         $countyDB = DB::table('counties')
         ->where('id', '=', $view_member->county)
         ->first();
