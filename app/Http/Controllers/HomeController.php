@@ -91,11 +91,11 @@ class HomeController extends Controller
             ->where('member_registartions.email', $email)
             ->get();
 
-            dd($member_dets);
+           // dd($member_dets);
 
-            if ($status_role->role == 'Unverified') {
+            if ($member_dets->role == 'Unverified') {
                 return view('backend.user.unverified', compact('status_role'));
-            } elseif ($status_role->role == 'Rejected') {
+            } elseif ($member_dets->role == 'Rejected') {
                 return view('backend.user.rejected', compact('status_role'));
             }
             return view('backend.user.member-dashboard', compact('all'));
