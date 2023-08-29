@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Profile {{$view_member->status}}</h1>
+                    <h1>Profile </h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -79,7 +79,7 @@
                                 <button type="submit" class="btn btn-primary btn-block">Approve</button>
                             </form>
                             @else
-                            @if($view_member->status=='Pending' && $status_role->role == 'Admin')
+                            @if($status_role->role == 'Admin')
                             <form role="form" action="{{URL::to('/update-member/'.$view_member->id)}}" method="POST">
                                 @csrf
                                 <div class="form-group row">
@@ -104,7 +104,11 @@
                                 <button type="submit" class="btn btn-primary btn-block">Activate</button>
                             </form>
                             @endif
-                            @endif
+                            @if($view_member->status=='Pending')
+                            <p class="mb-0">
+                                <a href="{{ route('payment') }}" class="text-center">Click to Pay</a>
+                                @endif
+                                @endif
                         </div>
                         <!-- /.card-body -->
                     </div>
