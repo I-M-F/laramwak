@@ -79,7 +79,8 @@ class HomeController extends Controller
             $all = DB::table('mwakfiles')->get();
 
             $status_role = DB::table('users')->first();
-
+            dd($status_role);
+            
             if ($status_role->role == 'Unverified') {
                 return view('backend.user.unverified', compact('status_role'));
             } elseif ($status_role->role == 'Rejected') {
