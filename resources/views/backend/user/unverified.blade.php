@@ -99,7 +99,7 @@
                         <h2 class="m-0">Unverified</h2>
 
                         <h6>User <span class="text-info bg-dark">
-                                {{$status_role->name}}
+                                {{$member_dets->name}}
                             </span> not verified - mwak.co.ke</h6>
 
                         <p>If not verified in the next 48 hours contact Admin <br> <span class="text-info">
