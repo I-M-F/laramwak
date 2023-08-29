@@ -78,7 +78,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">Pending Payments</span>
-              <!-- <span class="info-box-number">{{$pending_payments}}</span> -->
+             
             </div>
             <!-- /.info-box-content -->
           </div>
