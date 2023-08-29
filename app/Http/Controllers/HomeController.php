@@ -97,7 +97,7 @@ class HomeController extends Controller
                 return view('backend.user.unverified', compact('member_dets'));
             } elseif ($member_dets->role == 'Rejected') {
                 return view('backend.user.rejected', compact('member_dets'));
-            }
+            } 
             return view('backend.user.member-dashboard', compact('member_dets'));
             //check if verified status 
             //return redirect()->route('backend.user.all-docs');
