@@ -80,8 +80,9 @@
               </table>
             </div>
             <!-- /.card-body -->
+            @if(auth()->user()->role=='Admin')
             <a href="{{ URL::to('/pending-pay/') }}" class="btn btn-sm btn-info">Pending Payment Reminder </a>
-
+            @endif
           </div>
           <!-- /.card -->
         </div>
