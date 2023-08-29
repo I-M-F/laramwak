@@ -34,7 +34,7 @@ class MPESAController extends Controller
 
             $phone = DB::table('member_registartions')->where('email', '=', Auth::user()->email)->value('phone');
             $paymentDB = DB::table('payments')
-                ->where('id', '=', $phone)
+                ->where('phone', '=', $phone)
                 ->get();
         }
 
