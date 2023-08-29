@@ -48,7 +48,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">New Members</span>
-              <!-- <span class="info-box-number">{{$new_member}}</span> -->
+             
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -65,7 +65,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">Approved Payments</span>
-              <!-- <span class="info-box-number">{{$approved_payments}}</span> -->
+          
             </div>
             <!-- /.info-box-content -->
           </div>
