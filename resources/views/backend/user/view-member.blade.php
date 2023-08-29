@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Profile {{auth()->user()->name }} {{auth()->user()->role }}</h1>
+                    <h1>Profile </h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -79,7 +79,7 @@
                                 <button type="submit" class="btn btn-primary btn-block">Approve</button>
                             </form>
                             @else
-                            @if($status_role->role == 'Admin')
+                            @if($auth()->user()->role == 'Admin' && $view_member->status=='Pending')
                             <form role="form" action="{{URL::to('/update-member/'.$view_member->id)}}" method="POST">
                                 @csrf
                                 <div class="form-group row">
