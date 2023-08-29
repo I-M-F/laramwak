@@ -38,9 +38,10 @@ class MPESAController extends Controller
                 ->get();
         }
 
+        dd($user);
         return view('backend.user.payments', compact('all', 'response', 'member', 'paymentDB'));
 
-        //dd($user);
+        
     }
 
     public function pendingPay()
