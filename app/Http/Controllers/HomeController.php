@@ -79,14 +79,19 @@ class HomeController extends Controller
             $all = DB::table('mwakfiles')->get();
 
             $status_role = DB::table('users')->first();
-            dd($status_role);
-            
+
+            $all_members = DB::table('member_registartions')
+            ->join('users', 'member_registartions.email', '=', 'users.email')
+            ->get();
+
+            dd(Auth::user()->email);
+
             if ($status_role->role == 'Unverified') {
                 return view('backend.user.unverified', compact('status_role'));
             } elseif ($status_role->role == 'Rejected') {
                 return view('backend.user.rejected', compact('status_role'));
             }
-            return view('backend.user.all-docs', compact('all'));
+            return view('backend.user.member-dashboard', compact('all'));
             //check if verified status 
             //return redirect()->route('backend.user.all-docs');
             //return redirect('all-docs');
