@@ -19,7 +19,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('backend/dist/css/adminlte.min.css')}}">
 
-  
+
 
 
   <!-- fullCalendar -->
@@ -184,6 +184,14 @@
       })
     });
   </script>
+
+  <!-- <script>
+    $.noConflict();
+    jQuery(document).ready(function($) {
+      // Your FullCalendar initialization code here
+    });
+  </script> -->
+
 
 
 
