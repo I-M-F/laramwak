@@ -91,7 +91,7 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h5 class="card-title">Monthly Pillar Report</h5>
+              <h5 class="card-title">Event Calender</h5>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -116,27 +116,7 @@
             </div>
             <div id="calendar"></div>
             <!-- /.card-header -->
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-8">
-                  <p class="text-center">
-                    <strong>Pillar Progress: 1 Jan, 2021 - 30 Jul, 2021</strong>
-                  </p>
-                  <!-- Sales Chart Canvas -->
 
-
-                  <div class="chart">
-
-                    <canvas id="salesChart" height="180" style="height: 180px;"></canvas>
-                  </div>
-                  <!-- /.chart-responsive -->
-                </div>
-                <!-- /.col -->
-
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-            </div>
             <!-- ./card-body -->
             <div class="card-footer">
               <div class="row">
