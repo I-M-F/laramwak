@@ -114,6 +114,7 @@
                 </button>
               </div>
             </div>
+            <div id="calendar"></div>
             <!-- /.card-header -->
             <div class="card-body">
               <div class="row">
@@ -123,7 +124,7 @@
                   </p>
                   <!-- Sales Chart Canvas -->
 
-                  <div id="calendar"></div>
+
                   <div class="chart">
 
                     <canvas id="salesChart" height="180" style="height: 180px;"></canvas>
@@ -131,17 +132,7 @@
                   <!-- /.chart-responsive -->
                 </div>
                 <!-- /.col -->
-                <div class="col-md-4">
-                  <p class="text-center">
-                    <strong>MWAK News</strong>
-                  </p>
 
-                  <div class="row">
-
-                  </div>
-
-                  <!-- /.progress-group -->
-                </div>
                 <!-- /.col -->
               </div>
               <!-- /.row -->
