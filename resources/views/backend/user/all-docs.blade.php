@@ -86,18 +86,10 @@
         </div>
         <!-- /.col -->
       </div>
-      <!-- Callender -->
 
-      <div class="col-md-9">
-        <div class="card card-primary">
-          <div class="card-body p-0">
-            <!-- THE CALENDAR -->
-            <div id="calendar"></div>
-          </div>
-          <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
-      </div>
+      <!-- THE CALENDAR -->
+      <div id="calendar"></div>
+
       <!-- /.row -->
 
       <!-- Main row -->
