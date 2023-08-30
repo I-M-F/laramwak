@@ -177,20 +177,23 @@
     });
   </script>
 
-  <script>
+  <!-- <script>
     $(document).ready(function() {
       $('#calendar').fullCalendar({
 
       })
     });
-  </script>
+  </script> -->
 
-  <!-- <script>
+  <script>
     $.noConflict();
     jQuery(document).ready(function($) {
-      // Your FullCalendar initialization code here
+      $('#calendar').fullCalendar({
+        // Your FullCalendar options here
+      });
     });
-  </script> -->
+  </script>
+
 
 
 
