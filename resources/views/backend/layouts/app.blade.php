@@ -449,13 +449,13 @@
     }
   </script>
 
-  <!-- <script>
+   <script>
       $(document).ready(function() {
         $('#calendar').fullCalendar({
 
         });
       });
-    </script> -->
+    </script>
   <!-- 
   <script>
     $.noConflict();
