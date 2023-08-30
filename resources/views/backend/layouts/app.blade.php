@@ -177,14 +177,14 @@
     });
   </script>
 
-  <!-- <script>
+  <script>
     $(document).ready(function() {
       $('#calendar').fullCalendar({
 
-      })
+      });
     });
-  </script> -->
-
+  </script>
+<!-- 
   <script>
     $.noConflict();
     jQuery(document).ready(function($) {
@@ -192,7 +192,7 @@
         // Your FullCalendar options here
       });
     });
-  </script>
+  </script> -->
 
 
 
