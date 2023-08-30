@@ -122,6 +122,8 @@
                     <strong>Pillar Progress: 1 Jan, 2021 - 30 Jul, 2021</strong>
                   </p>
                   <!-- Sales Chart Canvas -->
+
+                  <div id="calendar"></div>
                   <div class="chart">
 
                     <canvas id="salesChart" height="180" style="height: 180px;"></canvas>
@@ -135,7 +137,7 @@
                   </p>
 
                   <div class="row">
-          
+
                   </div>
 
                   <!-- /.progress-group -->
