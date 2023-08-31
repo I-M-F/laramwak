@@ -72,9 +72,9 @@
                         @if (!is_null($sections))
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Sub-County Of Residence</label>
+                                <label for="">Sub-County(CONSTITUENCY) Of Residence</label>
                                 <select class="form-control" wire:model="selectedSection">
-                                    <option value="" selected>Select SubCounty Of Residence</option>
+                                    <option value="" selected>Select SubCounty(CONSTITUENCY) Of Residence</option>
                                     @foreach ($sections as $item)
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
@@ -127,11 +127,12 @@
                                     <option value="" selected>Select a Pillar of Interest</option>
                                     <option value="Health">Health</option>
                                     <option value="Mentorship">Mentorship </option>
-                                    <option value="Eductaion">Education</option>
+                                    <option value="Education">Education</option>
                                     <option value="Housing">Housing</option>
                                     <option value="Veterans Affairs">Veterans Affairs </option>
                                     <option value="Recreation & Wellbeing">Recreation & Wellbeing</option>
                                     <option value="Funding">Funding</option>
+                                    <option value="Music & Creative Arts">Music & Creative Arts</option>
                                     <option value="Partnership & Collaboration">Partnership & Collaboration</option>
 
                                 </select>
@@ -231,7 +232,7 @@
                     STEP 3/3 - Attachments
                 </div>
                 <div class="card-body">
-                    Congratulatiuons for Registering, wait for verification and you will be able to edit your profile, add a copy of your ID and Passport photo as soon as you are approved and logged in.
+                    Congratulatiuons for Registering, wait for verification and you will be able to edit your profile, add a copy of your ID and Passport photo as soon as you are approved and logged in. Click on Submit to complete your registration.
                     <!-- <div class="form-group">
                         <label for="">ID card</label>
                         <input type="file" class="form-control" wire:model="id_cardx">
