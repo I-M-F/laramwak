@@ -467,7 +467,7 @@ class UserController extends Controller
         $data['id_card']=$idcard;
         $data['passport_photo']=$passport;
 
-        dd($data);
+        //dd($data);
 
         $update = DB::table('member_registartions')
             ->where('email', $id)
