@@ -238,7 +238,7 @@ class MemberRegistartionForm extends Component
                 $annual_fee = 3000;
            }else{
                 //dd($this->class.' xx');
-                $member_fee = 2000;
+                $member_fee = 3000;
                 $annual_fee = 1000;
            }
            
@@ -263,7 +263,7 @@ class MemberRegistartionForm extends Component
             Payment::insert($pay2_var);
             
            // $message = 'Dear ' . $this->first_name . ' Welcome to MWAK. Your registation is received pending approval. Please sign in with your email and make member payment. Your one time password is ' . $OTP;
-           $message = 'Dear ' . $this->first_name . ' Welcome to MWAK. Your registation is received pending verification. Please sign in after verification with your email to add your passport photo and ID copy. Your one time password is ' . $OTP;
+           $message = 'Dear ' . $this->first_name . ' Welcome to MWAK. Your registration is received pending verification. Please sign in after verification with your email to add your passport photo and ID copy. Your one time password is ' . $OTP . ' Karibu Member.' ;
 
             $this->sendSMS($OTP,$this->first_name,$this->phone,$message);
             //$this->sendEmail(); 

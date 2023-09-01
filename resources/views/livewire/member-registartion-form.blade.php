@@ -215,8 +215,9 @@
                                     <option value="Sergeant">Sergeant</option>
                                     <option value="Corporal">Corporal</option>
                                     <option value="Lance Corporal">Lance Corporal</option>
+                                    <option value="Spte / Pte">Spte / Pte</option>
                                 </select>
-                                <span class="text-danger">@error('class') {{ $message }}@enderror</span>
+                                <span class=" text-danger">@error('class') {{ $message }}@enderror</span>
                             </div>
                         </div>
                     </div>
@@ -232,7 +233,7 @@
                     STEP 3/3 - Attachments
                 </div>
                 <div class="card-body">
-                    Congratulatiuons for Registering, wait for verification and you will be able to edit your profile, add a copy of your ID and Passport photo as soon as you are approved and logged in. Click on Submit to complete your registration.
+                    <p><span style="font-weight: bold;">Congratulations for Registering</span>, wait for verification and you will be able to edit your profile, add a copy of your ID and Passport photo as soon as you are approved and logged in. <span style="font-weight: bold; color: red;">Click on Submit to complete your registration.</span></p>
                     <!-- <div class="form-group">
                         <label for="">ID card</label>
                         <input type="file" class="form-control" wire:model="id_cardx">
