@@ -41,7 +41,7 @@
                   <tr>
                     <td>{{ $key+1 }}</td>
                     <td>{{ $row->first_name.' '.$row->maiden_name }}</td>
-                    <td>{{ $row->member_no.' '.$row->updated_at}}</td>
+                    <td>{{ $row->member_no }} <span style="font-weight: bold;">{{ $row->updated_at }}</span></td>
                     <td>{{ $row->phone }}</td>
                     <td>{{ $row->id_number }}</td>
 
