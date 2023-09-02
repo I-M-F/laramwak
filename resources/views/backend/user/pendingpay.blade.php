@@ -29,7 +29,7 @@
                                         <th>Spouse Rank</th>
                                         <th>Amount</th>
                                         <th>Payment Description</th>
-                                        <th>Created at.</th>
+                                        <th>Transaction No.</th>
                                         <th>Status</th>
 
                                     </tr>
@@ -46,7 +46,7 @@
                                         <td>{{ $row->spouse_status }}</td>
                                         <td>{{ $row->amount }}</td>
                                         <td>{{ $row->payment_description }}</td>
-                                        <td>{{ $row->date }}</td>
+                                        <td>{{ $row->tx_number }} {{ $row->date }}</td>
                                         <td>{{ $row->status }}</td>
 
 
