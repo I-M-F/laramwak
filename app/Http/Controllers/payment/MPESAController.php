@@ -38,48 +38,48 @@ class MPESAController extends Controller
                 ->get();
         }
 
-        //dd($paymentDB);
+        dd($paymentDB);
         return view('backend.user.payments', compact('all', 'response', 'member', 'paymentDB'));
 
         
     }
 
-    public function pendingPay()
-    {
-        //haven't paid, Name, phone, spouse name, spouse rank, amount to pay
-        $response = $this->getAccessToken();
+    // public function pendingPay()
+    // {
+    //     //haven't paid, Name, phone, spouse name, spouse rank, amount to pay
+    //     $response = $this->getAccessToken();
 
-        $all = DB::table('users')->get();
-        $member = DB::table('member_registartions')->get();
-        $this->middleware('auth');
-        //{{auth()->user()->role}} 
-        $user = Auth::user()->role;
-        //$phone = Auth::user()->email;
+    //     $all = DB::table('users')->get();
+    //     $member = DB::table('member_registartions')->get();
+    //     $this->middleware('auth');
+    //     //{{auth()->user()->role}} 
+    //     $user = Auth::user()->role;
+    //     //$phone = Auth::user()->email;
 
-        if ($user == 'Admin') {
+    //     if ($user == 'Admin') {
            
 
-            $paymentDB = DB::table('payments')
-            ->join('member_registartions', 'payments.phone', '=', 'member_registartions.phone')
-            ->where('payments.status','Pending')
-            ->get();
+    //         $paymentDB = DB::table('payments')
+    //         ->join('member_registartions', 'payments.phone', '=', 'member_registartions.phone')
+    //         ->where('payments.status','Pending')
+    //         ->get();
 
 
-            //printf($paymentDB);
+    //         //printf($paymentDB);
             
 
-        } else {
-            # code...
-            $phone = DB::table('member_registartions')->where('email', '=', Auth::user()->email)->value('phone');
-            $paymentDB = DB::table('payments')
-            ->where('id', '=', $phone)
-                ->get();
-        }
+    //     } else {
+    //         # code...
+    //         $phone = DB::table('member_registartions')->where('email', '=', Auth::user()->email)->value('phone');
+    //         $paymentDB = DB::table('payments')
+    //         ->where('id', '=', $phone)
+    //             ->get();
+    //     }
 
-        return view('backend.user.pendingpay', compact('all', 'response', 'member', 'paymentDB'));
+    //     return view('backend.user.pendingpay', compact('all', 'response', 'member', 'paymentDB'));
 
-        //dd($user);
-    }
+    //     //dd($user);
+    // }
 
     public function commissionedPayList()
     {
