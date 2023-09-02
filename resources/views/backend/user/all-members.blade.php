@@ -53,7 +53,7 @@
                     @else
                     <td>{{ $row->service_number }}</td>
                     @endif
-                    <td>{{ $row->id_number }}</td>
+                    <td> <strong>{{ $row->updated_at }}</strong></td>
                     <!-- <td>{{ isset($get_county[$row->id]['county']) ? $get_county[$row->id]['county']->name : '' }}</td>
                     <td>{{ isset($get_county[$row->id]['sub_county']) ? $get_county[$row->id]['sub_county']->name : '' }}</td> -->
 
