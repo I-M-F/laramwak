@@ -38,7 +38,7 @@
                     <td>{{ $key+1 }}</td>
                     <td>{{ $row->phone }}</td>
                     <td>{{ $row->amount }}</td>
-                    <td>{{ $row->payment_description }}</td>
+                    <td>{{ $row->payment_description }}{{ $row->date }}</td>
                     <td>{{ $row->tx_number }}</td>
                     <td>{{ $row->status }}</td>
 
