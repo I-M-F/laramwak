@@ -108,9 +108,9 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{URL::to('/commissioned')}}" class="nav-link">
+              <a href="{{URL::to('/report')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Commissioned </p>
+                <p>Report </p>
               </a>
             </li>
             <li class="nav-item">
