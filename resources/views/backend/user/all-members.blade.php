@@ -26,7 +26,7 @@
                     <th>Phone</th>
                     <th>ID</th>
                     <th>Service Number</th>
-                    <th>Member Since</th>
+                    <th>Date</th>
                     <!-- <th>County</th>
                     <th>Sub County</th>
                     <th>Spouse Name</th>
@@ -42,7 +42,7 @@
                   <tr>
                     <td>{{ $key+1 }}</td>
                     <td>{{ $row->first_name.' '.$row->maiden_name }}</td>
-                    <td>{{ $row->member_no }} </td>
+                    <td>{{ $row->member_no }}</td>
                     <td>{{ $row->phone }}</td>
                     <td>{{ $row->id_number }}</td>
 
@@ -52,9 +52,8 @@
                     <td style="background-color:red ">{{ $row->service_number }}</td>
                     @else
                     <td>{{ $row->service_number }}</td>
-                    <td>{{ $row->updated_at }}</td>
                     @endif
-
+                    <td>{{ $row->id_number }}</td>
                     <!-- <td>{{ isset($get_county[$row->id]['county']) ? $get_county[$row->id]['county']->name : '' }}</td>
                     <td>{{ isset($get_county[$row->id]['sub_county']) ? $get_county[$row->id]['sub_county']->name : '' }}</td> -->
 
@@ -88,7 +87,7 @@
                     <th>Phone</th>
                     <th>ID</th>
                     <th>Service Number</th>
-                    <th>Member Since</th>
+                    <th>Date</th>
                     <!-- <th>County</th>
                     <th>Sub County</th>
                     
