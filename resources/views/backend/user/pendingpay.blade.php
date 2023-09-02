@@ -46,7 +46,7 @@
                                         <td>{{ $row->spouse_status }}</td>
                                         <td>{{ $row->amount }}</td>
                                         <td>{{ $row->payment_description }}</td>
-                                        <td>{{ $row->created_at }}</td>
+                                        <td>{{ $row->date }}</td>
                                         <td>{{ $row->status }}</td>
 
 
