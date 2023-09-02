@@ -52,7 +52,7 @@
                     <td style="background-color:red ">{{ $row->service_number }}</td>
                     @else
                     <td>{{ $row->service_number }}</td>
-                    <td> <span style="font-weight: bold;">{{ $row->updated_at }}</span></td>
+                    <td>{{ $row->updated_at }}</td>
                     @endif
 
                     <!-- <td>{{ isset($get_county[$row->id]['county']) ? $get_county[$row->id]['county']->name : '' }}</td>
