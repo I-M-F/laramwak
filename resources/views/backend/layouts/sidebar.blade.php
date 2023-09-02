@@ -113,12 +113,12 @@
                 <p>Report </p>
               </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="{{URL::to('/non-commissioned')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Non-Commissioned </p>
               </a>
-            </li>
+            </li> -->
           </ul>
         </li>
 
