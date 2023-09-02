@@ -25,6 +25,7 @@
                     <th>Phone</th>
                     <th>Amount</th>
                     <th>Payment Description</th>
+                    <th>Date</th>
                     <th>Transaction No.</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -38,7 +39,8 @@
                     <td>{{ $key+1 }}</td>
                     <td>{{ $row->phone }}</td>
                     <td>{{ $row->amount }}</td>
-                    <td>{{ $row->payment_description }}{{ $row->date }}</td>
+                    <td>{{ $row->payment_description }}</td>
+                    <td>{{ $row->date }}</td>
                     <td>{{ $row->tx_number }}</td>
                     <td>{{ $row->status }}</td>
 
@@ -72,6 +74,7 @@
                     <th>Phone</th>
                     <th>Amount</th>
                     <th>Payment Description</th>
+                    <th>Date</th>
                     <th>Transaction No.</th>
                     <th>Status</th>
                     <th>Action</th>
