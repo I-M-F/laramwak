@@ -315,7 +315,7 @@
             },
             events: data, // Assign the retrieved JSON data to the events option
           });
-
+          console.log("events:", data);
           calendar.render();
         },
         error: function(xhr, status, error) {
