@@ -275,7 +275,7 @@
         }
       });
 
-      console.log("SITEURL:", SITEURL);
+      console.log("SITEURL:", SITEURL + '/calendar-event');
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
