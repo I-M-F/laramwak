@@ -177,7 +177,7 @@
 
   <!-- Page specific script -->
 
-  <script>
+  <!-- <script>
     $(document).ready(function() {
       display_events();
     }); //end document.ready block
@@ -260,7 +260,7 @@
       });
       return false;
     }
-  </script>
+  </script> -->
 
 
 
@@ -275,7 +275,7 @@
         }
       });
 
-      console.log("SITEURL:", SITEURL + '/calendar-event');
+     // console.log("SITEURL:", SITEURL + '/calendar-event');
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
