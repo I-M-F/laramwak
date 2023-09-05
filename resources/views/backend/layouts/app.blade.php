@@ -275,8 +275,8 @@
         }
       });
 
-      dd(SITEURL);
-      
+      console.log("SITEURL:", SITEURL);
+
       var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         initialDate: '2023-09-07',
