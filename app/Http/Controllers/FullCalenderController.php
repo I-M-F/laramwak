@@ -8,6 +8,18 @@ use App\Models\Event;
 class FullCalenderController extends Controller
 {
     //
+
+
+    public function getEvents(Request $request)
+    {
+        // Fetch events from your data source (e.g., a database)
+        //$events = DB::table('events')->get();
+        $events = Event::select(['event_name', 'event_start', 'event_end'])->get();
+
+        // Convert the events to a JSON response
+        return response()->json($events);
+    }
+
     public function index(Request $request)
     {
         if ($request->ajax()) {
