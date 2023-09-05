@@ -265,32 +265,6 @@
 
 
   <script>
-    // document.addEventListener('DOMContentLoaded', function() {
-    //   var calendarEl = document.getElementById('calendar');
-
-    //   var SITEURL = "{{ url('/') }}";
-    //   $.ajaxSetup({
-    //     headers: {
-    //       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //     }
-    //   });
-
-    //   // console.log("SITEURL:", SITEURL + '/calendar-event');
-
-    //   var calendar = new FullCalendar.Calendar(calendarEl, {
-    //     initialView: 'dayGridMonth',
-    //     initialDate: '2023-09-07',
-    //     headerToolbar: {
-    //       left: 'prev,next today',
-    //       center: 'title',
-    //       right: 'dayGridMonth,timeGridWeek,timeGridDay'
-    //     },
-    //     events: SITEURL + '/calendar-event',
-    //   });
-    //   console.log("events:", SITEURL + '/calendar-event');
-    //   calendar.render();
-    // });
-
     var calendarEl = document.getElementById('calendar');
     var SITEURL = "{{ url('/') }}";
 
@@ -313,81 +287,38 @@
               center: 'title',
               right: 'dayGridMonth,timeGridWeek,timeGridDay'
             },
-            events: data, // Assign the retrieved JSON data to the events option
-            // events: [{
-            //   "event_name": "Event 1",
-            //   "event_start": "2023-09-01",
-            //   "event_end": "2023-09-01"
-            // }, {
-            //   "event_name": "Event 2",
-            //   "event_start": "2023-09-07",
-            //   "event_end": "2023-09-10"
-            // }, {
-            //   "event_name": "Event 3",
-            //   "event_start": "2023-09-09",
-            //   "event_end": "2023-09-09"
-            // }, {
-            //   "event_name": "Event 4",
-            //   "event_start": "2023-09-16",
-            //   "event_end": "2023-09-16"
-            // }]
+            events: data, // Assign the retrieved JSON data to the events option,
+            eventClick: function(info) {
+              // Handle event click here
+              showEventDetails(info.event);
+            }
 
-            // events: [{
-            //     title: 'All Day Event',
-            //     start: '2023-09-01'
-            //   },
-            //   {
-            //     title: 'Long Event',
-            //     start: '2023-09-07',
-            //     end: '2023-09-10'
-            //   },
-            //   {
-            //     groupId: '999',
-            //     title: 'Repeating Event',
-            //     start: '2023-09-09T16:00:00'
-            //   },
-            //   {
-            //     groupId: '999',
-            //     title: 'Repeating Event',
-            //     start: '2023-09-16T16:00:00'
-            //   },
-            //   {
-            //     title: 'Conference',
-            //     start: '2023-09-11',
-            //     end: '2023-09-13'
-            //   },
-            //   {
-            //     title: 'Meeting',
-            //     start: '2023-09-12T10:30:00',
-            //     end: '2023-09-12T12:30:00'
-            //   },
-            //   {
-            //     title: 'Lunch',
-            //     start: '2023-09-12T12:00:00'
-            //   },
-            //   {
-            //     title: 'Meeting',
-            //     start: '2023-09-12T14:30:00'
-            //   },
-            //   {
-            //     title: 'Birthday Party',
-            //     start: '2023-09-13T07:00:00'
-            //   },
-            //   {
-            //     title: 'Click for Google',
-            //     url: 'https://google.com/',
-            //     start: '2023-09-28'
-            //   }
-            // ]
           });
           //console.log("events:", data);
           calendar.render();
         },
+
+
         error: function(xhr, status, error) {
           console.error("Error fetching events:", error);
         }
       });
     });
+
+    function showEventDetails(event) {
+      // Assuming you have a Bootstrap Modal with an ID "eventModal"
+      var modal = $('#eventModal');
+
+      // Populate the modal with event details
+      modal.find('.modal-title').text(event.title);
+      modal.find('.modal-body').html('<p>Start: ' + event.start.toISOString() + '</p>');
+      if (event.end) {
+        modal.find('.modal-body').append('<p>End: ' + event.end.toISOString() + '</p>');
+      }
+
+      // Show the modal
+      modal.modal('show');
+    }
   </script>
 
 
