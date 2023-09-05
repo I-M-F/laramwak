@@ -14,7 +14,9 @@ class FullCalenderController extends Controller
     {
         // Fetch events from your data source (e.g., a database)
         //$events = DB::table('events')->get();
-        $events = Event::select(['title', 'start', 'end'])->get();
+
+        //$events = Event::select(['event_name', 'event_start', 'event_end'])->get();
+        $events = Event::select(['event_name as title', 'event_start as start', 'event_end as end'])->get();
 
         // Convert the events to a JSON response
         return response()->json($events);
