@@ -313,9 +313,25 @@
               center: 'title',
               right: 'dayGridMonth,timeGridWeek,timeGridDay'
             },
-            events: data, // Assign the retrieved JSON data to the events option
+            events: [{
+              "event_name": "Event 1",
+              "event_start": "2023-09-01",
+              "event_end": "2023-09-01"
+            }, {
+              "event_name": "Event 2",
+              "event_start": "2023-09-07",
+              "event_end": "2023-09-10"
+            }, {
+              "event_name": "Event 3",
+              "event_start": "2023-09-09",
+              "event_end": "2023-09-09"
+            }, {
+              "event_name": "Event 4",
+              "event_start": "2023-09-16",
+              "event_end": "2023-09-16"
+            }], // Assign the retrieved JSON data to the events option
           });
-          console.log("events:", data);
+          //console.log("events:", data);
           calendar.render();
         },
         error: function(xhr, status, error) {
