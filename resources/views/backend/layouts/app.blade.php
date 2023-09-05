@@ -24,18 +24,7 @@
   <link rel="stylesheet" href="{{asset('backend/dist/css/adminlte.min.css')}}">
 
   <!-- fullCalendar -->
-  <!-- <link href='https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css' rel='stylesheet'>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.js"></script> -->
-
-  <!-- <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script> -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
 
   <!-- Toaster Notification -->
   <link rel="stylesheet" href="{{asset('toaster/toastr.min.css')}}">
@@ -120,9 +109,7 @@
   <script src="{{ asset('toaster/toastr.min.js')}}"></script>
   <script src="{{ asset('toaster/sweetalert.min.js') }}"></script>
 
-  <!-- fullCalendar 2.2.5 -->
-  <!-- <script src="{{asset('backend/plugins/plugins/moment/moment.min.js')}}"></script>
-  <script src="{{asset('backend/plugins/plugins/fullcalendar/main.js')}}"></script> -->
+
 
   <script>
     @if(Session::has('messege'))
@@ -189,172 +176,6 @@
   </script>
 
   <!-- Page specific script -->
-  <!-- <script>
-    $(function() {
-
-      /* initialize the external events
-       -----------------------------------------------------------------*/
-      function ini_events(ele) {
-        ele.each(function() {
-
-          // create an Event Object (https://fullcalendar.io/docs/event-object)
-          // it doesn't need to have a start or end
-          var eventObject = {
-            title: $.trim($(this).text()) // use the element's text as the event title
-          }
-
-          // store the Event Object in the DOM element so we can get to it later
-          $(this).data('eventObject', eventObject)
-
-          // make the event draggable using jQuery UI
-          $(this).draggable({
-            zIndex: 1070,
-            revert: true, // will cause the event to go back to its
-            revertDuration: 0 //  original position after the drag
-          })
-
-        })
-      }
-
-      ini_events($('#external-events div.external-event'))
-
-      /* initialize the calendar
-       -----------------------------------------------------------------*/
-      //Date for the calendar events (dummy data)
-      var date = new Date()
-      var d = date.getDate(),
-        m = date.getMonth(),
-        y = date.getFullYear()
-
-      var Calendar = FullCalendar.Calendar;
-      var Draggable = FullCalendar.Draggable;
-
-      var containerEl = document.getElementById('external-events');
-      var checkbox = document.getElementById('drop-remove');
-      var calendarEl = document.getElementById('calendar');
-
-      // initialize the external events
-      // -----------------------------------------------------------------
-
-      new Draggable(containerEl, {
-        itemSelector: '.external-event',
-        eventData: function(eventEl) {
-          return {
-            title: eventEl.innerText,
-            backgroundColor: window.getComputedStyle(eventEl, null).getPropertyValue('background-color'),
-            borderColor: window.getComputedStyle(eventEl, null).getPropertyValue('background-color'),
-            textColor: window.getComputedStyle(eventEl, null).getPropertyValue('color'),
-          };
-        }
-      });
-
-      var calendar = new Calendar(calendarEl, {
-        headerToolbar: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay'
-        },
-        themeSystem: 'bootstrap',
-        //Random default events
-        events: [{
-            title: 'All Day Event',
-            start: new Date(y, m, 1),
-            backgroundColor: '#f56954', //red
-            borderColor: '#f56954', //red
-            allDay: true
-          },
-          {
-            title: 'Long Event',
-            start: new Date(y, m, d - 5),
-            end: new Date(y, m, d - 2),
-            backgroundColor: '#f39c12', //yellow
-            borderColor: '#f39c12' //yellow
-          },
-          {
-            title: 'Meeting',
-            start: new Date(y, m, d, 10, 30),
-            allDay: false,
-            backgroundColor: '#0073b7', //Blue
-            borderColor: '#0073b7' //Blue
-          },
-          {
-            title: 'Lunch',
-            start: new Date(y, m, d, 12, 0),
-            end: new Date(y, m, d, 14, 0),
-            allDay: false,
-            backgroundColor: '#00c0ef', //Info (aqua)
-            borderColor: '#00c0ef' //Info (aqua)
-          },
-          {
-            title: 'Birthday Party',
-            start: new Date(y, m, d + 1, 19, 0),
-            end: new Date(y, m, d + 1, 22, 30),
-            allDay: false,
-            backgroundColor: '#00a65a', //Success (green)
-            borderColor: '#00a65a' //Success (green)
-          },
-          {
-            title: 'Click for Google',
-            start: new Date(y, m, 28),
-            end: new Date(y, m, 29),
-            url: 'https://www.google.com/',
-            backgroundColor: '#3c8dbc', //Primary (light-blue)
-            borderColor: '#3c8dbc' //Primary (light-blue)
-          }
-        ],
-        editable: true,
-        droppable: true, // this allows things to be dropped onto the calendar !!!
-        drop: function(info) {
-          // is the "remove after drop" checkbox checked?
-          if (checkbox.checked) {
-            // if so, remove the element from the "Draggable Events" list
-            info.draggedEl.parentNode.removeChild(info.draggedEl);
-          }
-        }
-      });
-
-      calendar.render();
-      // $('#calendar').fullCalendar()
-
-      /* ADDING EVENTS */
-      var currColor = '#3c8dbc' //Red by default
-      // Color chooser button
-      $('#color-chooser > li > a').click(function(e) {
-        e.preventDefault()
-        // Save color
-        currColor = $(this).css('color')
-        // Add color effect to button
-        $('#add-new-event').css({
-          'background-color': currColor,
-          'border-color': currColor
-        })
-      })
-      $('#add-new-event').click(function(e) {
-        e.preventDefault()
-        // Get value and make sure it is not null
-        var val = $('#new-event').val()
-        if (val.length == 0) {
-          return
-        }
-
-        // Create events
-        var event = $('<div />')
-        event.css({
-          'background-color': currColor,
-          'border-color': currColor,
-          'color': '#fff'
-        }).addClass('external-event')
-        event.text(val)
-        $('#external-events').prepend(event)
-
-        // Add draggable funtionality
-        ini_events(event)
-
-        // Remove event from text input
-        $('#new-event').val('')
-      })
-    })
-  </script> -->
 
   <script>
     $(document).ready(function() {
@@ -441,24 +262,9 @@
     }
   </script>
 
-  <!-- <script>
-    $(document).ready(function() {
-      $('#calendar').fullCalendar({
-
-      });
-    });
-  </script> -->
-
-  <!-- <script>
-    // document.addEventListener('DOMContentLoaded', function() {
-    //   var calendarEl = document.getElementById('calendar');
-    //   var calendar = new FullCalendar.Calendar(calendarEl, {
-    //     initialView: 'dayGridMonth'
-    //   });
-    //   calendar.render();
-    // });
 
 
+  <script>
     document.addEventListener('DOMContentLoaded', function() {
       var calendarEl = document.getElementById('calendar');
 
@@ -521,101 +327,8 @@
 
       calendar.render();
     });
-  </script> -->
-
-
-  <script>
-    $(document).ready(function() {
-      var SITEURL = "{{ url('/') }}";
-      $.ajaxSetup({
-        headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-      });
-      var calendar = $('#full_calendar_events').fullCalendar({
-        editable: true,
-        editable: true,
-        events: SITEURL + "/calendar-event",
-        displayEventTime: true,
-        eventRender: function(event, element, view) {
-          if (event.allDay === 'true') {
-            event.allDay = true;
-          } else {
-            event.allDay = false;
-          }
-        },
-        selectable: true,
-        selectHelper: true,
-        select: function(event_start, event_end, allDay) {
-          var event_name = prompt('Event Name:');
-          if (event_name) {
-            var event_start = $.fullCalendar.formatDate(event_start, "Y-MM-DD HH:mm:ss");
-            var event_end = $.fullCalendar.formatDate(event_end, "Y-MM-DD HH:mm:ss");
-            $.ajax({
-              url: SITEURL + "/calendar-crud-ajax",
-              data: {
-                event_name: event_name,
-                event_start: event_start,
-                event_end: event_end,
-                type: 'create'
-              },
-              type: "POST",
-              success: function(data) {
-                displayMessage("Event created.");
-                calendar.fullCalendar('renderEvent', {
-                  id: data.id,
-                  title: event_name,
-                  start: event_start,
-                  end: event_end,
-                  allDay: allDay
-                }, true);
-                calendar.fullCalendar('unselect');
-              }
-            });
-          }
-        },
-        eventDrop: function(event, delta) {
-          var event_start = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
-          var event_end = $.fullCalendar.formatDate(event.end, "Y-MM-DD");
-          $.ajax({
-            url: SITEURL + '/calendar-crud-ajax',
-            data: {
-              title: event.event_name,
-              start: event_start,
-              end: event_end,
-              id: event.id,
-              type: 'edit'
-            },
-            type: "POST",
-            success: function(response) {
-              displayMessage("Event updated");
-            }
-          });
-        },
-        eventClick: function(event) {
-          var eventDelete = confirm("Are you sure?");
-          if (eventDelete) {
-            $.ajax({
-              type: "POST",
-              url: SITEURL + '/calendar-crud-ajax',
-              data: {
-                id: event.id,
-                type: 'delete'
-              },
-              success: function(response) {
-                calendar.fullCalendar('removeEvents', event.id);
-                displayMessage("Event removed");
-              }
-            });
-          }
-        }
-      });
-    });
-
-    function displayMessage(message) {
-      toastr.success(message, 'Event');
-    }
   </script>
+
 
 
   <!-- 
