@@ -285,7 +285,7 @@
           center: 'title',
           right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
-        events: SITEURL + '/events',
+        events: SITEURL + '/calendar-event',
       });
 
       calendar.render();
