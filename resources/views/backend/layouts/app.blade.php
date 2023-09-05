@@ -313,7 +313,7 @@
               center: 'title',
               right: 'dayGridMonth,timeGridWeek,timeGridDay'
             },
-            //events: data, // Assign the retrieved JSON data to the events option
+            events: data, // Assign the retrieved JSON data to the events option
             // events: [{
             //   "event_name": "Event 1",
             //   "event_start": "2023-09-01",
@@ -332,53 +332,53 @@
             //   "event_end": "2023-09-16"
             // }]
 
-            events: [{
-                title: 'All Day Event',
-                start: '2023-09-01'
-              },
-              {
-                title: 'Long Event',
-                start: '2023-09-07',
-                end: '2023-09-10'
-              },
-              {
-                groupId: '999',
-                title: 'Repeating Event',
-                start: '2023-09-09T16:00:00'
-              },
-              {
-                groupId: '999',
-                title: 'Repeating Event',
-                start: '2023-09-16T16:00:00'
-              },
-              {
-                title: 'Conference',
-                start: '2023-09-11',
-                end: '2023-09-13'
-              },
-              {
-                title: 'Meeting',
-                start: '2023-09-12T10:30:00',
-                end: '2023-09-12T12:30:00'
-              },
-              {
-                title: 'Lunch',
-                start: '2023-09-12T12:00:00'
-              },
-              {
-                title: 'Meeting',
-                start: '2023-09-12T14:30:00'
-              },
-              {
-                title: 'Birthday Party',
-                start: '2023-09-13T07:00:00'
-              },
-              {
-                title: 'Click for Google',
-                url: 'https://google.com/',
-                start: '2023-09-28'
-              }
-            ]
+            // events: [{
+            //     title: 'All Day Event',
+            //     start: '2023-09-01'
+            //   },
+            //   {
+            //     title: 'Long Event',
+            //     start: '2023-09-07',
+            //     end: '2023-09-10'
+            //   },
+            //   {
+            //     groupId: '999',
+            //     title: 'Repeating Event',
+            //     start: '2023-09-09T16:00:00'
+            //   },
+            //   {
+            //     groupId: '999',
+            //     title: 'Repeating Event',
+            //     start: '2023-09-16T16:00:00'
+            //   },
+            //   {
+            //     title: 'Conference',
+            //     start: '2023-09-11',
+            //     end: '2023-09-13'
+            //   },
+            //   {
+            //     title: 'Meeting',
+            //     start: '2023-09-12T10:30:00',
+            //     end: '2023-09-12T12:30:00'
+            //   },
+            //   {
+            //     title: 'Lunch',
+            //     start: '2023-09-12T12:00:00'
+            //   },
+            //   {
+            //     title: 'Meeting',
+            //     start: '2023-09-12T14:30:00'
+            //   },
+            //   {
+            //     title: 'Birthday Party',
+            //     start: '2023-09-13T07:00:00'
+            //   },
+            //   {
+            //     title: 'Click for Google',
+            //     url: 'https://google.com/',
+            //     start: '2023-09-28'
+            //   }
+            // ]
           });
           //console.log("events:", data);
           calendar.render();
