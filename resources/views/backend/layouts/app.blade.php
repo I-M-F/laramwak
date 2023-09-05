@@ -265,30 +265,63 @@
 
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var calendarEl = document.getElementById('calendar');
+    // document.addEventListener('DOMContentLoaded', function() {
+    //   var calendarEl = document.getElementById('calendar');
 
-      var SITEURL = "{{ url('/') }}";
+    //   var SITEURL = "{{ url('/') }}";
+    //   $.ajaxSetup({
+    //     headers: {
+    //       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //     }
+    //   });
+
+    //   // console.log("SITEURL:", SITEURL + '/calendar-event');
+
+    //   var calendar = new FullCalendar.Calendar(calendarEl, {
+    //     initialView: 'dayGridMonth',
+    //     initialDate: '2023-09-07',
+    //     headerToolbar: {
+    //       left: 'prev,next today',
+    //       center: 'title',
+    //       right: 'dayGridMonth,timeGridWeek,timeGridDay'
+    //     },
+    //     events: SITEURL + '/calendar-event',
+    //   });
+    //   console.log("events:", SITEURL + '/calendar-event');
+    //   calendar.render();
+    // });
+
+    var calendarEl = document.getElementById('calendar');
+    var SITEURL = "{{ url('/') }}";
+
+    document.addEventListener('DOMContentLoaded', function() {
       $.ajaxSetup({
         headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
       });
 
-      // console.log("SITEURL:", SITEURL + '/calendar-event');
+      $.ajax({
+        url: SITEURL + '/calendar-event',
+        method: 'GET',
+        success: function(data) {
+          var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            initialDate: '2023-09-07',
+            headerToolbar: {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            events: data, // Assign the retrieved JSON data to the events option
+          });
 
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        initialDate: '2023-09-07',
-        headerToolbar: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay'
+          calendar.render();
         },
-        events: SITEURL + '/calendar-event',
+        error: function(xhr, status, error) {
+          console.error("Error fetching events:", error);
+        }
       });
-      console.log("events:", SITEURL + '/calendar-event');
-      calendar.render();
     });
   </script>
 
