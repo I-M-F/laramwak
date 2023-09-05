@@ -310,7 +310,7 @@
       var modal = $('#eventModal');
 
       // Populate the modal with event details
-      modal.find('.modal-title').text(event.title);
+      modal.find('.modal-title').text(event.title);      
       modal.find('.modal-body').html('<p>Start: ' + event.start.toISOString() + '</p>');
       if (event.end) {
         modal.find('.modal-body').append('<p>End: ' + event.end.toISOString() + '</p>');
