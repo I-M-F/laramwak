@@ -275,6 +275,8 @@
         }
       });
 
+      dd(SITEURL);
+      
       var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         initialDate: '2023-09-07',
@@ -282,7 +284,7 @@
           left: 'prev,next today',
           center: 'title',
           right: 'dayGridMonth,timeGridWeek,timeGridDay'
-        },       
+        },
         events: SITEURL + '/events',
       });
 
