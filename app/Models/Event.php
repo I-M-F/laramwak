@@ -11,6 +11,7 @@ class Event extends Model
 
     protected $fillable = [
         'event_name',
+        'event_url',
         'event_start',
         'event_end'
     ];
