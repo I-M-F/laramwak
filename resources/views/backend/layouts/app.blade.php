@@ -364,8 +364,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
   <script type="text/javascript">
     $(function() {
-      $('#event_start').datetimepicker();
-      $('#event_end').datetimepicker();
+      $('#event_start').datetimepicker({
+        minDate: moment(), // Set the minimum date to today
+        format: 'YYYY-MM-DD', // Define your preferred date format
+        autoclose: true,
+        todayHighlight: true,
+      });
+
+      $('#event_end').datetimepicker({
+        minDate: moment(), // Set the minimum date to today
+        format: 'YYYY-MM-DD', // Define your preferred date format
+        autoclose: true,
+        todayHighlight: true,
+      });
     });
   </script>
 
