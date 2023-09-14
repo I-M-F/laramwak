@@ -24,7 +24,7 @@ class FullCalenderController extends Controller
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['updated_at'] = date('Y-m-d H:i:s');
 
-        dd($data);
+       /// dd($data);
 
         $insert = DB::table('events')->insert($data);
 
