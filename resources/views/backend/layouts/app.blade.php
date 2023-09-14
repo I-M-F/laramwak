@@ -310,14 +310,11 @@
       var modal = $('#eventModal');
 
       // Create a link element for the URL
-      // var urlLink = $('<a>', {
-      //   text: event.url,
-      //   href: event.url,
-      //   target: '_blank', // Open the URL in a new tab
-      // });
       var urlLink = $('<a>', {
         text: event.url,
-        href: 'javascript:void(0)', // Prevent redirection
+        href: event.url,
+        target: '_blank', // Open the URL in a new tab
+        href: 'javascript:void(0)',
       });
 
       // Populate the modal with event details
