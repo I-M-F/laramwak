@@ -290,11 +290,12 @@
             events: data, // Assign the retrieved JSON data to the events option,
             eventClick: function(info) {
               // Handle event click here
-              showEventDetails(info.event);
+              //showEventDetails(info.event);
+              console.log("events:", data);
             }
 
           });
-          //console.log("events:", data);
+          console.log("events:", data);
           calendar.render();
         },
 
