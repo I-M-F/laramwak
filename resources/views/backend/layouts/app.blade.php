@@ -364,7 +364,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
   <script type="text/javascript">
     $(function() {
-      $('#datetimepicker').datetimepicker();
+      $('#event_start').datetimepicker();
+      $('#event_end').datetimepicker();
     });
   </script>
 
