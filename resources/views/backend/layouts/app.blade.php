@@ -363,26 +363,48 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
   <script type="text/javascript">
-    // $(function() {
-    //   $('#event_start').datetimepicker();
-    //   $('#event_end').datetimepicker();
-    // });
-
     $(function() {
+      var today = new Date();
+
       $('#event_start').datetimepicker({
-        minDate: moment(), // Set the minimum date to today
-        format: 'YYYY-MM-DD', // Define your preferred date format
-        //autoclose: true,
-       // todayHighlight: true,
+        minDate: today,
+        useCurrent: false,
+        format: 'YYYY-MM-DD HH:mm:ss'
       });
 
       $('#event_end').datetimepicker({
-        minDate: moment(), // Set the minimum date to today
-        format: 'YYYY-MM-DD', // Define your preferred date format
-        //autoclose: true,
-        //todayHighlight: true,
+        minDate: today,
+        useCurrent: false,
+        format: 'YYYY-MM-DD HH:mm:ss'
+      });
+
+      // Event Start date picker change event
+      $('#event_start').on('dp.change', function(e) {
+        $('#event_end').data("DateTimePicker").minDate(e.date);
+      });
+
+      // Event End date picker change event
+      $('#event_end').on('dp.change', function(e) {
+        $('#event_start').data("DateTimePicker").maxDate(e.date);
       });
     });
+
+
+    // $(function() {
+    //   $('#event_start').datetimepicker({
+    //     minDate: moment(), // Set the minimum date to today
+    //     format: 'YYYY-MM-DD', // Define your preferred date format
+    //     //autoclose: true,
+    //    // todayHighlight: true,
+    //   });
+
+    //   $('#event_end').datetimepicker({
+    //     minDate: moment(), // Set the minimum date to today
+    //     format: 'YYYY-MM-DD', // Define your preferred date format
+    //     //autoclose: true,
+    //     //todayHighlight: true,
+    //   });
+    // });
   </script>
 
 
