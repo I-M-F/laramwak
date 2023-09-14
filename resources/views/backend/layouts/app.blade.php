@@ -291,7 +291,10 @@
             eventClick: function(info) {
               // Handle event click here
               //showEventDetails(info.event);
-              console.log("events:", data);
+              //console.log("events:", data);
+              if (info.event.url) {
+                window.location.href = info.event.url;
+              }
             }
 
           });
