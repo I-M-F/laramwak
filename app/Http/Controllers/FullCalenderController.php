@@ -15,7 +15,33 @@ class FullCalenderController extends Controller
 
       public function uploadEvent(Request $request)
     {
-        dd($request);
+        $data = array();
+       
+        $data['event_name'] = $request->event_title;
+        $data['event_url'] = $request->event_url;
+        $data['event_start'] = $request->event_start;
+        $data['event_end'] = $request->event_end;
+        $data['created_at'] = date('Y-m-d H:i:s');
+        $data['updated_at'] = date('Y-m-d H:i:s');
+
+        dd($data);
+
+        $insert = DB::table('events')->insert($data);
+
+
+        if ($insert) {
+            $notification = array(
+                'messege' => 'Succesfull User Updated',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('add-event')->with($notification);
+        } else {
+            $notification = array(
+                'messege' => 'Something is Wrong, please try User update again!',
+                'alert-type' => 'error'
+            );
+            return redirect()->route('add-event')->with($notification);
+        }
 
 
     }
