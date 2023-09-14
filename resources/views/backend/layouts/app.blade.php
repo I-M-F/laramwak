@@ -26,6 +26,14 @@
   <!-- fullCalendar -->
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
 
+  <!-- Add these links to your HTML file -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.11.0/dist/css/bootstrap-datepicker.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.11.0/dist/js/bootstrap-datepicker.min.js"></script>
+
+
   <!-- Toaster Notification -->
   <link rel="stylesheet" href="{{asset('toaster/toastr.min.css')}}">
 </head>
@@ -108,6 +116,8 @@
   <!-- Start Toaster & Sweetalert -->
   <script src="{{ asset('toaster/toastr.min.js')}}"></script>
   <script src="{{ asset('toaster/sweetalert.min.js') }}"></script>
+
+
 
 
 
