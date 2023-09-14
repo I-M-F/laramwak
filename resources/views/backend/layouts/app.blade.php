@@ -313,14 +313,14 @@
       var urlLink = $('<a>', {
         text: event.url,
         href: event.url,
-        target: '_blank', // Open the URL in a new tab
-        href: 'javascript:void(0)',
+        //target: '_blank', // Open the URL in a new tab
+        // href: 'javascript:void(0)',
       });
 
       // Populate the modal with event details
       modal.find('.modal-title').text(event.title);
 
-      modal.find('.modal-body').append(urlLink); // Append the link element
+      modal.find('.modal-body').append('<p>Link: ' + urlLink); // Append the link element
 
       modal.find('.modal-body').html('<p>Start: ' + event.start.toISOString() + '</p>');
       if (event.end) {
