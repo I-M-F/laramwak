@@ -35,13 +35,13 @@ class FullCalenderController extends Controller
                 'messege' => 'Succesfull User Updated',
                 'alert-type' => 'success'
             );
-            return redirect()->route('add-event')->with($notification);
+            return  redirect('/add-event')->with($notification);
         } else {
             $notification = array(
                 'messege' => 'Something is Wrong, please try User update again!',
                 'alert-type' => 'error'
             );
-            return redirect()->route('add-event')->with($notification);
+            return  redirect('/add-event')->with($notification);
         }
 
 
