@@ -58,13 +58,6 @@
     </section>
 </div>
 
-<script>
-    // Initialize Bootstrap Datepicker
-    $('.datepicker').datepicker({
-        format: 'yyyy-mm-dd', // Define your preferred date format
-        autoclose: true,
-        todayHighlight: true,
-    });
-</script>
+
 
 @endsection
