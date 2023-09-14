@@ -320,7 +320,7 @@
       // Populate the modal with event details
       modal.find('.modal-title').text(event.title);
 
-      modal.find('.modal-body').append('<p>Link: ' + urlLink); // Append the link element
+      //modal.find('.modal-body').append('<p>Link: ' + urlLink); // Append the link element
 
       modal.find('.modal-body').html('<p>Start: ' + event.start.toISOString() + '</p>');
       if (event.end) {
