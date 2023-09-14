@@ -145,6 +145,12 @@
               </a>
             </li>
             <li class="nav-item">
+              <a href="{{URL::to('/add-event')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Add Event</p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="{{URL::to('/bulk-sms')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Bulk SMS</p>
@@ -217,7 +223,7 @@
         @endif
         @if(auth()->user()->role=='Member')
 
- 
+
 
         <li class="nav-item">
           <a href="{{URL::to('/home')}}" class="nav-link active">

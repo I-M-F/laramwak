@@ -8,7 +8,10 @@ use App\Models\Event;
 class FullCalenderController extends Controller
 {
     //
-
+    public function addEvent()
+    {
+        return view('backend.user.add-event');
+    }
 
     public function getEvents(Request $request)
     {

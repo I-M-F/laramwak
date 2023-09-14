@@ -68,7 +68,7 @@ Route::get('/all-docs', [App\Http\Controllers\FileController::class, 'allDocs'])
 Route::get('/view-docs/{id}', [App\Http\Controllers\FileController::class, 'viewDocs'])->name('viewDocs');
 
 Route::get('calendar-event', [App\Http\Controllers\FullCalenderController::class, 'getEvents']);
-Route::post('calendar-crud-ajax', [App\Http\Controllers\FullCalenderController::class, 'calendarEvents']);
+Route::post('add-event', [App\Http\Controllers\FullCalenderController::class,'addEvent'])->name('addEvent');
 
 // Route::get('/tweets/{kdfinfo}', [App\Http\Controllers\TwitterController::class, 'getUserTimeline'])->name('getUserTimeline');
 // Route::get('/twitter', 'TwitterController@getIndex');
