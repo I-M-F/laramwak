@@ -292,6 +292,9 @@
               // Handle event click here
               //showEventDetails(info.event);
               //console.log("events:", data);
+              info.jsEvent.preventDefault();
+
+              // Open the event URL in a new tab
               window.open(info.event.url, '_blank');
             }
 
