@@ -353,14 +353,28 @@
     }
   </script>
 
-  <script>
+  <!-- <script>
     // Initialize Bootstrap Datepicker
     $('.datepicker').datepicker({
       format: 'yyyy-mm-dd', // Define your preferred date format
       autoclose: true,
       todayHighlight: true,
     });
+  </script> -->
+
+  <script>
+    console.log('Initializing datepicker...');
+    // Initialize Bootstrap Datepicker
+    $('.datepicker').datepicker({
+      format: 'yyyy-mm-dd', // Define your preferred date format
+      autoclose: true,
+      todayHighlight: true,
+    });
+    console.log('Datepicker initialized.');
   </script>
+
+
+
 
   <!-- 
   <script>

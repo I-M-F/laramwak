@@ -34,6 +34,7 @@
                                     <input type="text" class="form-control datepicker" name="event_start" id="event_start" placeholder="Select Event Start Date" required>
                                 </div>
                             </div>
+            
 
                             <!-- Add Date Selection for Event End -->
                             <div class="form-group row">
