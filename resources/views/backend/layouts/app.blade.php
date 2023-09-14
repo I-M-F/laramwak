@@ -363,18 +363,23 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
   <script type="text/javascript">
+    // $(function() {
+    //   $('#event_start').datetimepicker();
+    //   $('#event_end').datetimepicker();
+    // });
+
     $(function() {
       $('#event_start').datetimepicker({
         minDate: moment(), // Set the minimum date to today
         format: 'YYYY-MM-DD', // Define your preferred date format
-        autoclose: true,
+        //autoclose: true,
         todayHighlight: true,
       });
 
       $('#event_end').datetimepicker({
         minDate: moment(), // Set the minimum date to today
         format: 'YYYY-MM-DD', // Define your preferred date format
-        autoclose: true,
+        //autoclose: true,
         todayHighlight: true,
       });
     });
