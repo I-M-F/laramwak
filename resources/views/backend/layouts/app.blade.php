@@ -373,14 +373,14 @@
         minDate: moment(), // Set the minimum date to today
         format: 'YYYY-MM-DD', // Define your preferred date format
         //autoclose: true,
-        todayHighlight: true,
+       // todayHighlight: true,
       });
 
       $('#event_end').datetimepicker({
         minDate: moment(), // Set the minimum date to today
         format: 'YYYY-MM-DD', // Define your preferred date format
         //autoclose: true,
-        todayHighlight: true,
+        //todayHighlight: true,
       });
     });
   </script>
