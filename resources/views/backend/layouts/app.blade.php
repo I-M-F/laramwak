@@ -309,12 +309,17 @@
       // Assuming you have a Bootstrap Modal with an ID "eventModal"
       var modal = $('#eventModal');
 
-      // Create a link element for the URL
+      // Sanitize the URL to prevent redirection
+      var url = event.url;
+      if (!/^https?:\/\//i.test(url)) {
+        url = 'http://' + url; // Add "http://" as a prefix for plain text URLs
+      }
+
+      // Create a link element for the sanitized URL
       var urlLink = $('<a>', {
         text: event.url,
-        //href: event.url,
-        //target: '_blank', // Open the URL in a new tab
-        // href: 'javascript:void(0)',
+        href: url,
+        target: '_blank', // Open the URL in a new tab
       });
 
       // Populate the modal with event details
