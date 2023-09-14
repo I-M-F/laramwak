@@ -17,13 +17,20 @@
                     </div>
                     <!-- Start Card Body -->
                     <div class="card-body">
-                        <form role="form" action="{{ URL::to('upload-docs') }}" enctype="multipart/form-data" method="POST">
+                        <form role="form" action="{{ URL::to('upload-event') }}" enctype="multipart/form-data" method="POST">
                             @csrf
 
                             <div class="form-group row">
                                 <label for="event_title" class="col-sm-2 col-form-label"> Title</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="event_title" id="event_title" placeholder="Enter Event Title" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="event_url" class="col-sm-2 col-form-label"> URL Link</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="event_url" id="event_url" placeholder="Enter Event URL Link" required>
                                 </div>
                             </div>
 

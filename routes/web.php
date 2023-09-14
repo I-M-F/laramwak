@@ -69,6 +69,7 @@ Route::get('/view-docs/{id}', [App\Http\Controllers\FileController::class, 'view
 
 Route::get('calendar-event', [App\Http\Controllers\FullCalenderController::class, 'getEvents']);
 Route::get('add-event', [App\Http\Controllers\FullCalenderController::class,'addEvent'])->name('addEvent');
+Route::post('upload-event', [App\Http\Controllers\FullCalenderController::class, 'uploadEvent'])->name('uploadEvent');
 
 // Route::get('/tweets/{kdfinfo}', [App\Http\Controllers\TwitterController::class, 'getUserTimeline'])->name('getUserTimeline');
 // Route::get('/twitter', 'TwitterController@getIndex');

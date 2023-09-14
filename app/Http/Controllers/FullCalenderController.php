@@ -13,6 +13,12 @@ class FullCalenderController extends Controller
         return view('backend.user.add-event');
     }
 
+      public function uploadEvent(Request $request)
+    {
+        dd($request);
+
+
+    }
     public function getEvents(Request $request)
     {
         // Fetch events from your data source (e.g., a database)
