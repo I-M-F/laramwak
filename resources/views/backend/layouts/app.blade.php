@@ -312,7 +312,7 @@
       // Create a link element for the URL
       var urlLink = $('<a>', {
         text: event.url,
-        href: event.url,
+        //href: event.url,
         //target: '_blank', // Open the URL in a new tab
         // href: 'javascript:void(0)',
       });
