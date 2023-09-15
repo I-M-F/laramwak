@@ -130,7 +130,7 @@ class MPESAController extends Controller
 
 
 
-            dd($pendingPayments);
+           // dd($pendingPayments);
 
         }
         // } else {
@@ -141,7 +141,7 @@ class MPESAController extends Controller
         //         ->get();
         // }
 
-        return view('backend.user.com-pendingpay', compact('all', 'response', 'member',));
+        return view('backend.user.com-pendingpay', compact('all', 'response', 'member','pendingPayments'));
 
         //dd($user);
     }

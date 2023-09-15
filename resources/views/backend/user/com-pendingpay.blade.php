@@ -44,14 +44,14 @@
                                         <td>{{ $row->first_name }}</td>
                                         <td>{{ $row->phone }}</td>
                                         <td>{{ $row->spouse_name }}</td>
-                                        <td>{{ $row->spouse_rank }}</td>
+                                        <td>{{ $row->class }}</td>
                                         <td>{{ $row->spouse_status }}</td>
                                         <td>{{ $row->amount }}</td>
                                         <td>{{ $row->payment_description }}</td>
                                         <td>{{ $row->tx_number }} {{ $row->date }}</td>
                                         <td>{{ $row->status }}</td>
 
-
+                           
 
                                     </tr>
                                     @endforeach
