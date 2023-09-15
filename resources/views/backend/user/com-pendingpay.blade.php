@@ -13,7 +13,7 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">MWAK Payment Pending List </h3>
+                            <h3 class="card-title">MWAK Payment Commisioned Pending List </h3>
 
                         </div>
                         <!-- /.card-header -->
@@ -27,6 +27,7 @@
                                         <th>Phone</th>
                                         <th>Spouse Name</th>
                                         <th>Spouse Rank</th>
+                                        <th>Spouse Status</th>
                                         <th>Amount</th>
                                         <th>Payment Description</th>
                                         <th>Transaction No.</th>
@@ -43,6 +44,7 @@
                                         <td>{{ $row->first_name }}</td>
                                         <td>{{ $row->phone }}</td>
                                         <td>{{ $row->spouse_name }}</td>
+                                        <td>{{ $row->spouse_rank }}</td>
                                         <td>{{ $row->spouse_status }}</td>
                                         <td>{{ $row->amount }}</td>
                                         <td>{{ $row->payment_description }}</td>
@@ -63,6 +65,7 @@
                                         <th>Phone</th>
                                         <th>Spouse Name</th>
                                         <th>Spouse Rank</th>
+                                        <th>Spouse Status</th>
                                         <th>Amount</th>
                                         <th>Payment Description</th>
                                         <th>Transaction No.</th>
