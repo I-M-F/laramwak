@@ -350,7 +350,7 @@
                                         <hr>
                                         <div class="form-group row">
                                             <label for="inputSkills" class="col-sm-2 col-form-label">Passport Photo</label>
-                                            <img class="profile-user-img img-fluid img-square" src="{{ asset('/storage/'.$photo_str) }}" alt="Member passport picture" title="{{$view_member->id_card}}" width='50' height='50' class="img img-responsive">
+                                            <img class="profile-user-img img-fluid img-square" src="{{ asset('/storage'.$photo_str) }}" alt="Member passport picture" title="{{$view_member->id_card}}" width='50' height='50' class="img img-responsive">
                                             <div class="col-sm-10">
 
                                                 <input type="file" class="form-control" name="passport" placeholder="Enter Your Passport" value="{{$view_member->passport_photo}}">
