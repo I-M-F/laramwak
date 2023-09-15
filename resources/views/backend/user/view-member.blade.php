@@ -342,7 +342,7 @@
 
                                         <div class="form-group row">
                                             <label for="inputExperience" class="col-sm-2 col-form-label">ID Card {{$id_photo_str}}</label>
-                                            <img class="profile-user-img img-fluid img-square" src="{{ asset('/storage/app/public'.$id_photo_str) }}" alt="Member id picture" title="{{$view_member->id_card}}" width='50' height='50' class="img img-responsive">
+                                            <img class="profile-user-img img-fluid img-square" src="{{ asset('/storage'.$id_photo_str) }}" alt="Member id picture" title="{{$view_member->id_card}}" width='50' height='50' class="img img-responsive">
                                             <div class="col-sm-10">
                                                 <input type="file" class="form-control" name="id_card" placeholder="Enter Your ID Card" value="{{$view_member->id_card}}">
                                             </div>
