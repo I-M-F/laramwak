@@ -146,6 +146,60 @@ class MPESAController extends Controller
         //dd($user);
     }
 
+    public function nonCommisionedPayList()
+    {
+        //haven't paid, Name, phone, spouse name, spouse rank, amount to pay
+        $response = $this->getAccessToken();
+
+        $all = DB::table('users')->get();
+        $member = DB::table('member_registartions')->get();
+        $this->middleware('auth');
+        //{{auth()->user()->role}} 
+        $user = Auth::user()->role;
+        //$phone = Auth::user()->email;
+
+
+        $classesToMatch = [
+            'Warrant Officer Class 1',
+            'Warrant Officer Class 2',
+            'Senior Sergeant',
+            'Sergeant',
+            'Corporal',
+            'Lance Corporal',
+            'Spte / Pte'
+        ];
+
+
+        if ($user == 'Admin') {
+
+
+            // $paymentDB = DB::table('payments')
+            // ->join('member_registartions', 'payments.phone', '=', 'member_registartions.phone')
+            // ->where('payments.status', 'Pending')
+            // ->get();
+
+
+            $pendingPayments = DB::table('payments')
+            ->select('payments.*', 'member_registartions.*')
+            ->join('member_registartions', 'payments.phone', '=', 'member_registartions.phone')
+            ->where('payments.status', 'Pending')
+            ->whereIn('member_registartions.class', $classesToMatch)
+                ->get();
+
+            // $pendingPayments will now contain the pending payments with the associated class from member_registrations.
+
+
+
+             //dd($pendingPayments);
+
+        }
+      
+
+        return view('backend.user.noncom-pendingpay', compact('all', 'response', 'member', 'pendingPayments'));
+
+        //dd($user);
+    }
+
     public function getAccessToken()
     {
 

@@ -42,7 +42,8 @@ Route::post('/insert-all', [App\Http\Controllers\backend\UserController::class, 
 // Payments Managment
 Route::get('/payment', [App\Http\Controllers\payment\MPESAController::class, 'payment'])->name('payment');
 Route::get('/pendingPayList', [App\Http\Controllers\payment\MPESAController::class, 'pendingPay'])->name('pendingPay');
-Route::get('/comPayList', [App\Http\Controllers\payment\MPESAController::class, 'commisionedPayList'])->name('pendingPay');
+Route::get('/comPayList', [App\Http\Controllers\payment\MPESAController::class, 'commisionedPayList'])->name('commisionedPayList');
+Route::get('/nonComPayList', [App\Http\Controllers\payment\MPESAController::class, 'nonCommisionedPayList'])->name('nonCommisionedPayList');
 Route::get('/getAccessToken', [App\Http\Controllers\payment\MPESAController::class, 'getAccessToken'])->name('getAccessToken');
 Route::get('/mpesaSTKPush/{phone}', [App\Http\Controllers\payment\MPESAController::class, 'mwakKCBMPESASTKPUSH'])->name('mwakKCBMPESASTKPUSH');
 Route::get('/edit-tx/{phone}', [App\Http\Controllers\payment\MPESAController::class, 'editTx'])->name('editTx');
