@@ -67,7 +67,7 @@ class MPESAController extends Controller
             ->get();
 
 
-            dd($paymentDB);
+            //dd($paymentDB);
             
 
         } else {
@@ -117,10 +117,10 @@ class MPESAController extends Controller
             // ->join('member_registartions', 'payments.phone', '=', 'member_registartions.phone')
             // ->where('payments.status', 'Pending')
             // ->get();
-
+  
 
             $pendingPayments = DB::table('payments')
-                ->select('payments.*', 'member_registartions.class')
+                ->select('payments.*', 'member_registartions.*')
                 ->join('member_registartions', 'payments.phone', '=', 'member_registartions.phone')
                 ->where('payments.status', 'Pending')
                 ->whereIn('member_registartions.class', $classesToMatch)
