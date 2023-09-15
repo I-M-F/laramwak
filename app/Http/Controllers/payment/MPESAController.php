@@ -44,6 +44,8 @@ class MPESAController extends Controller
         
     }
 
+
+
     public function pendingPay()
     {
         //haven't paid, Name, phone, spouse name, spouse rank, amount to pay
@@ -77,6 +79,69 @@ class MPESAController extends Controller
         }
 
         return view('backend.user.pendingpay', compact('all', 'response', 'member', 'paymentDB'));
+
+        //dd($user);
+    }
+
+
+    public function commisionedPayList()
+    {
+        //haven't paid, Name, phone, spouse name, spouse rank, amount to pay
+        $response = $this->getAccessToken();
+
+        $all = DB::table('users')->get();
+        $member = DB::table('member_registartions')->get();
+        $this->middleware('auth');
+        //{{auth()->user()->role}} 
+        $user = Auth::user()->role;
+        //$phone = Auth::user()->email;
+
+
+        $classesToMatch = [
+            'General',
+            'Lieutenant General',
+            'Major General',
+            'Brigadier',
+            'Colonel',
+            'Lieutenant Colonel',
+            'Major',
+            'Captain',
+            'Lieutenant',
+            'Second Lieutenant'
+        ];
+
+        if ($user == 'Admin') {
+
+
+            // $paymentDB = DB::table('payments')
+            // ->join('member_registartions', 'payments.phone', '=', 'member_registartions.phone')
+            // ->where('payments.status', 'Pending')
+            // ->get();
+
+
+            $pendingPayments = DB::table('payments')
+                ->select('payments.*', 'member_registrations.class')
+                ->join('member_registrations', 'payments.phone', '=', 'member_registrations.phone')
+                ->where('payments.status', 'Pending')
+                ->whereIn('member_registrations.class', $classesToMatch)
+                ->get();
+
+// $pendingPayments will now contain the pending payments with the associated class from member_registrations.
+
+
+
+            printf($pendingPayments);
+
+        }
+        // } else {
+        //     # code...
+        //     $phone = DB::table('member_registartions')->where('email', '=', Auth::user()->email)->value('phone');
+        //     $paymentDB = DB::table('payments')
+        //     ->where('id', '=', $phone)
+        //         ->get();
+        // }
+
+        return view('backend.user.com-pendingpay', compact('all', 'response', 'member', 'paymentDB'));
 
         //dd($user);
     }
