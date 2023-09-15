@@ -13,7 +13,7 @@
         <img src="{{ asset('/storage'.substr(auth()->user()->photo,6)) }}" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">{{auth()->user()->photo}} </a>
+        <a href="#" class="d-block">{{auth()->user()->name}} </a>
       </div>
     </div>
 
@@ -40,7 +40,7 @@
           <a href="{{URL::to('/home')}}" class="nav-link active">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
-              Dashboard
+              Dashboard {{auth()->user()->photo}}
 
             </p>
           </a>
