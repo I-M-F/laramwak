@@ -200,6 +200,99 @@ class MPESAController extends Controller
         //dd($user);
     }
 
+    public function subscriptionPayList()
+    {
+        //haven't paid, Name, phone, spouse name, spouse rank, amount to pay
+        $response = $this->getAccessToken();
+
+        $all = DB::table('users')->get();
+        $member = DB::table('member_registartions')->get();
+        $this->middleware('auth');
+        //{{auth()->user()->role}} 
+        $user = Auth::user()->role;
+        //$phone = Auth::user()->email;
+
+        $paymentDescriptionsToMatch = [
+            'MWAK Membership Fees',
+        ];
+
+
+
+        if ($user == 'Admin') {
+
+
+            $pendingPayments = DB::table('payments')
+                ->select('payments.*', 'member_registartions.*')
+                ->join('member_registartions', 'payments.phone', '=', 'member_registartions.phone')
+                ->where('payments.status', 'Pending')                
+                ->WhereIn('payments.payment_description', $paymentDescriptionsToMatch)
+                ->get();
+
+
+            // $pendingPayments will now contain the pending payments with the associated class from member_registrations.
+
+
+
+            //dd($pendingPayments);
+
+        }
+
+
+        return view('backend.user.subscription-pendingpay', compact('all', 'response', 'member', 'pendingPayments'));
+
+        //dd($user);
+    }
+
+    public function annualSubscriptionPayList()
+    {
+        //haven't paid, Name, phone, spouse name, spouse rank, amount to pay
+        $response = $this->getAccessToken();
+
+        $all = DB::table('users')->get();
+        $member = DB::table('member_registartions')->get();
+        $this->middleware('auth');
+        //{{auth()->user()->role}} 
+        $user = Auth::user()->role;
+        //$phone = Auth::user()->email;
+
+
+
+        $paymentDescriptionsToMatch = [
+            'MWAK Annual Subscription Fees',
+        ];
+
+
+        if ($user == 'Admin') {
+
+
+            // $paymentDB = DB::table('payments')
+            // ->join('member_registartions', 'payments.phone', '=', 'member_registartions.phone')
+            // ->where('payments.status', 'Pending')
+            // ->get();
+
+
+          
+
+            $pendingPayments = DB::table('payments')
+            ->select('payments.*', 'member_registartions.*')
+            ->join('member_registartions', 'payments.phone', '=', 'member_registartions.phone')
+                ->where('payments.status', 'Pending')
+                ->WhereIn('payments.payment_description', $paymentDescriptionsToMatch)
+                ->get();
+
+            // $pendingPayments will now contain the pending payments with the associated class from member_registrations.
+
+
+
+            //dd($pendingPayments);
+
+        }
+
+
+        return view('backend.user.annual-subscriptionpendingpay', compact('all', 'response', 'member', 'pendingPayments'));
+
+        //dd($user);
+    }
     public function getAccessToken()
     {
 

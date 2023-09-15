@@ -44,6 +44,9 @@ Route::get('/payment', [App\Http\Controllers\payment\MPESAController::class, 'pa
 Route::get('/pendingPayList', [App\Http\Controllers\payment\MPESAController::class, 'pendingPay'])->name('pendingPay');
 Route::get('/comPayList', [App\Http\Controllers\payment\MPESAController::class, 'commisionedPayList'])->name('commisionedPayList');
 Route::get('/nonComPayList', [App\Http\Controllers\payment\MPESAController::class, 'nonCommisionedPayList'])->name('nonCommisionedPayList');
+Route::get('/subPayList', [App\Http\Controllers\payment\MPESAController::class, 'subscriptionPayList'])->name('subscriptionPayList');
+Route::get('/annualPayList', [App\Http\Controllers\payment\MPESAController::class, 'annualSubscriptionPayList'])->name('annualSubscriptionPayList');
+
 Route::get('/getAccessToken', [App\Http\Controllers\payment\MPESAController::class, 'getAccessToken'])->name('getAccessToken');
 Route::get('/mpesaSTKPush/{phone}', [App\Http\Controllers\payment\MPESAController::class, 'mwakKCBMPESASTKPUSH'])->name('mwakKCBMPESASTKPUSH');
 Route::get('/edit-tx/{phone}', [App\Http\Controllers\payment\MPESAController::class, 'editTx'])->name('editTx');
