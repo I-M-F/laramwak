@@ -38,7 +38,7 @@
                                 <tbody>
 
 
-                                    @foreach($paymentDB as $key=>$row)
+                                    @foreach($pendingPayments as $key=>$row)
                                     <tr>
                                         <td>{{ $key+1 }}</td>
                                         <td>{{ $row->first_name }}</td>
@@ -51,7 +51,7 @@
                                         <td>{{ $row->tx_number }} {{ $row->date }}</td>
                                         <td>{{ $row->status }}</td>
 
-                           
+
 
                                     </tr>
                                     @endforeach
