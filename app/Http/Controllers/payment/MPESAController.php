@@ -67,7 +67,7 @@ class MPESAController extends Controller
             ->get();
 
 
-            printf($paymentDB);
+            dd($paymentDB);
             
 
         } else {
