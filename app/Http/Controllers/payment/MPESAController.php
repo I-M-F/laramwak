@@ -120,10 +120,10 @@ class MPESAController extends Controller
 
 
             $pendingPayments = DB::table('payments')
-                ->select('payments.*', 'member_registrations.class')
-                ->join('member_registrations', 'payments.phone', '=', 'member_registrations.phone')
+                ->select('payments.*', 'member_registartions.class')
+                ->join('member_registartions', 'payments.phone', '=', 'member_registartions.phone')
                 ->where('payments.status', 'Pending')
-                ->whereIn('member_registrations.class', $classesToMatch)
+                ->whereIn('member_registartions.class', $classesToMatch)
                 ->get();
 
 // $pendingPayments will now contain the pending payments with the associated class from member_registrations.
