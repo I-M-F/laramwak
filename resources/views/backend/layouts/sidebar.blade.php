@@ -40,7 +40,7 @@
           <a href="{{URL::to('/home')}}" class="nav-link active">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
-              Dashboard {{auth()->user()->photo}}
+              Dashboard 
 
             </p>
           </a>

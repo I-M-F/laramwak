@@ -472,6 +472,7 @@ class UserController extends Controller
         $update = DB::table('member_registartions')
             ->where('email', $id)
             ->update($data);
+        /// update users db photo 
         if ($update) {
            // echo "Data Updated Succesfully";
        
