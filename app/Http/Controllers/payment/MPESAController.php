@@ -67,7 +67,7 @@ class MPESAController extends Controller
             ->get();
 
 
-            //printf($paymentDB);
+            printf($paymentDB);
             
 
         } else {
@@ -130,7 +130,7 @@ class MPESAController extends Controller
 
 
 
-            printf($pendingPayments);
+            dd($pendingPayments);
 
         }
         // } else {
@@ -141,7 +141,7 @@ class MPESAController extends Controller
         //         ->get();
         // }
 
-        return view('backend.user.com-pendingpay', compact('all', 'response', 'member', 'paymentDB'));
+        return view('backend.user.com-pendingpay', compact('all', 'response', 'member',));
 
         //dd($user);
     }
