@@ -531,7 +531,7 @@ class UserController extends Controller
         // dd($data);
 
         $update = DB::table('member_registartions')
-        ->where('id', $id)
+        ->where('email', $id)
             ->update($data);
         if ($update) {
             // echo "Data Updated Succesfully";
