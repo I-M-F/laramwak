@@ -13,7 +13,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Member Dashboard {{ $totalMembers }} </li>
+            <li class="breadcrumb-item active">Member Dashboard </li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -34,7 +34,7 @@
               <span class="info-box-text">Total Members</span>
               <span class="info-box-number">
 
-
+                {{ $totalMembers }}
               </span>
             </div>
             <!-- /.info-box-content -->
@@ -48,7 +48,10 @@
 
             <div class="info-box-content">
               <span class="info-box-text">New Events</span>
+              <span class="info-box-number">
 
+                {{ $totalEvents }}
+              </span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -65,7 +68,10 @@
 
             <div class="info-box-content">
               <span class="info-box-text">Approved Payments</span>
+              <span class="info-box-number">
 
+                {{ $paymentDB }}
+              </span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -78,7 +84,10 @@
 
             <div class="info-box-content">
               <span class="info-box-text">Pending Payments</span>
+              <span class="info-box-number">
 
+                {{ $pendingPayments }}
+              </span>
             </div>
             <!-- /.info-box-content -->
           </div>
