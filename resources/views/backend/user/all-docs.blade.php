@@ -31,7 +31,7 @@
             <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Approved Members</span>
+              <span class="info-box-text">Total Members</span>
               <span class="info-box-number">
 
 
@@ -47,7 +47,7 @@
             <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">New Members</span>
+              <span class="info-box-text">New Events</span>
 
             </div>
             <!-- /.info-box-content -->
