@@ -96,8 +96,9 @@ class HomeController extends Controller
             ->count();
 
             // Get the current month and year using Carbon
-            $currentMonth = Carbon::now()->month;
+            //$currentMonth = Carbon::now()->month;
             $currentYear = Carbon::now()->year;
+            $currentMonth = date('m');
 
             // Build the query to count events within the current month and year
             $totalEvents = DB::table('events')
