@@ -13,7 +13,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Member Dashboard </li>
+            <li class="breadcrumb-item active">Member Dashboard {{ $member_dets, $totalMembers, $totalEvents, $paymentDB, $pendingPayments}}</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->

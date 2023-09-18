@@ -91,6 +91,29 @@ class HomeController extends Controller
             ->where('member_registartions.email', $email)
             ->first();
 
+            $totalMembers = DB::table('member_registartions')
+            ->count();
+
+            // Get the current month and year using Carbon
+            $currentMonth = Carbon::now()->month;
+            $currentYear = Carbon::now()->year;
+
+            // Build the query to count events within the current month and year
+            $totalEvents = DB::table('events')
+            ->whereYear('event_start', $currentMonth)
+            ->whereMonth('event_start', $currentMonth)
+            ->count();
+
+            //$phone = DB::table('member_registartions')->where('email', '=', Auth::user()->email)->value('phone');
+            $paymentDB = DB::table('payments')
+                ->where('phone', '=', $member_dets->phone)
+            ->count();
+
+            $pendingPayments = DB::table('payments')
+            ->where('phone', $member_dets->phone)
+            ->where('status', 'pending')
+            ->count();
+
            // dd($member_dets);
 
             if ($member_dets->role == 'Unverified') {
@@ -98,7 +121,7 @@ class HomeController extends Controller
             } elseif ($member_dets->role == 'Rejected') {
                 return view('backend.user.rejected', compact('member_dets'));
             } 
-            return view('backend.user.all-docs', compact('member_dets'));
+            return view('backend.user.all-docs', compact('member_dets', 'totalMembers', 'totalEvents', 'paymentDB', 'pendingPayments'));
             //check if verified status 
             //return redirect()->route('backend.user.all-docs');
             //return redirect('all-docs');
