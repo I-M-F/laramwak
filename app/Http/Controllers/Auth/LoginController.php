@@ -51,7 +51,7 @@ class LoginController extends Controller
         ->where('email', $credentials['email'])
             ->orWhere('phone', $credentials['email'])
             ->first();
-dd($user);
+//dd($user);
         if ($user) {
             // If a user is found, attempt to log in using the retrieved email and password
             return Auth::guard()->attempt(
