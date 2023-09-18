@@ -101,8 +101,7 @@ class HomeController extends Controller
             $currentMonth = date('m');
 
             // Build the query to count events within the current month and year
-            $totalEvents = DB::table('events')
-            ->whereYear('event_start', $currentMonth)
+            $totalEvents = DB::table('events')            
             ->whereMonth('event_start', $currentMonth)
             ->count();
 dd($totalEvents);
