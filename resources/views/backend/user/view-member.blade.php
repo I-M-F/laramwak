@@ -367,7 +367,7 @@
 
                                 <div class="tab-pane" id="user_edit_dets">
                                     <!-- <form class="form-horizontal"> -->
-                                    <form role="form" enctype="multipart/form-data" action="{{URL::to('/update-member-dets/'.$view_member->email)}}" method="POST">
+                                    <form role="form" enctype="multipart/form-data" action="{{URL::to('/update-user-member-dets/'.$view_member->email)}}" method="POST">
                                         @csrf
                                         <div class="form-group row">
 

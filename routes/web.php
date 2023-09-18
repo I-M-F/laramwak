@@ -32,6 +32,7 @@ Route::get('/view-member/{id}', [App\Http\Controllers\backend\UserController::cl
 Route::post('/update-user/{id}', [App\Http\Controllers\backend\UserController::class, 'UpdateUser'])->name('updateuser');
 Route::post('/update-member/{id}', [App\Http\Controllers\backend\UserController::class, 'updateMember'])->name('updateMember');
 Route::post('/update-member-dets/{id}', [App\Http\Controllers\backend\UserController::class, 'updateMemberDets'])->name('updateMemberDets');
+Route::post('/update-user-member-dets/{id}', [App\Http\Controllers\backend\UserController::class, 'userUpdateMemberDets'])->name('userUpdateMemberDets');
 Route::post('/approve-member/{id}', [App\Http\Controllers\backend\UserController::class, 'approveMember'])->name('approveMember');
 
 Route::get('/delete-user/{email}', [App\Http\Controllers\backend\UserController::class, 'DeleteUser'])->name('deleteuser');
