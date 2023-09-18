@@ -127,9 +127,9 @@
                                 <li class="nav-item"><a class="nav-link" href="#spouse_details" data-toggle="tab">Spouse Details</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#tx_timeline" data-toggle="tab">Transaction Details</a></li>
                                 @if(auth()->user()->role=='Admin')
-                                <li class="nav-item"><a class="nav-link" href="#edit_dets" data-toggle="tab">Edit Detatils</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#edit_dets" data-toggle="tab">Edit Details</a></li>
                                 @else
-                                <li class="nav-item"><a class="nav-link" href="#user_edit_dets" data-toggle="tab">Edit Detatils</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#user_edit_dets" data-toggle="tab">Edit Member Details</a></li>
                                 @endif
                             </ul>
                         </div><!-- /.card-header -->
