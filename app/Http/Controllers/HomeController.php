@@ -104,7 +104,7 @@ class HomeController extends Controller
             $totalEvents = DB::table('events')            
             ->whereMonth('event_start', $currentMonth)
             ->count();
-dd($totalEvents);
+//dd($totalEvents);
             //$phone = DB::table('member_registartions')->where('email', '=', Auth::user()->email)->value('phone');
             $paymentDB = DB::table('payments')
                 ->where('phone', '=', $member_dets->phone)
