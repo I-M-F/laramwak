@@ -48,8 +48,8 @@ class LoginController extends Controller
 
         // Check if the user exists in the member_registartions table based on email or phone
         $user = DB::table('member_registartions')
-        ->where('email', $credentials['email'])
-            ->orWhere('phone', $credentials['email'])
+        ->where('email', $credentials['login'])
+            ->orWhere('phone', $credentials['login'])
             ->first();
 dd($user);
         if ($user) {
