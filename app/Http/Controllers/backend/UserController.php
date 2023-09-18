@@ -542,14 +542,14 @@ class UserController extends Controller
                 'messege' => 'Succesfull Deleted',
                 'alert-type' => 'success'
             );
-            return redirect()->route('allmembers')->with($notification);
+            return redirect()->route('home')->with($notification);
             //return view('backend.user.view-member', compact('view_member', 'paymentDB','countyDB'))->with($notification);
         } else {
             $notification = array(
                 'messege' => 'Something is Wrong, please try Update again!',
                 'alert-type' => 'error'
             );
-            return redirect()->route('allmembers')->with($notification);
+            return redirect()->route('home')->with($notification);
             //return view('backend.user.view-member', compact('view_member', 'paymentDB','countyDB'))->with($notification);
         }
     }
