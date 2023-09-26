@@ -183,8 +183,8 @@
     });
   </script>
 
-  <!-- Page specific script -->
-  <script>
+  <!-- 1Page specific script -->
+  <!-- <script>
     $(function() {
       $("#example1").DataTable({
         "responsive": true,
@@ -202,7 +202,7 @@
         "responsive": true,
       });
     });
-  </script>
+  </script> -->
 
   <script>
     var calendarEl = document.getElementById('calendar');
