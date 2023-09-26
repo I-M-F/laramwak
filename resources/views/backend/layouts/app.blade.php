@@ -273,6 +273,7 @@
   </script>
 
 
+
   <!-- Load Date Picker and related scripts using the new jQuery instance -->
   <script src="{{asset('backend/plugins/moment/moment.min.js')}}"></script>
   <script src="{{asset('backend/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js')}}"></script>
@@ -303,6 +304,9 @@
         $('#event_start').data("DateTimePicker").maxDate(e.date);
       });
     });
+  </script>
+  <script>
+    console.log(jQueryForDatePicker.fn.jquery); // Check jQuery version
   </script>
 
 
