@@ -73,7 +73,9 @@
   <!-- REQUIRED SCRIPTS -->
   <!-- jQuery -->
   <script src="{{asset('backend/plugins/jquery/jquery.min.js')}}"></script>
-
+  <script>
+    var jQueryForPagination = jQuery.noConflict(true);
+  </script>
 
   <!-- Bootstrap -->
   <script src="{{asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -264,11 +266,14 @@
     }
   </script>
 
- 
+
 
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script>
+    var jQueryForDatePicker = jQuery.noConflict(true);
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
