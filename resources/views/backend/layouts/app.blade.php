@@ -75,12 +75,12 @@
   <!-- ./wrapper -->
 
   <!-- REQUIRED SCRIPTS -->
- 
+
   <!-- Include jQuery first -->
   <script src="{{asset('backend/plugins/jquery/jquery.min.js')}}"></script>
-  <!-- <script>
+  <script>
     var jQueryForPagination = jQuery.noConflict(true);
-  </script> -->
+  </script>
 
 
   <!-- Bootstrap -->
@@ -273,13 +273,41 @@
   </script>
 
 
-
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Load Date Picker and related scripts using the new jQuery instance -->
+  <script src="{{asset('backend/plugins/moment/moment.min.js')}}"></script>
+  <script src="{{asset('backend/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js')}}"></script>
   <script>
-    var jQueryForDatePicker = jQuery.noConflict(true);
+    jQueryForDatePicker(function($) {
+      // Your date picker initialization code here
+      var today = new Date();
+
+      $('#event_start').datetimepicker({
+        minDate: today,
+        useCurrent: false,
+        format: 'YYYY-MM-DD HH:mm:ss'
+      });
+
+      $('#event_end').datetimepicker({
+        minDate: today,
+        useCurrent: false,
+        format: 'YYYY-MM-DD HH:mm:ss'
+      });
+
+      // Event Start date picker change event
+      $('#event_start').on('dp.change', function(e) {
+        $('#event_end').data("DateTimePicker").minDate(e.date);
+      });
+
+      // Event End date picker change event
+      $('#event_end').on('dp.change', function(e) {
+        $('#event_start').data("DateTimePicker").maxDate(e.date);
+      });
+    });
   </script>
+
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
@@ -326,7 +354,7 @@
     //     //todayHighlight: true,
     //   });
     // });
-  </script>
+  </script> -->
 
 
 
