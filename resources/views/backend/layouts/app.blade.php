@@ -277,8 +277,7 @@
 
 
 
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
-  <script src="{{asset('backend/plugins/jquery/jquery.min.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script>
     var jQueryForPagination = jQuery.noConflict(true);
   </script>
