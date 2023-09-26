@@ -78,9 +78,9 @@
 
   <!-- Include jQuery first -->
   <script src="{{asset('backend/plugins/jquery/jquery.min.js')}}"></script>
-  <script>
+  <!-- <script>
     var jQueryForPagination = jQuery.noConflict(true);
-  </script>
+  </script> -->
 
 
   <!-- Bootstrap -->
