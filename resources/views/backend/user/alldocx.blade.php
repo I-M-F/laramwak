@@ -13,7 +13,7 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">MWAK Members List</h3>
+                            <h3 class="card-title">MWAK Documents List</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -22,14 +22,14 @@
                                     <tr>
                                         <th>Doc No. </th>
                                         <th>Description</th>
-                                        <th>Data</th>
+                                        <th>Doc Link</th>
                                         <th>Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
-                                   @foreach($all as $key=>$row)
+                                    @foreach($all as $key=>$row)
                                     <tr>
                                         <td>{{ $key+1 }}</td>
                                         <td>{{ $row->description }}</td>
@@ -37,8 +37,7 @@
                                         <td>{{ $row->date }}</td>
                                         </td>
                                         <td>
-                                            <a href="{{ URL::to('/edit-user/'.$row->id) }}" class="btn btn-sm btn-info">Edit</a>
-                                            <a href="{{ URL::to('/delete-user/'.$row->id) }}" class="btn btn-sm btn-danger">Delete</a>
+                                            <a href="{{ URL::to('/view-docs/'.$row->id) }}" class="btn btn-sm btn-info">View Doc</a>
                                         </td>
 
                                     </tr>
@@ -48,10 +47,10 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Reg No. </th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Role</th>
+                                        <th>Doc No. </th>
+                                        <th>Description</th>
+                                        <th>Doc Link </th>
+                                        <th>Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>
