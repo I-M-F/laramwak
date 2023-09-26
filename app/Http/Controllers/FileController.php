@@ -215,7 +215,7 @@ class FileController extends Controller
 
         $all = DB::table('mwakfiles')->get();
 
-        return view('backend.user.all-docs', compact('all'));
+        return view('backend.user.alldocx', compact('all'));
     }
 
     public function viewDocs($id)

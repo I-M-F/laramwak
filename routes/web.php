@@ -68,7 +68,7 @@ Route::get('/bulk-sms', [App\Http\Controllers\FileController::class, 'bulkSMS'])
 
 Route::get('/add-docs', [App\Http\Controllers\FileController::class, 'addDocs'])->name('addDocs');
 Route::post('/upload-docs', [App\Http\Controllers\FileController::class, 'uploadDocs'])->name('uploadDocs');
-Route::get('/all-docs', [App\Http\Controllers\FileController::class, 'allDocs'])->name('allDocs');
+Route::get('/alldocx', [App\Http\Controllers\FileController::class, 'allDocs'])->name('allDocs');
 
 Route::get('/view-docs/{id}', [App\Http\Controllers\FileController::class, 'viewDocs'])->name('viewDocs');
 
