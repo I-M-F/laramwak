@@ -72,7 +72,7 @@
 
   <!-- REQUIRED SCRIPTS -->
   <!-- jQuery -->
-  <script src="{{asset('backend/plugins/jquery/jquery.min.js')}}"></script>
+  <!-- <script src="{{asset('backend/plugins/jquery/jquery.min.js')}}"></script> -->
 
 
   <!-- Bootstrap -->
