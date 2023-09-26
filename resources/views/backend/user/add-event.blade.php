@@ -38,7 +38,7 @@
                             <div class="form-group row">
                                 <label for="event_start" class="col-sm-2 col-form-label">Event Start</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control date" name="event_start" id="event_start" placeholder="Select Event Start Date" required>
+                                    <input type="text" class="form-control date" name="event_start" id="event_start" placeholder="Select/Enter Event Start Date (2023-09-28 13:29:28)" required>
                                 </div>
                             </div>
 
@@ -47,7 +47,7 @@
                             <div class="form-group row">
                                 <label for="event_end" class="col-sm-2 col-form-label">Event End</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control date" name="event_end" id="event_end" placeholder="Select Event End Date" required>
+                                    <input type="text" class="form-control date" name="event_end" id="event_end" placeholder="Select/Enter Event End Date (2023-09-30 13:43:23)" required>
                                 </div>
                             </div>
 

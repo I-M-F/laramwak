@@ -285,6 +285,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+
+
   <script type="text/javascript">
     $(function() {
       var today = new Date();
@@ -311,57 +313,19 @@
         $('#event_start').data("DateTimePicker").maxDate(e.date);
       });
     });
-
-
-    // $(function() {
-    //   $('#event_start').datetimepicker({
-    //     minDate: moment(), // Set the minimum date to today
-    //     format: 'YYYY-MM-DD', // Define your preferred date format
-    //     //autoclose: true,
-    //    // todayHighlight: true,
-    //   });
-
-    //   $('#event_end').datetimepicker({
-    //     minDate: moment(), // Set the minimum date to today
-    //     format: 'YYYY-MM-DD', // Define your preferred date format
-    //     //autoclose: true,
-    //     //todayHighlight: true,
-    //   });
-    // });
   </script>
 
 
 
 
-  <!-- 
-  <script>
-    $.noConflict();
-    jQuery(document).ready(function($) {
-      $('#calendar').fullCalendar({
-        // Your FullCalendar options here
-      });
-    });
-  </script> -->
 
 
 
 
-  <!-- <script src="{{ asset('js/app.js') }}"></script>
 
-<script>
 
-document.getElementById('getAccessToken').addEventListener('click', (event) => {
-  event.preventDefault()
 
-  axios.post('/get-token', {})
-  .then((response) => {
-    console.log(response.data);
-  })
-  .catch((error) => {
-    console.log(error);
-  })
-})
-</script> -->
+
 
 </body>
 
