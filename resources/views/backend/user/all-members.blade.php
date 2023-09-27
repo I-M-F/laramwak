@@ -70,7 +70,7 @@
 
                     <td>
                       <a href="{{ URL::to('/view-member/'.$row->id_number) }}" class="btn btn-sm btn-info">View</a>
-                      <a href="{{ URL::to('/edit-user/'.$row->id_number) }}" class="btn btn-sm btn-info">Send SMS</a>
+                      <!-- <a href="{{ URL::to('/edit-user/'.$row->id_number) }}" class="btn btn-sm btn-info">Send SMS</a> -->
                       <a href="{{ URL::to('/delete-user/'.$row->id_number) }}" class="btn btn-sm btn-danger">Delete</a>
                     </td>
 
