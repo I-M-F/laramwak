@@ -48,7 +48,7 @@
                       <!-- <a href="{{ URL::to('/tuma-sms/'.$row->id) }}" class="btn btn-sm btn-info">Send SMS </a> -->
                       <!-- <a href="{{ URL::to('/sendEmail') }}" class="btn btn-sm btn-info">Pay With VISA/MasterCard Email</a> -->
                       @elseif($row->status=='Paid')
-                      <a href="{{ URL::to('/edit-tx/'.$row->id) }}" class="btn btn-sm btn-success">Edit</a>
+                      <a href="{{ URL::to('/edit-tx/'.$row->id) }}" class="btn btn-sm btn-success">Re-Edit </a>
                       @endif
                       @endif
 

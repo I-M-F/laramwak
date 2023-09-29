@@ -20,16 +20,28 @@
                         <form role="form" action="{{URL::to('/update-tx/'.$edit->id)}}" method="POST">
                             @csrf
 
+
+                            <!-- <div class="form-group row">
+                                <label for="name" class="col-sm-2 col-form-label">Transacted Phone No.</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="tx_phn_number" placeholder="Enter Phone Number" value="{{$edit->phone}}">
+                                </div>
+                            </div> -->
+
+                            <div class="form-group row">
+                                <label for="name" class="col-sm-2 col-form-label">Transacted Phone No.</label>
+                                <div class="col-sm-10">
+                                    <p class="form-control-plaintext">{{$edit->phone}}</p>
+                                </div>
+                            </div>
+
+
                             <div class="form-group row">
                                 <label for="name" class="col-sm-2 col-form-label">Transaction No.</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="tx_number" placeholder="Enter Transaction Number" value="{{$edit->tx_number}}">
                                 </div>
                             </div>
-
-
-
-
 
                             <div class="form-group row">
                                 <label for="name" class="col-sm-2 col-form-label">Payment Description </label>
