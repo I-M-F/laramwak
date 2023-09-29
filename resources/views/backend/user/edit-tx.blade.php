@@ -48,8 +48,8 @@
                                 <div class="col-sm-10">
                                     <select class="form-control" id="exampleformControlSelect1" name="payment_description" required>
                                         <option>--Select Payment Description--</option>
-                                        <option value="MWAK Membership Fees" {{'MWAK Annual Subscription Fees' == $edit->payment_description ? 'selected' : ''}}>MWAK Annual Membership Fees</option>
-                                        <option value="Membership Card Fees" {{'MWAK Membership Fees' == $edit->payment_description ? 'selected' : ''}}>Membership Fees</option>
+                                        <option value="MWAK Annual Subscription Fees" {{'MWAK Annual Subscription Fees' == $edit->payment_description ? 'selected' : ''}}>MWAK Annual Membership Fees</option>
+                                        <option value="MWAK Membership Fees" {{'MWAK Membership Fees' == $edit->payment_description ? 'selected' : ''}}>Membership Fees</option>
 
                                     </select>
                                 </div>
