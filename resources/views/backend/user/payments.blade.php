@@ -47,17 +47,15 @@
 
                     <td>
                       @if(auth()->user()->role=='Admin')
-
+                      @if($row->status=='Pending')
                       <a href="{{ URL::to('/mpesaSTKPush/'.$row->phone) }}" class="btn btn-sm btn-info">Lipa Na MPesa</a>
                       <a href="{{ URL::to('/edit-tx/'.$row->id) }}" class="btn btn-sm btn-info">Edit </a>
                       <!-- <a href="{{ URL::to('/tuma-sms/'.$row->id) }}" class="btn btn-sm btn-info">Send SMS </a> -->
                       <!-- <a href="{{ URL::to('/sendEmail') }}" class="btn btn-sm btn-info">Pay With VISA/MasterCard Email</a>
                              -->
 
-                      @endif
-                      @if($row->status=='Paid')
+                      @elseif($row->status=='Paid')
                       <a href="{{ URL::to('/edit-tx/'.$row->id) }}" class="btn btn-sm btn-success">Edit</a>
-                      @endif
                       @endif
                       @if(auth()->user()->role=='Member')
                       @if($row->status=='Pending')
