@@ -3,18 +3,15 @@
 
 <div class="content-wrapper">
 
-
   <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
 
-
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">MWAK Payment List </h3>
-
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -33,7 +30,6 @@
                 </thead>
                 <tbody>
 
-
                   @foreach($paymentDB as $key=>$row)
                   <tr>
                     <td>{{ $key+1 }}</td>
@@ -44,29 +40,26 @@
                     <td>{{ $row->tx_number }}</td>
                     <td>{{ $row->status }}</td>
 
-
                     <td>
                       @if(auth()->user()->role=='Admin')
                       @if($row->status=='Pending')
                       <a href="{{ URL::to('/mpesaSTKPush/'.$row->phone) }}" class="btn btn-sm btn-info">Lipa Na MPesa</a>
                       <a href="{{ URL::to('/edit-tx/'.$row->id) }}" class="btn btn-sm btn-info">Edit </a>
                       <!-- <a href="{{ URL::to('/tuma-sms/'.$row->id) }}" class="btn btn-sm btn-info">Send SMS </a> -->
-                      <!-- <a href="{{ URL::to('/sendEmail') }}" class="btn btn-sm btn-info">Pay With VISA/MasterCard Email</a>
-                             -->
-
+                      <!-- <a href="{{ URL::to('/sendEmail') }}" class="btn btn-sm btn-info">Pay With VISA/MasterCard Email</a> -->
                       @elseif($row->status=='Paid')
                       <a href="{{ URL::to('/edit-tx/'.$row->id) }}" class="btn btn-sm btn-success">Edit</a>
                       @endif
+                      @endif
+
                       @if(auth()->user()->role=='Member')
                       @if($row->status=='Pending')
                       <a href="{{ URL::to('/mpesaSTKPush/'.$row->phone) }}" class="btn btn-sm btn-info">Lipa Na MPesa</a>
-
                       @endif
                       @endif
                     </td>
                   </tr>
                   @endforeach
-
 
                 </tbody>
                 <tfoot>
