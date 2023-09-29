@@ -31,7 +31,7 @@
                             <div class="form-group row">
                                 <label for="name" class="col-sm-2 col-form-label">Transacted Phone No.</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control-plaintext">{{$edit->phone}}</p>
+                                    <p class="form-control-plaintext" style="font-weight: bold;">{{$edit->phone}}</p>
                                 </div>
                             </div>
 
