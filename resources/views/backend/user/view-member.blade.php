@@ -312,6 +312,13 @@
 
                                         <hr>
 
+                                        <label for="inputName" class="col-sm-2 col-form-label">Phone No.</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="phone_no" placeholder="Enter Your Phone" value="{{$view_member->phone}}">
+                                        </div>
+
+                                        <hr>
+
                                         <label for="inputName" class="col-sm-2 col-form-label">Email.</label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" name="email" placeholder="Enter Your Email" value="{{$view_member->email}}">
