@@ -208,7 +208,7 @@
         url: SITEURL + '/calendar-event',
         method: 'GET',
         success: function(data) {
-         // var today = new Date().toISOString().split('T')[0]; // Get today's date
+          var today = new Date().toISOString().split('T')[0]; // Get today's date
           var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
             initialDate: today,
