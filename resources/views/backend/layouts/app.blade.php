@@ -208,9 +208,10 @@
         url: SITEURL + '/calendar-event',
         method: 'GET',
         success: function(data) {
+         // var today = new Date().toISOString().split('T')[0]; // Get today's date
           var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
-            initialDate: '2023-09-07',
+            initialDate: today,
             headerToolbar: {
               left: 'prev,next today',
               center: 'title',
