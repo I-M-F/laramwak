@@ -449,7 +449,7 @@ class MPESAController extends Controller
             CURLOPT_POSTFIELDS => '{
     "phoneNumber": "' . $simu_no . '",
     "amount": "' . $Amount . '",
-    "invoiceNumber": "Military Wifes Association Of Kenya - 7893469",
+    "invoiceNumber": "Military Wives Association Of Kenya - 7893469",
     "sharedShortCode": false,
     "orgShortCode": "7893469",
     "orgPassKey": "6bfa2a1c0a3dba7c0357a93d9af342fa5abe8dc2cd022206e47516be3bb7d5ba",
